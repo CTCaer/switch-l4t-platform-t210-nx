@@ -1,0 +1,33 @@
+/*
+ * Copyright (c) 2016, NVIDIA CORPORATION.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
+/ {
+	i2c@7000c400 {
+		bh1730fvc@29 {
+			compatible = "rohm,bh1730fvc";
+			reg = <0x29>;
+			bh1730fvc-lux-coeff =   < 500 5002 7502
+						  754 2250 2000
+						 1029 1999 1667
+						 1373  884  583
+						 1879  309  165>;
+			bh1730fvc-lux-resolution = <1000>;
+			bh1730fvc-lux-multiplier = <360>;
+		};
+	};
+};

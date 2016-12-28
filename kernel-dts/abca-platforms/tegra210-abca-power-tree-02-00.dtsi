@@ -1,0 +1,269 @@
+/*
+ * Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "tegra210-abca-pmic-02-00.dtsi"
+#include "tegra210-abca-power-fixed-02-00.dtsi"
+#include <t210-common-platforms/tegra210-ers-power-dvfs-e2174-1101-a00.dtsi>
+
+/ {
+
+	dfll-ovr@70110000 {
+		status = "disabled";
+	};
+
+	dfll-max77621@70110000 {
+		status = "disabled";
+	};
+
+	pwm_regulators {
+		pwm-regulator@0 {
+			status = "disabled";
+		};
+
+		pwm-regulator@1 {
+			status = "disabled";
+		};
+	};
+
+	i2c@7000d000 {
+		max77621@1b {
+			status = "okay";
+		};
+
+		max77621@1c {
+			status = "okay";
+		};
+	};
+
+	dvfs_rails {
+		vdd-cpu-rail-ovr@0 {
+			status = "disabled";
+		};
+
+		vdd-gpu-rail-ovr@1 {
+			status = "disabled";
+		};
+
+		vdd-cpu-rail-max77621@2 {
+			status = "okay";
+		};
+
+		vdd-gpu-rail-max77621@3 {
+			status = "okay";
+		};
+	};
+
+	cpuidle {
+		vdd-cpu-supply = <&cpu_max77621_reg>;
+		cc4-microvolt = <606250>;
+	};
+
+	dummy_cool_dev: dummy-cool-dev {
+		compatible = "dummy-cooling-dev";
+		#cooling-cells = <2>; /* min followed by max */
+	};
+
+	thermal-zones {
+		PMIC-Die {
+			polling-delay = <0>; /* milliseconds */
+			polling-delay-passive = <0>; /* milliseconds */
+
+			thermal-sensors = <&max77620>;
+			trips {
+				die_temp_thresh: hot-die {
+					temperature = <120000>;
+					type = "active";
+					hysteresis = <0>;
+				};
+			};
+
+			cooling-maps {
+				map0 {
+					trip = <&die_temp_thresh>;
+					cooling-device = <&dummy_cool_dev THERMAL_NO_LIMIT
+								THERMAL_NO_LIMIT>;
+					contribution = <100>;
+					cdev-type = "emergency-balanced";
+				};
+			};
+		};
+	};
+
+	i2c@7000c400 {
+		bh1730fvc@29 {
+			vid-supply = <&max77620_sd3>;
+			vdd-supply = <&vdd_3v3>;
+		};
+	};
+
+	i2c@546c0000 {
+		bus-pullup-supply = <&battery_reg>;
+	};
+
+	efuse@7000f800 {
+		vpp_fuse-supply = <&max77620_sd3>;
+	};
+
+	host1x {
+		/* tegradc.0 */
+		dc@54200000 {
+			avdd_dsi_csi-supply = <&max77620_gpio7>;
+			pavdd_lcd-supply = <&v_pavdd_5v0>;
+			navdd_lcd-supply = <&v_navdd_5v0>;
+			dvdd_lcd-supply = <&max77620_sd3>;
+			vdd_lcd_bl_en-supply = <&lcd_bl_en>;
+		};
+
+		/* tegradc.1 */
+		dc@54240000 {
+			avdd_hdmi-supply = <&max77620_ldo8>;    /* 1V05 */
+			avdd_hdmi_pll-supply = <&max77620_sd3>; /* 1V8 */
+			vdd_hdmi_5v0-supply = <&vdd_hdmi>;	/* 5V0 GPIO_PCC7 fixed reg */
+			/* dp */
+			vdd-dp-pwr-supply = <&vdd_3v3>;
+			avdd-dp-pll-supply = <&max77620_sd3>;
+			vdd-dp-pad-supply = <&max77620_ldo8>;
+		};
+
+		vi {
+			avdd_dsi_csi-supply = <&max77620_gpio7>;
+		};
+	};
+
+	sound {
+		spkvdd-supply = <&battery_reg>;
+		dbvdd-supply = <&max77620_sd3>;
+		avdd-supply = <&max77620_sd3>;
+	};
+
+	pmc-iopower {
+		iopower-sys-supply = <&max77620_sd3>;
+		iopower-uart-supply = <&max77620_sd3>;
+		iopower-audio-supply = <&max77620_sd3>;
+		iopower-cam-supply = <&max77620_sd3>;
+		iopower-pex-ctrl-supply = <&max77620_sd3>;
+		iopower-sdmmc1-supply = <&max77620_ldo2>;
+		iopower-sdmmc3-supply = <&max77620_sd3>;
+		iopower-sdmmc4-supply = <&max77620_sd3>;
+		iopower-audio-hv-supply = <&max77620_sd3>;
+		iopower-debug-supply = <&max77620_sd3>;
+		iopower-dbg-supply = <&max77620_sd3>;
+		iopower-dmic-supply = <&max77620_sd3>;
+		iopower-gpio-supply = <&max77620_sd3>;
+		iopower-spi-supply = <&max77620_sd3>;
+		iopower-spi-hv-supply = <&max77620_sd3>;
+		iopower-sdmmc2-supply = <&max77620_sd3>;
+		iopower-dp-supply = <&max77620_sd3>;
+	};
+
+	udc@7d000000 {
+		avdd_usb-supply = <&vdd_3v3>;
+		avdd_pll_utmip-supply = <&max77620_sd3>;
+		usb_bat_chg-supply = <&battery_charger>;
+	};
+
+	usb_cd@7009f000 {
+		usb_bat_chg-supply = <&battery_charger>;
+	};
+
+	ehci@7d000000 {
+		avdd_usb-supply = <&vdd_3v3>;
+		avdd_pll_utmip-supply = <&max77620_sd3>;
+	};
+
+	pinctrl@7009f000 {
+		vbus-0-supply = <&battery_reg>;
+		vbus-1-supply = <&battery_reg>;
+		vbus-2-supply = <&battery_reg>;
+		vbus-3-supply = <&battery_reg>;
+		vddio-hsic-supply = <&max77620_ldo0>;
+		avdd_pll_uerefe-supply = <&max77620_ldo7>;
+		hvdd_pex_pll_e-supply = <&max77620_sd3>;
+		dvdd_pex_pll-supply = <&max77620_ldo1>;
+		hvddio_pex-supply = <&max77620_sd3>;
+		dvddio_pex-supply = <&max77620_ldo1>;
+		hvdd_sata-supply = <&max77620_sd3>;
+		dvdd_sata_pll-supply = <&max77620_ldo8>;
+		hvddio_sata-supply = <&max77620_sd3>;
+		dvddio_sata-supply = <&max77620_ldo8>;
+	};
+
+	xudc@700d0000 {
+		hvdd_usb-supply = <&vdd_3v3>;
+		avdd_pll_utmip-supply = <&max77620_sd3>;
+		avddio_usb-supply = <&max77620_ldo1>;
+		avddio_pll_uerefe-supply = <&max77620_ldo7>;
+        };
+
+	xotg {
+		usb_vbus-supply = <&usb0_vbus>;
+	};
+
+	xusb_padctl {
+		avdd_pll_uerefe-supply = <&max77620_ldo7>;
+		hvdd_pex_pll_e-supply = <&max77620_sd3>;
+		dvdd_pex_pll-supply = <&max77620_ldo1>;
+		hvddio_pex-supply = <&max77620_sd3>;
+		dvddio_pex-supply = <&max77620_ldo1>;
+		hvdd_sata-supply = <&max77620_sd3>;
+		dvdd_sata_pll-supply = <&max77620_ldo8>;
+		hvddio_sata-supply = <&max77620_sd3>;
+		dvddio_sata-supply = <&max77620_ldo8>;
+	};
+
+	otg@7d000000 {
+		usb_vbus-supply = <&usb0_vbus>;
+		usb_bat_chg-supply = <&battery_charger>;
+	};
+
+	sdhci@700b0600 {
+		vqmmc-supply = <&max77620_sd3>;
+		vmmc-supply = <&vdd_3v3>;
+	};
+
+	sdhci@700b0400 {
+		vqmmc-supply = <&max77620_sd3>;
+		vmmc-supply = <&vdd_3v3>;
+	};
+
+	sdhci@700b0200 {
+		vqmmc-supply = <&max77620_sd3>;
+		vmmc-supply = <&vdd_3v3>;
+	};
+
+	sdhci@700b0000 {
+		vqmmc-supply = <&max77620_ldo2>;
+		vmmc-supply = <&en_vdd_sd>;
+	};
+
+	sata@70020000 {
+		hvdd_sata-supply = <&max77620_sd3>;
+		hvdd_pex_pll_e-supply = <&max77620_sd3>;
+		l0_hvddio_sata-supply = <&max77620_sd3>;
+		l0_dvddio_sata-supply = <&max77620_ldo8>;
+		dvdd_sata_pll-supply = <&max77620_ldo8>;
+	};
+
+	bluedroid_pm {
+		avdd-supply = <&battery_reg>;
+		dvdd-supply = <&max77620_sd3>;
+	};
+
+	pwm-fan {
+		vdd-fan-supply = <&v_vdd50_b>;
+	};
+};
