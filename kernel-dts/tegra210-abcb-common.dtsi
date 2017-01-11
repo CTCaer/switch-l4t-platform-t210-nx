@@ -1,7 +1,7 @@
 /*
  * arch/arm64/boot/dts/tegra210-abca-common.dtsi
  *
- * Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -292,16 +292,30 @@
 				 nvidia,port-cap =
 					<TEGRA_PADCTL_PORT_HOST_ONLY>;
 			};
+			usb2-std-A-port1 {
+				 nvidia,lanes = "otg-2";
+				 nvidia,function = "xusb";
+				 nvidia,port-cap =
+					<TEGRA_PADCTL_PORT_HOST_ONLY>;
+			};
+			usb2-std-A-port2 {
+				 nvidia,lanes = "otg-3";
+				 nvidia,function = "xusb";
+				 nvidia,port-cap =
+					<TEGRA_PADCTL_PORT_HOST_ONLY>;
+			};
 		};
 	};
 
 	xusb@70090000 {
 		status = "okay";
 		#extcon-cells = <1>;
-		phys =	<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_UTMI_P(1)>,
+		phys =	<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_UTMI_P(3)>,
+			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_UTMI_P(2)>,
+			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_UTMI_P(1)>,
 			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_USB3_P(1)>,
 			<&tegra_padctl_uphy TEGRA_PADCTL_UPHY_UTMI_P(0)>;
-		phy-names = "utmi-1", "usb3-1", "utmi-0";
+		phy-names = "utmi-3", "utmi-2", "utmi-1", "usb3-1", "utmi-0";
 		nvidia,pmc-wakeup =
 			<&tegra_pmc
 				PMC_WAKE_TYPE_EVENT 41 PMC_TRIGGER_TYPE_HIGH>,
