@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2016, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2015-2017, NVIDIA CORPORATION.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,14 +22,6 @@
 			gpios = <TEGRA_GPIO(H, 2) 0>;
 			label = "wlan-default-input-h2";
 		};
-
-		wlan-default-output-high {
-			gpio-hog;
-			output-high;
-			gpios = <TEGRA_GPIO(H, 0) 0
-				 TEGRA_GPIO(H, 1) 1>;
-			label = "wlan-out-high-h0", "wlan-out-high-h1";
-		};
 	};
 
 	bluedroid_pm {
@@ -42,16 +34,28 @@
 		interrupts = <TEGRA_GPIO(H, 5) 0x01>;
 	};
 
-	bcmdhd_wlan {
-		compatible = "android,bcmdhd_wlan";
+	bcmdhd_pcie_wlan {
+		compatible = "android,bcmdhd_pcie_wlan";
 		interrupt-parent = <&gpio>;
 		interrupts = <TEGRA_GPIO(H, 2) 0x14>;
 		nvidia,pmc-wakeup = <&tegra_pmc
 			PMC_WAKE_TYPE_EVENT 8 PMC_TRIGGER_TYPE_HIGH>;
-		wlan-pwr-gpio = <&gpio TEGRA_GPIO(H, 0) 0>;
-		wlan-rst-gpio = <&gpio TEGRA_GPIO(H, 1) 0>;
-		fw_path = "/system/vendor/firmware/bcm4354/fw_bcmdhd.bin";
-		nv_path = "/system/etc/nvram_4354.txt";
+		wlreg_on-supply = <&vdd_wlreg_on>;
+		fw_path = "/system/vendor/firmware/bcm4356/fw_bcmdhd_mfg.bin";
+		nv_path = "/system/etc/nvram_4356.txt";
 		status = "okay";
+
+		country_code_map {
+			CC1 {
+				iso_abbrev = "XR";
+				custom_locale = "XR";
+				custom_locale_rev = <122>;
+			};
+			CC27 {
+				iso_abbrev = "IN";
+				custom_locale = "Q2";
+				custom_locale_rev = <998>;
+			};
+		};
 	};
 };

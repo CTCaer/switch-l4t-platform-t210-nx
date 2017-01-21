@@ -304,6 +304,21 @@
 				 nvidia,port-cap =
 					<TEGRA_PADCTL_PORT_HOST_ONLY>;
 			};
+			pcie-0 {
+				 nvidia,lanes =	"uphy-lane-1", "uphy-lane-2",
+						"uphy-lane-3", "uphy-lane-4";
+				 nvidia,function = "pcie";
+				 nvidia,pcie-controller = <0>;
+				 nvidia,pcie-lane-select =
+					<TEGRA_PADCTL_PCIE_LANE_X4>;
+			};
+			pcie-1 {
+				 nvidia,lanes =	"uphy-lane-0";
+				 nvidia,function = "pcie";
+				 nvidia,pcie-controller = <1>;
+				 nvidia,pcie-lane-select =
+					<TEGRA_PADCTL_PCIE_LANE_X1>;
+			};
 		};
 	};
 
@@ -855,21 +870,6 @@
 		compatible = "nvidia,tegra124-sysedp-dynamic-capping";
 		nvidia,throttle_depth = <75>;
 		nvidia,cap_method = <1>;
-	};
-
-	bcmdhd_wlan {
-		country_code_map {
-			CC1 {
-				iso_abbrev = "XR";
-				custom_locale = "XR";
-				custom_locale_rev = <122>;
-			};
-			CC27 {
-				iso_abbrev = "IN";
-				custom_locale = "Q2";
-				custom_locale_rev = <998>;
-			};
-		};
 	};
 
 	dfll: clock@70110000 {
