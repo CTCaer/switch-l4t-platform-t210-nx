@@ -403,10 +403,6 @@
 		compatible = "nvidia,tegra-audio-t210ref-mobile-rt565x";
 		nvidia,model = "tegra-snd-t210ref-mobile-rt565x";
 
-		/* used when no audio codec on board */
-		nvidia,dummy-codec-dai = <&spdif_dit1>;
-		nvidia,dummy-codec-dai-name = "dit-hifi";
-
 		clocks = <&tegra_car TEGRA210_CLK_PLL_P_OUT1>,
                         <&tegra_car TEGRA210_CLK_PLL_A>,
                         <&tegra_car TEGRA210_CLK_PLL_A_OUT0>,
@@ -451,9 +447,9 @@
 		nvidia,dai-link-1 {
 			link-name = "rt565x-playback";
 			cpu-dai = <&tegra_i2s1>;
-			codec-dai = <&rt5639>;
+			codec-dai = <&spdif_dit4>;
 			cpu-dai-name = "I2S1";
-			codec-dai-name = "rt5659-aif1";
+			codec-dai-name = "dit-hifi";
 			format = "i2s";
 			bitclock-slave;
 			frame-slave;
