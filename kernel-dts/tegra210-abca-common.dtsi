@@ -168,7 +168,7 @@
 		nvidia,sd-device;
 		max-clk-limit = <200000000>;
 		pll_source = "pll_p", "pll_c4_out2";
-		cd-inverted;
+		cd-gpios = <&gpio TEGRA_GPIO_PZ1 GPIO_ACTIVE_LOW>;
 		status = "okay";
 	};
 
