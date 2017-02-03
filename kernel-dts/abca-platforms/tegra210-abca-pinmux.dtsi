@@ -1350,7 +1350,6 @@
 		};
 
 		drive_default: drive {
-/*
 		        drive_touch_clk {
 			        nvidia,pins = "drive_touch_clk";
 				nvidia,pull-down-strength = <0x14>;
@@ -1364,7 +1363,6 @@
 				nvidia,pins = "drive_gen3_i2c_sda";
 				nvidia,pull-down-strength = <0x7>;
 			};
-*/
 		};
 	};
 };
