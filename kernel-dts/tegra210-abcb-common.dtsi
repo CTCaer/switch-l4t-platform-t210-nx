@@ -24,7 +24,6 @@
 #include <t210-common-platforms/tegra210-pinmux-drive-sdmmc-common.dtsi>
 #include "abca-platforms/tegra210-abcb-pinmux-01-00.dtsi"
 #include "abca-platforms/tegra210-abca-prods.dtsi"
-#include <t210-common-platforms/tegra210-dp.dtsi>
 #include "abca-platforms/tegra210-abca-comms.dtsi"
 #include <tegra210-soc/tegra210-sdhci.dtsi>
 #include "abca-platforms/tegra210-thermal-fan-est-p2530-0930.dtsi"
