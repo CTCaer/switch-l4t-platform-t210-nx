@@ -93,14 +93,17 @@
 
 	psy_extcon_xudc {
 		compatible = "power-supply-extcon";
-		extcon-cables = <&usb_cd 1 &usb_cd 2 &usb_cd 3
-				&usb_cd 4 &usb_cd 5 &usb_cd 6
-				&usb_cd 7 &usb_cd 8 &usb_cd 9 &bm92t 2>;
-		extcon-cable-names = "usb-charger", "ta-charger", "maxim-charger",
-				"qc2-charger", "downstream-charger", "slow-charger",
+		extcon-cables = <&tegra_usb_cd 0 &tegra_usb_cd 1 &tegra_usb_cd 2
+				&tegra_usb_cd 3 &tegra_usb_cd 4 &tegra_usb_cd 5
+				&tegra_usb_cd 6 &tegra_usb_cd 7 &tegra_usb_cd 8 &bm92t 2>;
+		extcon-cable-names = "usb-charger", "ta-charger", "qc2-charger",
+				"maxim-charger", "downstream-charger", "slow-charger",
 				"apple-500ma", "apple-1a", "apple-2a", "usb-pd";
-		status = "disabled";
+		#extcon-cells = <1>;
+		status = "okay";
 		dt-override-status-odm-data = <0x1000000 0x1000000>;
 	};
 
+	/delete-node/ psy_extcon;
+	/delete-node/ usb_cd@7009f000;
 };

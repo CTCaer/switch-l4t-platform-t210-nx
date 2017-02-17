@@ -44,4 +44,8 @@
 		extcon-cables = <&vbus_gpio_extcon 1>;
 		extcon-cable-names = "id";
 	};
+
+	/delete-node/ psy_extcon_xudc;
+	/delete-node/ psy_extcon;
+	/delete-node/ usb_cd@7009f000;
 };
