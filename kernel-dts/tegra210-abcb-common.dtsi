@@ -21,7 +21,6 @@
 #include <t210-common-platforms/tegra210-common.dtsi>
 #include <t210-common-platforms/tegra210-cpufreq.dtsi>
 #include "abca-platforms/tegra210-abca-gpio.dtsi"
-#include <t210-common-platforms/tegra210-pinmux-drive-sdmmc-common.dtsi>
 #include "abca-platforms/tegra210-abcb-pinmux-01-00.dtsi"
 #include "abca-platforms/tegra210-abca-prods.dtsi"
 #include "abca-platforms/tegra210-abca-comms.dtsi"
