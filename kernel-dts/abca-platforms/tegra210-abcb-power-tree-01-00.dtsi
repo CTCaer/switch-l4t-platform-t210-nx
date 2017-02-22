@@ -137,7 +137,7 @@
 		};
 	};
 
-	sound {
+	sound_card: sound {
 		spkvdd-supply = <&battery_reg>;
 		dbvdd-supply = <&max77620_sd3>;
 		avdd-supply = <&max77620_sd3>;

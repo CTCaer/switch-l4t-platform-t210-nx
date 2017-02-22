@@ -336,7 +336,7 @@
 		};
 	};
 
-	sound {
+	sound_card: sound {
 		ldoen-supply = <&vdd_sys_boost>;
 		spkvdd-supply = <&vdd_sys_boost>;
 		dbvdd-supply = <&vdd_sys_boost>;

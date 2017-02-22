@@ -372,6 +372,7 @@
 	i2c@7000c000 {
 		rt5639: rt5639.0-001c@1c {
 			compatible = "realtek,rt5639";
+			realtek,ldo1-en-gpios = <&gpio TEGRA_GPIO(Z, 4) GPIO_ACTIVE_HIGH>;
 			reg = <0x1c>;
 			sel_jd_source = <2>;
 		};
@@ -380,8 +381,7 @@
 	sound_card: sound {
 		compatible = "nvidia,tegra-audio-t210ref-mobile-rt5639";
 		nvidia,model = "tegra-snd-t210ref-mobile-rt5639";
-		nvidia,ldo-gpios = <&gpio TEGRA_GPIO(Z, 4) GPIO_ACTIVE_HIGH>;
-		nvidia,hp-det-gpios = <&gpio TEGRA_GPIO(BB, 4) GPIO_ACTIVE_HIGH>;
+		nvidia,hp-det-gpios = <&gpio TEGRA_GPIO(V, 6) GPIO_ACTIVE_HIGH>;
 
 		clocks = <&tegra_car TEGRA210_CLK_PLL_P_OUT1>,
                         <&tegra_car TEGRA210_CLK_PLL_A>,
@@ -425,11 +425,11 @@
 		nvidia,xbar = <&tegra_axbar>;
 
 		nvidia,dai-link-1 {
-			link-name = "rt5639-playback";
+			link-name = "rt5640-playback";
 			cpu-dai = <&tegra_i2s1>;
 			codec-dai = <&rt5639>;
 			cpu-dai-name = "I2S1";
-			codec-dai-name = "rt5639-aif1";
+			codec-dai-name = "rt5640-aif1";
 			format = "i2s";
 			bitclock-slave;
 			frame-slave;
