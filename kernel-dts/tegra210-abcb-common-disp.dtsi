@@ -56,8 +56,6 @@
 		sor1 {
 			status = "okay";
 			nvidia,sor1-output-type = "hdmi";
-			nvidia,pmc-wakeup = <&tegra_pmc
-				PMC_WAKE_TYPE_EVENT 53 PMC_TRIGGER_TYPE_LOW>;
 			hdmi-display {
 				status = "okay";
 				disp-default-out {

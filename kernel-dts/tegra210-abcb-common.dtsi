@@ -995,4 +995,8 @@
 			};
 		};
 	};
+
+	/delete-node/ spi-touch19x12@0;
+	/delete-node/ spi-touch25x16@0;
+	/delete-node/ spi-touch14x8@0;
 };
