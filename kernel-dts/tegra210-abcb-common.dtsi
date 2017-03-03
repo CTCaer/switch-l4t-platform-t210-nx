@@ -347,6 +347,10 @@
 		status = "disabled";
 	};
 
+	tegra-pmc-blink-pwm {
+		status = "okay";
+	};
+
 	gpu-dvfs-rework {
 		status = "okay";
 	};
