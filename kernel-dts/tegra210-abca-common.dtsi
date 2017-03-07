@@ -848,23 +848,8 @@
 		nvidia,cap_method = <1>;
 	};
 
-	dfll: clock@70110000 {
+	clock@70110000 {
 		status = "okay";
-		compatible = "nvidia,tegra210-dfll";
-		reg = <0 0x70110000 0 0x100>, /* DFLL control */
-			<0 0x70110000 0 0x100>, /* I2C output control */
-			<0 0x70110100 0 0x100>, /* Integrated I2C controller */
-			<0 0x70110200 0 0x100>; /* Look-up table RAM */
-		out-clock-name="dfll_cpu";
-		interrupts = <GIC_SPI 62 IRQ_TYPE_LEVEL_HIGH>;
-		clocks = <&tegra_car TEGRA210_CLK_DFLL_SOC>,
-				<&tegra_car TEGRA210_CLK_DFLL_REF>,
-				<&tegra_car TEGRA210_CLK_I2C5>;
-		clock-names = "soc", "ref", "i2c";
-		resets = <&tegra_car TEGRA210_RST_DFLL_DVCO>;
-		reset-names = "dvco";
-		#clock-cells = <0>;
-		clock-output-names = "dfllCPU_out";
 		board-params = <&dfll_max77621_parms>;
 		vdd-cpu-supply = <&cpu_max77621_reg>;
 		i2c-pmic-integration = <&i2c_dfll>;
@@ -885,7 +870,7 @@
 				 <&tegra_car TEGRA210_CLK_CCLK_LP>,
 				 <&tegra_car TEGRA210_CLK_PLL_X>,
 				 <&tegra_car TEGRA210_CLK_PLL_P_OUT4>,
-				 <&dfll>;
+				 <&tegra_clk_dfll>;
 			clock-names = "cpu_g", "cpu_lp", "pll_x", "pll_p", "dfll";
 			clock-latency = <300000>;
 		};
@@ -897,14 +882,14 @@
 
 	dfll_cap: dfll-cdev-cap {
 		compatible = "nvidia,tegra-dfll-cdev-action";
-		act-dev = <&dfll>;
+		act-dev = <&tegra_clk_dfll>;
 		cdev-type = "DFLL-cap";
 		#cooling-cells = <2>; /* min followed by max */
 	};
 
 	dfll_floor: dfll-cdev-floor {
 		compatible = "nvidia,tegra-dfll-cdev-action";
-		act-dev = <&dfll>;
+		act-dev = <&tegra_clk_dfll>;
 		cdev-type = "DFLL-floor";
 		#cooling-cells = <2>; /* min followed by max */
 	};
