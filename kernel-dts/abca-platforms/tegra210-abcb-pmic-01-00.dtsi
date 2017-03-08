@@ -368,7 +368,6 @@
 				dt-override-status-odm-data = <0x00C00000 0x00400000>;
 				regulator-name = "batt_regulator";
 				regulator-max-microamp = <3000000>;
-				ti,disbale-suspend-during-charging;
 				ti,charge-voltage-limit-millivolt = <4208>;
 				ti,charge-term-current-limit-milliamp = <256>;
 				ti,ir-comp-voltage-millivolt = <1>;

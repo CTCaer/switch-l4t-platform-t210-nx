@@ -104,43 +104,58 @@
 	};
 
 	sdhci@700b0600 { /* SDMMC4 for EMMC */
+		uhs-mask = <0x0>;	/* hs400 */
 		tap-delay = <0>;
 		max-clk-limit = <200000000>;
-		uhs-mask = <0x0>;	/* hs400 */
-		built-in;
 		pll_source = "pll_p", "pll_c4_out2";
-		power-off-rail;
-		bus-width = <8>;
-		non-removable;
+		clocks = <&tegra_car TEGRA210_CLK_SDMMC4>,
+		       <&tegra_car TEGRA210_CLK_PLL_P>,
+		       <&tegra_car TEGRA210_CLK_PLL_C4_OUT2>;
+		clock-names = "sdmmc", "pll_p", "pll_c4_out2";
 		status = "okay";
 	};
 
-	sdhci@700b0400 {
+	sdhci@700b0400 { /* SDMMC3 Not Used */
 		status = "disabled";
 	};
 
 	sdhci@700b0200 { /* SDMMC2 for 2nd EMMC */
 		uhs-mask = <0x0>;	/* hs400 */
-		built-in;
-		power-off-rail;
 		tap-delay = <0>;
 		trim-delay = <8>;
 		nvidia,is-ddr-tap-delay;
 		nvidia,ddr-tap-delay = <0>;
 		mmc-ocr-mask = <0>;
 		dqs-trim-delay = <17>;
+		dqs-trim-delay-hs533 = <24>;
 		max-clk-limit = <200000000>;
 		bus-width = <8>;
-		non-removable;
 		built-in;
+		calib-3v3-offsets = <0x0505>;
+		calib-1v8-offsets = <0x0505>;
+		compad-vref-3v3 = <0x7>;
+		compad-vref-1v8 = <0x7>;
 		nvidia,en-io-trim-volt;
 		nvidia,is-emmc;
 		nvidia,enable-cq;
+		ignore-pm-notify;
+		keep-power-in-suspend;
+		non-removable;
+		cap-mmc-highspeed;
+		cap-sd-highspeed;
+		mmc-ddr-1_8v;
+		mmc-hs200-1_8v;
+		mmc-hs400-1_8v;
+		nvidia,enable-strobe-mode;
 		pll_source = "pll_p", "pll_c4_out2";
+		clocks = <&tegra_car TEGRA210_CLK_SDMMC2>,
+		       <&tegra_car TEGRA210_CLK_PLL_P>,
+		       <&tegra_car TEGRA210_CLK_PLL_C4_OUT2>;
+		clock-names = "sdmmc", "pll_p", "pll_c4_out2";
 		status = "okay";
 	};
 
-	sdhci@700b0000 {
+	sdhci@700b0000 { /* SDMMC1 Not Used */
 		status = "disabled";
 	};
 
@@ -247,7 +262,7 @@
 	};
 
 	usb_cd {
-		status = "okay";
+		status = "disabled";
 		#extcon-cells = <1>;
 		phys = <&tegra_padctl_uphy TEGRA_PADCTL_UPHY_UTMI_P(0)>;
 		phy-names = "otg-phy";
@@ -872,7 +887,6 @@
 		board-params = <&dfll_max77621_parms>;
 		vdd-cpu-supply = <&cpu_max77621_reg>;
 		i2c-pmic-integration = <&i2c_dfll>;
-		nvidia,init-uv = <1000000>;
 		nvidia,align-step-uv = <6250>;
 		nvidia,sample-rate = <25000>;
 		nvidia,droop-ctrl = <0x00000f00>;
@@ -977,7 +991,9 @@
 		};
 	};
 
-	/delete-node/ spi-touch19x12@0;
-	/delete-node/ spi-touch25x16@0;
-	/delete-node/ spi-touch14x8@0;
+	spi@7000da00 {
+		/delete-node/ spi-touch19x12@0;
+		/delete-node/ spi-touch25x16@0;
+		/delete-node/ spi-touch14x8@0;
+	};
 };
