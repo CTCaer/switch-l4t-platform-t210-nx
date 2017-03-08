@@ -174,11 +174,6 @@
 		usb_bat_chg-supply = <&battery_charger>;
 	};
 
-	ehci@7d000000 {
-		avdd_usb-supply = <&vdd_3v3>;
-		avdd_pll_utmip-supply = <&max77620_sd3>;
-	};
-
 	pinctrl@7009f000 {
 		vbus-0-supply = <&battery_reg>;
 		vbus-1-supply = <&battery_reg>;
@@ -217,11 +212,6 @@
 		dvdd_sata_pll-supply = <&max77620_ldo8>;
 		hvddio_sata-supply = <&max77620_sd3>;
 		dvddio_sata-supply = <&max77620_ldo8>;
-	};
-
-	otg@7d000000 {
-		usb_vbus-supply = <&usb0_vbus>;
-		usb_bat_chg-supply = <&battery_charger>;
 	};
 
 	sdhci@700b0600 {
