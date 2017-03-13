@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -193,8 +193,8 @@
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
 					regulator-enable-ramp-delay = <146>;
 					regulator-disable-ramp-delay = <4080>;
-					regulator-ramp-delay = <27500>;
-					regulator-ramp-delay-scale = <300>;
+					maxim,ramp-rate-setting = <27500>;
+					regulator-ramp-delay = <9100>;
 				};
 
 				max77620_sd1: sd1 {
@@ -207,8 +207,8 @@
 					maxim,active-fps-power-down-slot = <1>;
 					regulator-enable-ramp-delay = <130>;
 					regulator-disable-ramp-delay = <145800>;
-					regulator-ramp-delay = <27500>;
-					regulator-ramp-delay-scale = <300>;
+					maxim,ramp-rate-setting = <27500>;
+					regulator-ramp-delay = <9100>;
 				};
 
 				max77620_sd2: sd2 {
@@ -218,8 +218,8 @@
 					maxim,active-fps-source = <MAX77620_FPS_SRC_1>;
 					regulator-enable-ramp-delay = <176>;
 					regulator-disable-ramp-delay = <32000>;
-					regulator-ramp-delay = <27500>;
-					regulator-ramp-delay-scale = <350>;
+					maxim,ramp-rate-setting = <27500>;
+					regulator-ramp-delay = <7900>;
 				};
 
 				max77620_sd3: sd3 {
@@ -234,8 +234,8 @@
 					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
 					regulator-enable-ramp-delay = <242>;
 					regulator-disable-ramp-delay = <118000>;
-					regulator-ramp-delay = <27500>;
-					regulator-ramp-delay-scale = <360>;
+					maxim,ramp-rate-setting = <27500>;
+					regulator-ramp-delay = <7700>;
 				};
 
 				max77620_ldo0: ldo0 {
@@ -247,8 +247,8 @@
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
 					regulator-enable-ramp-delay = <26>;
 					regulator-disable-ramp-delay = <626>;
-					regulator-ramp-delay = <100000>;
-					regulator-ramp-delay-scale = <200>;
+					maxim,ramp-rate-setting = <100000>;
+					regulator-ramp-delay = <50000>;
 				};
 
 				max77620_ldo1: ldo1 {
@@ -258,8 +258,8 @@
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
 					regulator-enable-ramp-delay = <22>;
 					regulator-disable-ramp-delay = <630>;
-					regulator-ramp-delay = <100000>;
-					regulator-ramp-delay-scale = <200>;
+					maxim,ramp-rate-setting = <100000>;
+					regulator-ramp-delay = <50000>;
 				};
 
 				max77620_ldo2: ldo2 {
@@ -269,8 +269,8 @@
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
 					regulator-enable-ramp-delay = <62>;
 					regulator-disable-ramp-delay = <650>;
-					regulator-ramp-delay = <100000>;
-					regulator-ramp-delay-scale = <200>;
+					maxim,ramp-rate-setting = <100000>;
+					regulator-ramp-delay = <50000>;
 				};
 
 				max77620_ldo3: ldo3 {
@@ -280,8 +280,8 @@
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
 					regulator-enable-ramp-delay = <50>;
 					regulator-disable-ramp-delay = <1110>;
-					regulator-ramp-delay = <100000>;
-					regulator-ramp-delay-scale = <200>;
+					maxim,ramp-rate-setting = <100000>;
+					regulator-ramp-delay = <50000>;
 				};
 
 				max77620_ldo4: ldo4 {
@@ -295,8 +295,8 @@
 					maxim,active-fps-source = <MAX77620_FPS_SRC_0>;
 					regulator-enable-ramp-delay = <22>;
 					regulator-disable-ramp-delay = <610>;
-					regulator-ramp-delay = <100000>;
-					regulator-ramp-delay-scale = <200>;
+					maxim,ramp-rate-setting = <100000>;
+					regulator-ramp-delay = <50000>;
 				};
 
 				max77620_ldo5: ldo5 {
@@ -306,8 +306,8 @@
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
 					regulator-enable-ramp-delay = <62>;
 					regulator-disable-ramp-delay = <640>;
-					regulator-ramp-delay = <100000>;
-					regulator-ramp-delay-scale = <200>;
+					maxim,ramp-rate-setting = <100000>;
+					regulator-ramp-delay = <50000>;
 				};
 
 				max77620_ldo6: ldo6 {
@@ -317,8 +317,8 @@
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
 					regulator-enable-ramp-delay = <36>;
 					regulator-disable-ramp-delay = <674>;
-					regulator-ramp-delay = <100000>;
-					regulator-ramp-delay-scale = <200>;
+					maxim,ramp-rate-setting = <100000>;
+					regulator-ramp-delay = <50000>;
 				};
 
 				max77620_ldo7: ldo7 {
@@ -330,8 +330,8 @@
 					maxim,active-fps-source = <MAX77620_FPS_SRC_1>;
 					regulator-enable-ramp-delay = <24>;
 					regulator-disable-ramp-delay = <2768>;
-					regulator-ramp-delay = <100000>;
-					regulator-ramp-delay-scale = <200>;
+					maxim,ramp-rate-setting = <100000>;
+					regulator-ramp-delay = <50000>;
 				};
 
 				max77620_ldo8: ldo8 {
@@ -341,8 +341,8 @@
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
 					regulator-enable-ramp-delay = <22>;
 					regulator-disable-ramp-delay = <1160>;
-					regulator-ramp-delay = <100000>;
-					regulator-ramp-delay-scale = <200>;
+					maxim,ramp-rate-setting = <100000>;
+					regulator-ramp-delay = <50000>;
 				};
 			};
 		};
