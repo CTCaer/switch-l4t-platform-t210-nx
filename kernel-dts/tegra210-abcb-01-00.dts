@@ -22,12 +22,7 @@
 #include "abca-platforms/tegra210-abcb-pinmux-01-00.dtsi"
 
 / {
-	model = "abcb";
-	compatible = "nvidia,abcb", "nvidia,tegra210";
 	nvidia,dtsfilename = __FILE__;
-
-	#address-cells = <2>;
-	#size-cells = <2>;
 
 	extcon {
 		extcon@0 {

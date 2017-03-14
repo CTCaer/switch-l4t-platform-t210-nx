@@ -22,12 +22,7 @@
 #include "abca-platforms/tegra210-abca-powermon-05-00.dtsi"
 
 / {
-	model = "abca";
-	compatible = "nvidia,abca", "nvidia,tegra210";
 	nvidia,dtsfilename = __FILE__;
-
-	#address-cells = <2>;
-	#size-cells = <2>;
 
 	extcon {
 		extcon@0 {
