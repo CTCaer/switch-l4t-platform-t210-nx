@@ -166,7 +166,7 @@
 		pinctrl-4 = <&sdmmc1_drv_code_1_8V>;
 		pinctrl-5 = <&sdmmc1_default_drv_code_3_3V>;
 		nvidia,sd-device;
-		cd-gpios = <&gpio TEGRA_GPIO_PZ1 GPIO_ACTIVE_LOW>;
+		cd-gpios = <&gpio TEGRA_GPIO(Z, 1) GPIO_ACTIVE_LOW>;
 		status = "okay";
 	};
 
