@@ -103,7 +103,6 @@
 
 		sor1 {
 			status = "okay";
-			nvidia,sor1-output-type = "dp";
 			nvidia,active-panel = <&sor1_dp_display>;
 			dp-display {
 				status = "okay";
