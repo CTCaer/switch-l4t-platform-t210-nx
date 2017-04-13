@@ -99,6 +99,5 @@
 		dt-override-status-odm-data = <0x1000000 0x1000000>;
 	};
 
-	/delete-node/ psy_extcon;
 	/delete-node/ usb_cd@7009f000;
 };

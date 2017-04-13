@@ -87,7 +87,6 @@
 	};
 
 	/delete-node/ psy_extcon_xudc;
-	/delete-node/ psy_extcon;
 	/delete-node/ usb_cd@7009f000;
 
 };
