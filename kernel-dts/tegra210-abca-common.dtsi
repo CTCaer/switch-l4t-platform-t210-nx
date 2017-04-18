@@ -842,9 +842,7 @@
 
 	clock@70110000 {
 		status = "okay";
-		board-params = <&dfll_max77621_parms>;
 		vdd-cpu-supply = <&cpu_max77621_reg>;
-		i2c-pmic-integration = <&i2c_dfll>;
 		nvidia,align-step-uv = <6250>;
 		nvidia,sample-rate = <25000>;
 		nvidia,droop-ctrl = <0x00000f00>;
