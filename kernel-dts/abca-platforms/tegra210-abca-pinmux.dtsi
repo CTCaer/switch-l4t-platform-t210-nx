@@ -1350,17 +1350,17 @@
 		};
 
 		drive_default: drive {
-		        drive_touch_clk {
-			        nvidia,pins = "drive_touch_clk";
+		        touch_clk_pv7 {
+			        nvidia,pins = "touch_clk_pv7";
 				nvidia,pull-down-strength = <0x14>;
 				nvidia,pull-up-strength = <0x14>;
 			};
-			drive_gen3_i2c_scl {
-				nvidia,pins = "drive_gen3_i2c_scl";
+			gen3_i2c_scl_pf0 {
+				nvidia,pins = "gen3_i2c_scl_pf0";
 				nvidia,pull-down-strength = <0x7>;
 			};
-			drive_gen3_i2c_sda {
-				nvidia,pins = "drive_gen3_i2c_sda";
+			gen3_i2c_sda_pf1 {
+				nvidia,pins = "gen3_i2c_sda_pf1";
 				nvidia,pull-down-strength = <0x7>;
 			};
 		};
