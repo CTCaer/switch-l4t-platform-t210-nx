@@ -41,8 +41,8 @@
 		nvidia,pmc-wakeup = <&tegra_pmc
 			PMC_WAKE_TYPE_EVENT 8 PMC_TRIGGER_TYPE_HIGH>;
 		wlreg_on-supply = <&vdd_wlreg_on>;
-		fw_path = "/system/vendor/firmware/bcm4356/fw_bcmdhd_mfg.bin";
-		nv_path = "/system/etc/nvram_4356.txt";
+		fw_path = "/vendor/firmware/bcm4356/fw_bcmdhd_mfg.bin";
+		nv_path = "/vendor/firmware/nvram_4356.txt";
 		status = "okay";
 
 		country_code_map {
