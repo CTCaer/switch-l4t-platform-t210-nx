@@ -47,6 +47,7 @@
 			maxim,sleep-on-dvs;
 			maxim,dvs-default-state = <1>;
 			maxim,enable-gpio = <&max77620 5 0>;
+			junction-warn-millicelsius = <120>;
 		};
 
 		gpu_max77621_reg: max77621@1c {
@@ -56,7 +57,7 @@
 			interrupts = <TEGRA_GPIO(K, 7) IRQF_TRIGGER_FALLING>;
 			regulator-name = "vdd-gpu";
 			regulator-min-microvolt = <618750>;
-			regulator-max-microvolt = <1400000>;
+			regulator-max-microvolt = <1150000>;
 			regulator-max-microamp = <9000000>;
 			regulator-init-microvolt = <1000000>;
 			regulator-enable-ramp-delay = <200>;
@@ -68,6 +69,7 @@
 			maxim,enable-bias-control;
 			maxim,dvs-default-state = <1>;
 			maxim,enable-gpio = <&max77620 6 0>;
+			junction-warn-millicelsius = <120>;
 		};
 
 		max77620: max77620@3c {
@@ -183,8 +185,8 @@
 
 				max77620_sd0: sd0 {
 					regulator-name = "vdd-core";
-					regulator-min-microvolt = <600000>;
-					regulator-max-microvolt = <1400000>;
+					regulator-min-microvolt = <825000>;
+					regulator-max-microvolt = <1125000>;
 					regulator-boot-on;
 					regulator-always-on;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_1>;
@@ -201,7 +203,7 @@
 					regulator-name = "vddio-ddr";
 					regulator-always-on;
 					regulator-boot-on;
-					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
+					regulator-init-mode = <REGULATOR_MODE_NORMAL>; //1.125v
 					maxim,active-fps-source = <MAX77620_FPS_SRC_0>;
 					maxim,active-fps-power-up-slot = <5>;
 					maxim,active-fps-power-down-slot = <1>;
@@ -274,7 +276,7 @@
 				};
 
 				max77620_ldo3: ldo3 {
-					regulator-name = "vdd-gc-3v1";
+					regulator-name = "vdd-gc-3v1"; // Gamecard?
 					regulator-min-microvolt = <3100000>;
 					regulator-max-microvolt = <3100000>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
@@ -300,7 +302,7 @@
 				};
 
 				max77620_ldo5: ldo5 {
-					regulator-name = "vdd-gc-1v8";
+					regulator-name = "vdd-gc-1v8"; // Gamecard?
 					regulator-min-microvolt = <1800000>;
 					regulator-max-microvolt = <1800000>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
@@ -311,7 +313,7 @@
 				};
 
 				max77620_ldo6: ldo6 {
-					regulator-name = "vdd-tp-3v1";
+					regulator-name = "vdd-tp-3v1"; // touchscreen
 					regulator-min-microvolt = <2900000>;
 					regulator-max-microvolt = <2900000>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
@@ -360,7 +362,7 @@
 			#thermal-sensor-cells = <0>;
 
 			battery_charger: charger {
-				status = "disabled";
+				status = "okay";//not used?
 				dt-override-status-odm-data = <0x00C00000 0x00400000>;
 				regulator-name = "batt_regulator";
 				regulator-max-microamp = <3000000>;
@@ -371,7 +373,7 @@
 				ti,pre-charge-current-limit-milliamp = <128>;
 				ti,thermal-regulation-threshold-degc = <120>;
 				ti,fast-charge-current-limit-milliamp = <512>;
-				ti,min-system-voltage-limit-millivolt = <3000>;
+				ti,min-system-voltage-limit-millivolt = <3200>; // f0f
 				ti,input-voltage-limit-millivolt = <4360>;
 				ti,temp-range = <45 50>;
 				ti,charge-thermal-voltage-limit = <4208 4208>;
@@ -386,7 +388,8 @@
 				ti,otg-iusb-gpio = <&gpio TEGRA_GPIO(CC, 5) 0>;
 			};
 		};
-		/* For ATL 4450mA/h */
+
+		// Likely wrong, check HOS
 		battery-gauge@36 {
 			compatible = "maxim,max17050";
 			reg = <0x36>;
@@ -411,7 +414,7 @@
 			maxim,dqacc = <0x007d>;
 			maxim,dpacc = <0x0c80>;
 			maxim,fctc = <0x05e0>;
-			maxim,rsns-microohm = <5000>;
+			maxim,rsns-microohm = <10000>;
 			/* custom parameters */
 			maxim,current-gain = <0x7FFF>;
 			maxim,design-capacity = <0x244B>;

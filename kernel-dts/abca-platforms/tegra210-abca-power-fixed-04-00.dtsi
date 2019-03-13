@@ -85,12 +85,14 @@
 			vin-supply = <&vdd_3v3>;
 		};
 
-		en_vdd_cam: regulator@5 {
+		vdd_touchscreen: regulator@5 {
 			compatible = "regulator-fixed";
-			reg = <5>;
-			regulator-name = "en-vdd-cam";
+			reg = <22>;
+			regulator-name = "vdd_touchscreen";
 			regulator-min-microvolt = <1800000>;
-			regulator-max-microvolt = <1800000>;
+			regulator-max-microvolt = <1800000>;			
+			gpio = <&gpio TEGRA_GPIO(J, 7) GPIO_ACTIVE_HIGH>;
+			enable-active-high;
 		};
 
 		vdd_hdmi: regulator@6 {
@@ -113,8 +115,8 @@
 			compatible = "regulator-fixed-sync";
 			reg = <9>;
 			regulator-name = "v_pavdd_5v0";
-			regulator-min-microvolt = <5400000>;
-			regulator-max-microvolt = <5400000>;
+			regulator-min-microvolt = <1800000>;
+			regulator-max-microvolt = <1800000>;
 			gpio = <&gpio TEGRA_GPIO(I, 0) 0>;
 			enable-active-high;
 			regulator-enable-ramp-delay = <232>;
@@ -124,8 +126,8 @@
 			compatible = "regulator-fixed-sync";
 			reg = <10>;
 			regulator-name = "v_navdd_5v0";
-			regulator-min-microvolt = <5400000>;
-			regulator-max-microvolt = <5400000>;
+			regulator-min-microvolt = <1800000>;
+			regulator-max-microvolt = <1800000>;
 			gpio = <&gpio TEGRA_GPIO(I, 1) 0>;
 			enable-active-high;
 			regulator-enable-ramp-delay = <232>;
