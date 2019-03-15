@@ -181,10 +181,11 @@
 
 	aconnect@702c0000 {
 		status = "okay";
+
 		adma@702e2000  {
-			dma-channels = <10>;
 			status = "okay";
 		};
+
 		ahub {
 			i2s@702d1000 {
 				pinctrl-names = "dap_active", "dap_inactive";
@@ -193,6 +194,7 @@
 				regulator-supplies = "vdd-1v8-audio-hv", "vdd-1v8-audio-hv-bias";
 				vdd-1v8-audio-hv-supply = <&max77620_sd3>;
 				vdd-1v8-audio-hv-bias-supply = <&max77620_sd3>;
+				status = "okay";
 			};
 	
 			i2s@702d1100 {
@@ -203,8 +205,50 @@
 				vdd-1v8-spi-hv-supply = <&max77620_sd3>;
 				vdd-1v8-spi-hv-bias-supply = <&max77620_sd3>;
 				fsync-width = <0>;
+				status = "okay";
+			};
+			i2s@702d1100 {
+				pinctrl-names = "dap_active", "dap_inactive";
+				pinctrl-0 = <>;
+				pinctrl-1 = <>;
+				regulator-supplies = "vdd-1v8-spi-hv", "vdd-1v8-spi-hv-bias";
+				vdd-1v8-spi-hv-supply = <&max77620_sd3>;
+				vdd-1v8-spi-hv-bias-supply = <&max77620_sd3>;
+				fsync-width = <0>;
 			};
 		};
+		adsp_audio {
+			status = "okay";
+			compr-ops = <1>;
+			num-plugin = <5>;
+			plugin-info-1 {
+				plugin-name = "mp3-dec1";
+				firmware-name = "nvmp3dec.elf";
+				widget-name = "MP3-DEC1";
+			};
+			plugin-info-2 {
+				plugin-name = "spkprot";
+				firmware-name = "nvspkprot.elf";
+				widget-name = "SPKPROT-SW";
+			};
+			plugin-info-3 {
+				plugin-name = "src";
+				firmware-name = "nvsrc.elf";
+				widget-name = "SRC";
+			};
+			plugin-info-4 {
+				plugin-name = "aac-dec1";
+				firmware-name = "nvaacdec.elf";
+				widget-name = "AAC-DEC1";
+			};
+			plugin-info-5 {
+				plugin-name = "aec";
+				firmware-name = "libnvaecfx.elf";
+				widget-name = "AEC";
+				param-type = <2>; /* SNDRV_CTL_ELEM_TYPE_INTEGER */
+			};
+		};
+
 	};
 
 	pcie-controller@1003000 {
@@ -299,8 +343,8 @@
 		ports {
 			usb2-0 {
 				status = "okay";
-				mode = "otg";
-				nvidia,usb3-port-fake = <3>;
+				mode = "host";
+				//nvidia,usb3-port-fake = <3>;
 			};
 
 			usb3-0 {
@@ -378,7 +422,7 @@
 	xudc@700d0000 {
 		nvidia,portmap = <0x0108>;
 		#extcon-cells = <1>;
-		status = "okay";
+		status = "disabled";
 		phys =  <&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-0}>,
 				<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-6}>;
 		phy-names = "usb2", "usb3";
@@ -401,6 +445,7 @@
 		cdev_type = "pwm-fan";
 		tzp_governor_name = "pid_thermal_gov";
 
+		pwms = <&tegra_pwm 1 40000>;
 		dev1 {
 			dev_data = "Tboard_tegra";
 			coeffs = <100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>;
@@ -413,25 +458,28 @@
 
 		num_resources = <0>;
 		shared_data = <&thermal_fan_est_shared_data>;
-		trip_length = <6>;
-		active_trip_temps = <0 30000 36000 43000 48000 53000>;
-		active_hysteresis = <0 15000 8000 6000 3000 0>;
+		trip_length = <10>;
+		active_trip_temps = <0 30000 35000 37000 40000
+				43000 45000 50000 54000 60000>;
+		active_hysteresis = <0 0 0 0 0
+				0 0 0 0 0>;
+		pwms = <&tegra_pwm 1 40000>;
 	};
 
 	pwm_fan_shared_data: pfsd {
-		active_steps = <6>;
-		active_rpm = <0 1000 2000 3000 5000 6000>; //IDK
-		active_rru = <40 2 1 1 1 1>;
-		active_rrd = <40 2 1 1 1 1>;
-		state_cap_lookup = <2 2 2 7 7 9>;
+		active_steps = <10>;
+		active_rpm = <0 1000 2000 3000 4000 5000 6000 7000 10000 11000>;
+		active_rru = <40 2 1 1 1 1 1 1 1 1>;
+		active_rrd = <40 2 1 1 1 1 1 1 1 1>;
+
+		state_cap_lookup = <2 2 2 7 7 7 7 7 9 9>;
 		step_time = <100>; /* mesecs */
 		pwm_period = <40000>;
 		pwm_id = <1>;
 		state_cap = <7>;
 		active_pwm_max = <256>;
-		tach_gpio =  <&gpio TEGRA_GPIO(G, 0) GPIO_ACTIVE_LOW>; /* TEGRA_GPIO_PG0 */
 		pwm_gpio = <&gpio TEGRA_GPIO(E, 7) GPIO_ACTIVE_LOW>; /* TEGRA_GPIO_PE7 */
-		tach_period = <1000>;
+		pwms = <&tegra_pwm 1 40000>;
 	};
 
 	pwm-fan {
@@ -440,7 +488,7 @@
 		status = "okay";
 		pwms = <&tegra_pwm 1 40000>;
 		shared_data = <&pwm_fan_shared_data>;
-		active_pwm = <0 51 64 102 145 200>;
+		active_pwm = <0 40 65 75 105 125 150 175 200 225>;
 	};
 
 	ptm {
@@ -487,13 +535,8 @@
 			"x Int Spk", 	"x SPORN",
 			"x Int Spk", 	"x SPOLP",
 			"x Int Spk", 	"x SPOLN",
-			"x micbias1",	"x Mic Jack",
 			"x IN1P",		"x Mic Jack",
-			"x IN1P",		"x Mic Jack",
-			"x DMIC L1",	"x Int Mic",
-			"x DMIC L2",	"x Int Mic",
-			"x DMIC R1",	"x Int Mic",
-			"x DMIC R2",	"x Int Mic";
+			"x IN1P",		"x Mic Jack";
 
 		nvidia,xbar = <&tegra_axbar>;
 
