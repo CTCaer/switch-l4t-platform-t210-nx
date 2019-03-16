@@ -23,39 +23,4 @@
 			label = "wlan-default-input-h2";
 		};
 	};
-
-	bluedroid_pm {
-		compatible = "nvidia,tegra-bluedroid_pm";
-		id = <0>;
-		bluedroid_pm,reset-gpio = <&gpio TEGRA_GPIO(H, 4) 0>;
-		bluedroid_pm,host-wake-gpio = <&gpio TEGRA_GPIO(H, 5) 0>;
-		bluedroid_pm,ext-wake-gpio = <&gpio TEGRA_GPIO(H, 3) 0>;
-		interrupt-parent = <&gpio>;
-		interrupts = <TEGRA_GPIO(H, 5) 0x01>;
-	};
-
-	bcmdhd_pcie_wlan {
-		compatible = "android,bcmdhd_pcie_wlan";
-		interrupt-parent = <&gpio>;
-		interrupts = <TEGRA_GPIO(H, 2) 0x14>;
-		nvidia,pmc-wakeup = <&tegra_pmc
-			PMC_WAKE_TYPE_EVENT 8 PMC_TRIGGER_TYPE_HIGH>;
-		wlreg_on-supply = <&vdd_wlreg_on>;
-		fw_path = "/vendor/firmware/bcm4356/fw_bcmdhd_mfg.bin";
-		nv_path = "/vendor/firmware/nvram_4356.txt";
-		status = "okay";
-
-		country_code_map {
-			CC1 {
-				iso_abbrev = "XR";
-				custom_locale = "XR";
-				custom_locale_rev = <122>;
-			};
-			CC27 {
-				iso_abbrev = "IN";
-				custom_locale = "Q2";
-				custom_locale_rev = <998>;
-			};
-		};
-	};
 };
