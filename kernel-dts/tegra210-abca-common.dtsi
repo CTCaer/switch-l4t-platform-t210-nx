@@ -344,7 +344,7 @@
 		ports {
 			usb2-0 {
 				status = "okay";
-				mode = "otg";
+				mode = "host";
 //				nvidia,usb3-port-fake = <3>;
 			};
 
