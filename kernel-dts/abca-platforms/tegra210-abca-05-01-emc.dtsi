@@ -4,7 +4,7 @@
 
 / {
 	external-memory-controller@7001b000 {
-		status = "disabled";
+		status = "okay";
 		compatible = "nvidia,tegra21-emc", "nvidia,tegra210-emc";
 		reg = <0x0 0x7001b000 0x0 0x1000>,
 		      <0x0 0x7001e000 0x0 0x1000>,
