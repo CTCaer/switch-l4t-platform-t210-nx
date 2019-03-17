@@ -497,7 +497,7 @@
 		state_cap = <7>;
 		active_pwm_max = <256>;
 		tach_gpio =  <&gpio TEGRA_GPIO(S, 7) GPIO_ACTIVE_LOW>; /* TEGRA_GPIO_PS7 */
-		pwm_gpio = <&gpio TEGRA_GPIO(E, 7) GPIO_ACTIVE_LOW>; /* TEGRA_GPIO_PE7 */
+		pwm_gpio = <&gpio TEGRA_GPIO(V, 4) GPIO_ACTIVE_LOW>; /* TEGRA_GPIO_PV4 */
 		tach_period = <1000>;
 		pwms = <&tegra_pwm 1 40000>;
 	};
