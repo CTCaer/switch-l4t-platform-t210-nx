@@ -394,7 +394,7 @@
 			compatible = "maxim,max17050";
 			reg = <0x36>;
 			#thermal-sensor-cells = <0>;
-			status = "disabled";
+			status = "okay";
 			dt-override-status-odm-data = <0x00C00000 0x00400000>;
 			maxim,volt-alrt-threshold = <0xff00>;
 			maxim,temp-alrt-threshold = <0x7f80>;
@@ -471,7 +471,7 @@
 		};
 
 		Charger-Die {
-			status = "disabled";
+			status = "okay";
 			polling-delay = <0>; /* milliseconds */
 			polling-delay-passive = <0>; /* milliseconds */
 

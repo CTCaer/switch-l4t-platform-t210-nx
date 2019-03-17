@@ -36,8 +36,8 @@
 	};
 
 	xusb@70090000 {
-		extcon-cables = <&bm92t 0>;
-		extcon-cable-names = "id";
+//		extcon-cables = <&bm92t 0>;
+//		extcon-cable-names = "id";
 	};
 
 	spi@7000d400 {
