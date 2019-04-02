@@ -15,8 +15,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "tegra210-abca-pmic-04-00.dtsi"
-#include "tegra210-abca-power-fixed-04-00.dtsi"
+#include "tegra210-icosa-pmic.dtsi"
+#include "tegra210-icosa-power-fixed.dtsi"
 #include <t210-common-platforms/tegra210-ers-power-dvfs-e2174-1101-a00.dtsi>
 
 / {
