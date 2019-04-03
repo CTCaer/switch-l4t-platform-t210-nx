@@ -29,6 +29,9 @@
 			status = "disabled";
 		};
 	};
+	tlk {
+		status = "tlk";
+	};
 
 	xudc@700d0000 {
 		extcon-cables = <&bm92t 1>;
@@ -36,8 +39,8 @@
 	};
 
 	xusb@70090000 {
-//		extcon-cables = <&bm92t 0>;
-//		extcon-cable-names = "id";
+		extcon-cables = <&bm92t 0>;
+		extcon-cable-names = "id";
 	};
 
 	spi@7000d400 {

@@ -344,8 +344,8 @@
 		ports {
 			usb2-0 {
 				status = "okay";
-				mode = "host";
-//				nvidia,usb3-port-fake = <3>;
+				mode = "otg";
+				nvidia,usb3-port-fake = <3>;
 			};
 
 			usb3-0 {
@@ -395,7 +395,7 @@
 	/* right joycon */
 	serial@70006040 {
 		compatible = "nvidia,tegra20-uart";
-		status = "disabled";
+		status = "okay";
 	};
 	serial@70006300 {
 		dma-names = "tx";
@@ -427,7 +427,7 @@
 
 	xusb@70090000 {
 		status = "okay";
-//		#extcon-cells = <1>;
+		#extcon-cells = <1>;
 		phys = <&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-0}>,
 			   <&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-6}>;
 		phy-names = "usb2-0", "usb3-0";
@@ -437,9 +437,8 @@
 	};
 
 	xudc@700d0000 {
-		nvidia,portmap = <0x0108>;
 		#extcon-cells = <1>;
-		status = "disabled";
+		status = "okay";
 		phys =  <&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-0}>,
 				<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-6}>;
 		phy-names = "usb2", "usb3";
@@ -527,7 +526,7 @@
 	sound_card: sound {
 		compatible = "nvidia,tegra-audio-t210ref-mobile-rt565x";
 		nvidia,model = "tegra-snd-t210ref-mobile-rt565x";
-		nvidia,hp-det-gpios = <&gpio TEGRA_GPIO(V, 6) GPIO_ACTIVE_HIGH>;
+		nvidia,hp-det-gpios = <&gpio TEGRA_GPIO(V, 6) GPIO_ACTIVE_LOW>;
 
 		clocks = <&tegra_car TEGRA210_CLK_PLL_P_OUT1>,
 						<&tegra_car TEGRA210_CLK_PLL_A>,
