@@ -67,6 +67,7 @@
 	i2c@7000c000 {
 		rt5639: rt5639.0-001c@1c {
 			sel_jd_source = <4>;
+			jd_src = <4>;
 		};
 		bm92t: bm92t@18 {
 			compatible = "rohm,bm92t";
@@ -87,8 +88,8 @@
 			interrupt-enable-reg = <0x2c 0x48>;
 			avdd-supply = <&max77620_ldo6>;
 			vdd-supply = <&vdd_touchscreen>;
-			touchscreen-size-x = <1280>;
-			touchscreen-size-y = <720>;
+			touchscreen-size-x = <1290>;
+			touchscreen-size-y = <730>;
 		};
 	};
 

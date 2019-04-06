@@ -517,16 +517,16 @@
 	i2c@7000c000 {
 		rt5639: rt5639.0-001c@1c {
 			compatible = "realtek,rt5639";
+			gpios = <&gpio TEGRA_GPIO(V, 6) GPIO_ACTIVE_HIGH>;
 			realtek,ldo1-en-gpios = <&gpio TEGRA_GPIO(Z, 4) GPIO_ACTIVE_HIGH>;
 			reg = <0x1c>;
-			sel_jd_source = <2>;
+			jd_src = <2>;
 		};
 	};
 
 	sound_card: sound {
 		compatible = "nvidia,tegra-audio-t210ref-mobile-rt565x";
 		nvidia,model = "tegra-snd-t210ref-mobile-rt565x";
-		nvidia,hp-det-gpios = <&gpio TEGRA_GPIO(V, 6) GPIO_ACTIVE_LOW>;
 
 		clocks = <&tegra_car TEGRA210_CLK_PLL_P_OUT1>,
 						<&tegra_car TEGRA210_CLK_PLL_A>,
