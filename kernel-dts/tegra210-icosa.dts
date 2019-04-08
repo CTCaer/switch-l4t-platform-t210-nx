@@ -30,7 +30,7 @@
 		};
 	};
 	tlk {
-		status = "tlk";
+		status = "okay";
 	};
 
 	xudc@700d0000 {
