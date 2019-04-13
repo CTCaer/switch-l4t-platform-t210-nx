@@ -390,7 +390,6 @@
 						  1555000
 						  1632000
 						  1734000
-						  1734000
 						  1836000
 						  1912500
 						  2014500>;
@@ -492,12 +491,12 @@
 		active_rpm = <0 1000 2000 3000 4000 5000 6000 7000 10000 11000>;
 		active_rru = <40 2 1 1 1 1 1 1 1 1>;
 		active_rrd = <40 2 1 1 1 1 1 1 1 1>;
-
 		state_cap_lookup = <2 2 2 7 7 7 7 7 9 9>;
+
 		step_time = <100>; /* mesecs */
 		pwm_period = <40000>;
 		pwm_id = <1>;
-		state_cap = <7>;
+		state_cap = <9>;
 		active_pwm_max = <256>;
 		tach_gpio =  <&gpio TEGRA_GPIO(S, 7) GPIO_ACTIVE_LOW>; /* TEGRA_GPIO_PS7 */
 		pwm_gpio = <&gpio TEGRA_GPIO(V, 4) GPIO_ACTIVE_LOW>; /* TEGRA_GPIO_PV4 */
@@ -511,7 +510,24 @@
 		status = "okay";
 		pwms = <&tegra_pwm 1 40000>;
 		shared_data = <&pwm_fan_shared_data>;
-		active_pwm = <0 65 75 85 105 125 150 175 200 225>;
+		
+		profiles {
+			status = "okay";
+			default = "tight";
+
+			tight {
+				status = "okay";
+				name = "tight";
+				state_cap = <9>;
+				active_pwm = <0 65 75 85 105 125 150 175 200 225>;
+			};
+			stock {
+				status = "okay";
+				name = "stock";
+				state_cap = <9>;
+				active_pwm = <0 25 35 45 75 105 125 150 200 225>;
+			};
+		};
 	};
 
 	ptm {
