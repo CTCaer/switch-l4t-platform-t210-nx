@@ -52,7 +52,6 @@
 
 	chosen {
 		bootargs = "root=/dev/mmcblk0p1 rw rootwait fbcon=rotate:3 printk.synchronous=1 loglevel=8 console=fb0 console=ttyGS0";
-		nvidia,bluetooth-mac = "11:22:33:44:55:66";
 	};
 
 	firmware {
@@ -403,13 +402,13 @@
 	serial@70006300 {
 		dma-names = "tx";
 		status = "okay";
-		bluetooth {
+		/*bluetooth {
 			compatible = "brcm,bcm43438-bt";
 			shutdown-gpios = <&gpio TEGRA_GPIO(H, 4) GPIO_ACTIVE_HIGH>;
 			// level correct?
 			device-wakeup-gpios = <&gpio TEGRA_GPIO(H, 3) GPIO_ACTIVE_LOW>;
 			max-speed = <3000000>;
-		};
+		};*/
 	};
 
 	/* left joycon */
