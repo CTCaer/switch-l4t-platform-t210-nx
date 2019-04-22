@@ -23,13 +23,4 @@
 			label = "wlan-default-input-h2";
 		};
 	};
-	bluedroid_pm {
-		compatible = "nvidia,tegra-bluedroid_pm";
-		id = <0>;
-		bluedroid_pm,reset-gpio = <&gpio TEGRA_GPIO(H, 4) 0>;
-		bluedroid_pm,host-wake-gpio = <&gpio TEGRA_GPIO(H, 5) 0>;
-		bluedroid_pm,ext-wake-gpio = <&gpio TEGRA_GPIO(H, 3) 0>;
-		interrupt-parent = <&gpio>;
-		interrupts = <TEGRA_GPIO(H, 5) 0x01>;
-	};
 };
