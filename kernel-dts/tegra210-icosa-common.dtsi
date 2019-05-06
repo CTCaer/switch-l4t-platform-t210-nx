@@ -172,9 +172,20 @@
 	};
 
 	sdhci@700b0000 { /* SDMMC1 for uSD card */
-		uhs-mask = <0x8>;
+		uhs-mask = <0x0c>;
+		power-off-rail;
+		default-drv-type = <0x01>;
 		nvidia,update-pinctrl-settings;
 		nvidia,sd-device;
+		sd-uhs-sdr104;
+		sd-uhs-sdr50;
+		sd-uhs-sdr25;
+		sd-uhs-sdr12;
+		mmc-ddr-1_8v;
+		mmc-hs200-1_8v;
+		no-sdio;
+		no-mmc;
+		max-clk-limit = <150000000>;
 		status = "okay";
 	};
 
