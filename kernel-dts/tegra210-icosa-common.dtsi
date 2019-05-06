@@ -26,8 +26,6 @@
 #include "switch-platforms/tegra210-icosa-comms.dtsi"
 #include <tegra210-soc/tegra210-sdhci.dtsi>
 #include "switch-platforms/tegra210-icosa-keys.dtsi"
-#include <tegra210-soc/tegra210-edp.dtsi>
-#include <t210-common-platforms/tegra210-sysedp.dtsi>
 #include <tegra210-soc/tegra210-audio.dtsi>
 #include <t210-common-platforms/tegra210-thermal-nct72-p2530.dtsi>
 #include <tegra210-soc/tegra210-thermal-Tboard-Tdiode.dtsi>
@@ -877,25 +875,6 @@
 		throttle_dev@gpu_medium {
 			level = "medium_throttling";
 		};
-	};
-
-	sysedp_reactive_capping@3 {
-		compatible = "nvidia,tegra124-sysedp_reactive_capping";
-		nvidia,max_capping_mw = <15000>;
-		nvidia,step_alarm_mw = <1000>;
-		nvidia,step_relax_mw = <500>;
-		nvidia,relax_ms = <250>;
-		interrupt-parent = <&soctherm>;
-		interrupts = <3 0x2002>;
-		sysedpc {
-			nvidia,name = "batmon_oc3";
-		};
-	};
-
-	sysedp-dynamic-capping {
-		compatible = "nvidia,tegra124-sysedp-dynamic-capping";
-		nvidia,throttle_depth = <75>;
-		nvidia,cap_method = <1>;
 	};
 
 	clock@70110000 {
