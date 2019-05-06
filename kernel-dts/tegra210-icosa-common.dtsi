@@ -425,6 +425,7 @@
 						  1887000
 						  1989000
 						  2091000>;
+			default-max-frequency = <1785000>;
 		};
 		emc-scaling-data {
 			emc-cpu-limit-table = <
