@@ -20,15 +20,6 @@
 		compatible = "gpio-keys";
 		gpio-keys,name = "gpio-keys";
 
-		power {
-			label = "Power";
-			gpios = <&gpio TEGRA_GPIO(X, 5) GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_POWER>;
-			gpio-key,wakeup;
-			nvidia,pmc-wakeup = <&tegra_pmc
-				PMC_WAKE_TYPE_GPIO 24 PMC_TRIGGER_TYPE_NONE>;
-		};
-
 		volume_down {
 			label = "Volume Down";
 			gpios = <&gpio TEGRA_GPIO(X, 7) GPIO_ACTIVE_LOW>;

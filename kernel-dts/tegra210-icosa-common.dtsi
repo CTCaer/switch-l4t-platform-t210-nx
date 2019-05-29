@@ -177,15 +177,10 @@
 		default-drv-type = <0x01>;
 		nvidia,update-pinctrl-settings;
 		nvidia,sd-device;
-		sd-uhs-sdr104;
-		sd-uhs-sdr50;
-		sd-uhs-sdr25;
-		sd-uhs-sdr12;
 		mmc-ddr-1_8v;
 		mmc-hs200-1_8v;
 		no-sdio;
 		no-mmc;
-		max-clk-limit = <150000000>;
 		status = "okay";
 	};
 
@@ -430,13 +425,6 @@
 		status = "okay";
 	};
 
-	tegra_usb_cd: usb_cd {
-		status = "okay";
-		#extcon-cells = <1>;
-		phys = <&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-0}>;
-		phy-names = "otg-phy";
-	};
-
 	xusb@70090000 {
 		status = "okay";
 		#extcon-cells = <1>;
@@ -454,7 +442,6 @@
 		phys =  <&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-0}>,
 				<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-6}>;
 		phy-names = "usb2", "usb3";
-		charger-detector = <&tegra_usb_cd>;
 	};
 
 	xotg {

@@ -32,7 +32,7 @@
 			nvidia,src-sel-reg = <0x40188012>;
 			nvidia,needs-training = <0x00000000>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -1274,7 +1274,7 @@
 			nvidia,src-sel-reg = <0x4018800a>;
 			nvidia,needs-training = <0x00000000>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -2516,7 +2516,7 @@
 			nvidia,src-sel-reg = <0x40188006>;
 			nvidia,needs-training = <0x00000000>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -3758,7 +3758,7 @@
 			nvidia,src-sel-reg = <0x40188002>;
 			nvidia,needs-training = <0x00000000>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -5000,7 +5000,7 @@
 			nvidia,src-sel-reg = <0xe0188000>;
 			nvidia,needs-training = <0x00000010>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -6242,7 +6242,7 @@
 			nvidia,src-sel-reg = <0x80188000>;
 			nvidia,needs-training = <0x00000010>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -7484,7 +7484,7 @@
 			nvidia,src-sel-reg = <0x80188000>;
 			nvidia,needs-training = <0x000000d0>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -8726,7 +8726,7 @@
 			nvidia,src-sel-reg = <0x80188000>;
 			nvidia,needs-training = <0x000000f0>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000001>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -9968,7 +9968,7 @@
 			nvidia,src-sel-reg = <0x80188000>;
 			nvidia,needs-training = <0x000002f0>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000001>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -11210,7 +11210,7 @@
 			nvidia,src-sel-reg = <0x80188000>;
 			nvidia,needs-training = <0x000002f0>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000001>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -12452,7 +12452,7 @@
 			nvidia,src-sel-reg = <0x40188012>;
 			nvidia,needs-training = <0x00000000>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -13694,7 +13694,7 @@
 			nvidia,src-sel-reg = <0x4018800a>;
 			nvidia,needs-training = <0x00000000>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -14936,7 +14936,7 @@
 			nvidia,src-sel-reg = <0x40188006>;
 			nvidia,needs-training = <0x00000000>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -16178,7 +16178,7 @@
 			nvidia,src-sel-reg = <0x40188002>;
 			nvidia,needs-training = <0x00000000>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -17420,7 +17420,7 @@
 			nvidia,src-sel-reg = <0xe0188000>;
 			nvidia,needs-training = <0x00000010>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -18662,7 +18662,7 @@
 			nvidia,src-sel-reg = <0x80188000>;
 			nvidia,needs-training = <0x00000010>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -19904,7 +19904,7 @@
 			nvidia,src-sel-reg = <0x80188000>;
 			nvidia,needs-training = <0x000000d0>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -21146,7 +21146,7 @@
 			nvidia,src-sel-reg = <0x80188000>;
 			nvidia,needs-training = <0x000000f0>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000001>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -22388,7 +22388,7 @@
 			nvidia,src-sel-reg = <0x80188000>;
 			nvidia,needs-training = <0x000002f0>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000001>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
@@ -23630,7 +23630,7 @@
 			nvidia,src-sel-reg = <0x80188000>;
 			nvidia,needs-training = <0x000002f0>;
 			nvidia,training_pattern = <0x00000000>;
-			nvidia,trained = <0x00000000>;
+			nvidia,trained = <0x00000001>;
 			nvidia,periodic_training = <0x00000001>;
 			nvidia,trained_dram_clktree_c0d0u0 = <0x00000000>;
 			nvidia,trained_dram_clktree_c0d0u1 = <0x00000000>;
