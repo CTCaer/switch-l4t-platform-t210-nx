@@ -22,6 +22,7 @@
 	backlight {
 		compatible = "pwm-backlight";
 		status = "okay";
+		label = "pwm-backlight";
 		power-supply = <&max77620_sd3>;
 		panel-a-wuxga-8-0-bl {
 			pwms = <&tegra_pwm 0 40161>;
@@ -42,7 +43,7 @@
 		/* tegradc.0 */
 		dc@54200000 {
 			status = "okay";
-			nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>, <TEGRA_DC_FLAG_FBCON_DISABLED>;
+			nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>;
 			nvidia,emc-clk-rate = <300000000>;
 			nvidia,fb-bpp = <32>; /* bits per pixel */
 			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
