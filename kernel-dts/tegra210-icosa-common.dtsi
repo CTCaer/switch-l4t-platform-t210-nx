@@ -57,6 +57,24 @@
 		android {
 			compatible = "android,firmware";
 			hardware = "icosa";
+			fstab {
+				compatible = "android,fstab";
+				first_stage_delay = "1";
+				system {
+					compatible = "android,system";
+					dev = "/dev/block/platform/sdhci-tegra.0/by-name/system";
+					type = "ext4";
+					mnt_flags = "ro,noatime";
+					fsmgr_flags = "wait";
+				};
+				vendor {
+					compatible = "android,vendor";
+					dev = "/dev/block/platform/sdhci-tegra.0/by-name/vendor";
+					type = "ext4";
+					mnt_flags = "ro,noatime";
+					fsmgr_flags = "wait";
+				};
+			};
 		};
 	};
 
