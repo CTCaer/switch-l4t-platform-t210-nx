@@ -37,7 +37,7 @@
 
 / {
 	model = "icosa";
-	compatible = "nvidia,icosa", "nvidia,tegra210";
+	compatible = "nintendo,icosa", "nvidia,tegra210";
 	nvidia,dtsfilename = __FILE__;
 
 	nvidia,boardids = "2595:0000:A0";
