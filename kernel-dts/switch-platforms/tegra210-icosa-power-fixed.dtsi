@@ -85,16 +85,6 @@
 			vin-supply = <&vdd_3v3>;
 		};
 
-		vdd_touchscreen: regulator@5 {
-			compatible = "regulator-fixed";
-			reg = <22>;
-			regulator-name = "vdd_touchscreen";
-			regulator-min-microvolt = <1800000>;
-			regulator-max-microvolt = <1800000>;			
-			gpio = <&gpio TEGRA_GPIO(J, 7) GPIO_ACTIVE_HIGH>;
-			enable-active-high;
-		};
-
 		vdd_hdmi: regulator@6 {
 			compatible = "regulator-fixed";
 			reg = <6>;

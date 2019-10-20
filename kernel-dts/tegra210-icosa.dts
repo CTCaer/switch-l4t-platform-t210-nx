@@ -90,15 +90,16 @@
 
 	i2c@7000c500 {
 		fts@49 {
-			compatible = "st,stmfts";
+			compatible = "stm,ftm4_fts";
+			status = "okay";
 			reg = <0x49>;
 			interrupt-parent = <&gpio>;
 			interrupts = <TEGRA_GPIO(X, 1) IRQ_TYPE_LEVEL_LOW>;
-			interrupt-enable-reg = <0x2c 0x48>;
-			avdd-supply = <&max77620_ldo6>;
-			vdd-supply = <&vdd_touchscreen>;
-			touchscreen-size-x = <1282>;
-			touchscreen-size-y = <722>;
+			stm,vio-gpio = <&gpio TEGRA_GPIO(J, 7) GPIO_ACTIVE_HIGH>;
+			stm,irq_type = <0x2000>;
+			stm,regulator_avdd = "vdd-tp-3v1";
+			stm,max_coords = <1280 720>;
+			stm,firmware_name = "odin.bin";
 		};
 	};
 
