@@ -95,7 +95,7 @@
 		};
 
 		dpaux {
-			status = "okay";
+			status = "disabled";
 		};
 
 		vi {
