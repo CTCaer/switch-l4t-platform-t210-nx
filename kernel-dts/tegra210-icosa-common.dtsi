@@ -809,6 +809,18 @@
 			clock-names = "cpu_g", "cpu_lp", "pll_x", "pll_p", "dfll";
 			clock-latency = <300000>;
 		};
+		idle-states {
+			c7 {
+				status = "disabled"; // FIXME: enabling causes crashes on cpu idle
+			};
+		};
+	};
+
+	actmon@6000c800 {
+		status = "disabled"; // FIXME: enabling causes crashes on clock change
+		mc_all {
+			status = "disabled";
+		};
 	};
 
 	memory-controller@70019000 {
