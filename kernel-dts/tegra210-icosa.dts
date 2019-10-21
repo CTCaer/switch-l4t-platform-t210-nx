@@ -16,95 +16,32 @@
 
 #include "tegra210-icosa-common.dtsi"
 #include "tegra210-icosa-common-disp.dtsi"
-#include "switch-platforms/tegra210-icosa-power-tree.dtsi"
-#include "switch-platforms/tegra210-icosa-emc.dtsi"
-#include "switch-platforms/tegra210-icosa-sensor.dtsi"
-#include "switch-platforms/tegra210-icosa-powermon.dtsi"
+#include "icosa-platforms/tegra210-icosa-power-tree.dtsi"
+#include "icosa-platforms/tegra210-icosa-emc.dtsi"
+#include "icosa-platforms/tegra210-icosa-sensor.dtsi"
+#include "icosa-platforms/tegra210-icosa-powermon.dtsi"
 
 / {
 	nvidia,dtsfilename = __FILE__;
 
-	extcon {
-		extcon@0 {
+	tlk {
+		status = "disabled"; // FIXME: needs keys, where are they
+	};
+
+	cpus {
+		idle-states {
+			c7 {
+				status = "disabled"; // FIXME: enabling causes crashes on cpu idle
+			};
+		};
+	};
+
+	actmon@6000c800 {
+		status = "disabled"; // FIXME: enabling causes crashes on clock change
+		mc_all {
 			status = "disabled";
 		};
 	};
-	tlk {
-		status = "okay";
-	};
-
-	xudc@700d0000 {
-		extcon-cables = <&bm92t 1>;
-		extcon-cable-names = "vbus";
-	};
-
-	xusb@70090000 {
-		extcon-cables = <&bm92t 0>;
-		extcon-cable-names = "id";
-	};
-
-	spi@7000d400 {
-		status = "okay";
-		spi@0 {
-			compatible = "spidev";
-			reg = <0>;
-			spi-max-frequency = <13000000>;
-		};
-	};
-
-	spi@7000da00 {
-		status = "okay";
-		lsm6dsm@0 {
-			compatible = "st,lsm6ds3";
-			reg = <0>;
-			spi-max-frequency = <500000>;
-			status = "okay";
-			#address-cells = <0x1>;
-			#size-cells = <0x0>;
-			nvidia,enable-hw-based-cs;
-			nvidia,cs-setup-clk-count = <0x1e>;
-			nvidia,cs-hold-clk-count = <0x1e>;
-			nvidia,rx-clk-tap-delay = <0x1f>;
-			nvidia,tx-clk-tap-delay = <0x0>;
-		};
-	};
-
-	i2c1: i2c@7000c000 {
-		clock-frequency = <100000>;
-	};
-
-	i2c@7000c000 {
-		rt5639: rt5639.0-001c@1c {
-			sel_jd_source = <4>;
-			jd_src = <4>;
-		};
-		bm92t: bm92t@18 {
-			compatible = "rohm,bm92t";
-			reg = <0x18>;
-			interrupt-parent = <&gpio>;
-			interrupts = <TEGRA_GPIO(K, 4) 0x01>;
-			#extcon-cells = <1>;
-			pd_bat_chg-supply = <&battery_charger>;
-		};
-	};
-
-	i2c@7000c500 {
-		fts@49 {
-			compatible = "stm,ftm4_fts";
-			status = "okay";
-			reg = <0x49>;
-			interrupt-parent = <&gpio>;
-			interrupts = <TEGRA_GPIO(X, 1) IRQ_TYPE_LEVEL_LOW>;
-			stm,vio-gpio = <&gpio TEGRA_GPIO(J, 7) GPIO_ACTIVE_HIGH>;
-			stm,irq_type = <0x2000>;
-			stm,regulator_avdd = "vdd-tp-3v1";
-			stm,max_coords = <1280 720>;
-			stm,firmware_name = "odin.bin";
-		};
-	};
-
-	/delete-node/ psy_extcon_xudc;
-	/delete-node/ usb_cd@7009f000;
 
 	r2p {
 		compatible = "tegra-reboot2payload";

@@ -20,12 +20,12 @@
 
 #include <t210-common-platforms/tegra210-common.dtsi>
 #include <t210-common-platforms/tegra210-cpufreq.dtsi>
-#include "switch-platforms/tegra210-icosa-gpio.dtsi"
-#include "switch-platforms/tegra210-icosa-pinmux.dtsi"
-#include "switch-platforms/tegra210-icosa-prods.dtsi"
-#include "switch-platforms/tegra210-icosa-comms.dtsi"
+#include "icosa-platforms/tegra210-icosa-gpio.dtsi"
+#include "icosa-platforms/tegra210-icosa-pinmux.dtsi"
+#include "icosa-platforms/tegra210-icosa-prods.dtsi"
+#include "icosa-platforms/tegra210-icosa-comms.dtsi"
 #include <tegra210-soc/tegra210-sdhci.dtsi>
-#include "switch-platforms/tegra210-icosa-keys.dtsi"
+#include "icosa-platforms/tegra210-icosa-keys.dtsi"
 #include <tegra210-soc/tegra210-audio.dtsi>
 #include <t210-common-platforms/tegra210-thermal-nct72-p2530.dtsi>
 #include <tegra210-soc/tegra210-thermal-Tboard-Tdiode.dtsi>
@@ -377,7 +377,32 @@
 	};
 
 	spi@7000d400 {
-		status = "disabled";
+		status = "okay";
+		spi@0 {
+			compatible = "spidev";
+			reg = <0>;
+			spi-max-frequency = <13000000>;
+		};
+	};
+
+	spi@7000da00 {
+		status = "okay";
+		imu: lsm6dsm@0 {
+			compatible = "st,lsm6ds3";
+			reg = <0>;
+			spi-max-frequency = <500000>;
+			status = "okay";
+			#address-cells = <0x1>;
+			#size-cells = <0x0>;
+			nvidia,enable-hw-based-cs;
+			nvidia,cs-setup-clk-count = <0x1e>;
+			nvidia,cs-hold-clk-count = <0x1e>;
+			nvidia,rx-clk-tap-delay = <0x1f>;
+			nvidia,tx-clk-tap-delay = <0x0>;
+		};
+		/delete-node/ spi-touch19x12@0;
+		/delete-node/ spi-touch25x16@0;
+		/delete-node/ spi-touch14x8@0;
 	};
 
 	cpufreq {
@@ -424,6 +449,15 @@
 		status = "okay";
 	};
 
+	extcon {
+		extcon@0 {
+			status = "disabled";
+		};
+	};
+	
+	/delete-node/ psy_extcon_xudc;
+	/delete-node/ usb_cd@7009f000;
+
 	xusb@70090000 {
 		status = "okay";
 		#extcon-cells = <1>;
@@ -433,6 +467,9 @@
 		nvidia,pmc-wakeup =
 			<&tegra_pmc
 				PMC_WAKE_TYPE_EVENT 41 PMC_TRIGGER_TYPE_HIGH>;
+		extcon-cables = <&bm92t 0>;
+		extcon-cable-names = "id";
+
 	};
 
 	xudc@700d0000 {
@@ -441,6 +478,8 @@
 		phys =  <&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-0}>,
 				<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-6}>;
 		phy-names = "usb2", "usb3";
+		extcon-cables = <&bm92t 1>;
+		extcon-cable-names = "vbus";
 	};
 
 	xotg {
@@ -528,17 +567,43 @@
 	ptm {
 		status = "disabled";
 	};
-/*
+
+	i2c@7000c500 {
+		fts_touch: fts@49 {
+			compatible = "stm,ftm4_fts";
+			status = "okay";
+			reg = <0x49>;
+			interrupt-parent = <&gpio>;
+			interrupts = <TEGRA_GPIO(X, 1) IRQ_TYPE_LEVEL_LOW>;
+			stm,vio-gpio = <&gpio TEGRA_GPIO(J, 7) GPIO_ACTIVE_HIGH>;
+			stm,irq_type = <0x2000>;
+			stm,regulator_avdd = "vdd-tp-3v1";
+			stm,max_coords = <1280 720>;
+			stm,firmware_name = "odin.bin";
+		};
+	};
+
+
 	i2c@7000c000 {
-		rt5639: rt5639.0-001c@1c {
+		clock-frequency = <100000>;
+/*		rt5639: rt5639.0-001c@1c {
 			compatible = "realtek,rt5639";
 			gpios = <&gpio TEGRA_GPIO(V, 6) GPIO_ACTIVE_HIGH>;
 			realtek,ldo1-en-gpios = <&gpio TEGRA_GPIO(Z, 4) GPIO_ACTIVE_HIGH>;
 			reg = <0x1c>;
-			jd_src = <2>;
+			jd_src = <4>;
+			sel_jd_source = <4>;
+		};*/
+		bm92t: bm92t@18 {
+			compatible = "rohm,bm92t";
+			reg = <0x18>;
+			interrupt-parent = <&gpio>;
+			interrupts = <TEGRA_GPIO(K, 4) 0x01>;
+			#extcon-cells = <1>;
+			pd_bat_chg-supply = <&battery_charger>;
 		};
 	};
-
+/*
 	sound_card: sound {
 		compatible = "nvidia,tegra-audio-t210ref-mobile-rt565x";
 		nvidia,model = "tegra-snd-t210ref-mobile-rt565x";
@@ -809,18 +874,6 @@
 			clock-names = "cpu_g", "cpu_lp", "pll_x", "pll_p", "dfll";
 			clock-latency = <300000>;
 		};
-		idle-states {
-			c7 {
-				status = "disabled"; // FIXME: enabling causes crashes on cpu idle
-			};
-		};
-	};
-
-	actmon@6000c800 {
-		status = "disabled"; // FIXME: enabling causes crashes on clock change
-		mc_all {
-			status = "disabled";
-		};
 	};
 
 	memory-controller@70019000 {
@@ -903,11 +956,5 @@
 				};
 			};
 		};
-	};
-
-	spi@7000da00 {
-		/delete-node/ spi-touch19x12@0;
-		/delete-node/ spi-touch25x16@0;
-		/delete-node/ spi-touch14x8@0;
 	};
 };
