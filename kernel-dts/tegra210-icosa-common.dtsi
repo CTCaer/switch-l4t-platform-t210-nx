@@ -429,20 +429,52 @@
 			default-max-frequency = <1785000>;
 		};
 	};
+
+	joyconr_charger: joyconr_charger {
+		status = "okay";
+		compatible = "regulator-fixed";
+		regulator-name = "right-joycon-charger";
+		gpio = <&gpio TEGRA_GPIO(K, 3) GPIO_ACTIVE_HIGH>;
+		enable-active-high;
+	};
+
 	/* right joycon */
 	serial@70006040 {
-		compatible = "nvidia,tegra20-uart";
 		status = "okay";
+		nvidia,invert-txd;
+		nvidia,invert-rts;
+
+		joyconr {
+			status = "okay";
+			compatible = "nintendo,joycon-serdev";
+			charger-supply = <&joyconr_charger>;
+		};
 	};
+
 	serial@70006300 {
 		dma-names = "tx";
 		status = "okay";
 	};
 
+	joyconl_charger: joyconl_charger {
+		status = "okay";
+		compatible = "regulator-fixed";
+		regulator-name = "left-joycon-charger";
+		gpio = <&gpio TEGRA_GPIO(CC, 3) GPIO_ACTIVE_HIGH>;
+		enable-active-high;
+	};
+
 	/* left joycon */
 	serial@70006200 {
-		compatible = "nvidia,tegra20-uart";
 		status = "okay";
+		nvidia,invert-txd;
+		nvidia,invert-rts;
+
+		joyconl {
+			status = "okay";
+			compatible = "nintendo,joycon-serdev";
+			charger-supply = <&joyconl_charger>;
+		};
 	};
 
 	mailbox@70098000 {
