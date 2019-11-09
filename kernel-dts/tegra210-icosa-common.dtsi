@@ -390,7 +390,7 @@
 		imu: lsm6dsm@0 {
 			compatible = "st,lsm6ds3";
 			reg = <0>;
-			spi-max-frequency = <500000>;
+			spi-max-frequency = <13000000>;
 			status = "okay";
 			#address-cells = <0x1>;
 			#size-cells = <0x0>;
