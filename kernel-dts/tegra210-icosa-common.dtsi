@@ -618,14 +618,14 @@
 
 	i2c@7000c000 {
 		clock-frequency = <100000>;
-/*		rt5639: rt5639.0-001c@1c {
+		rt5639: rt5639.0-001c@1c {
 			compatible = "realtek,rt5639";
 			gpios = <&gpio TEGRA_GPIO(V, 6) GPIO_ACTIVE_HIGH>;
 			realtek,ldo1-en-gpios = <&gpio TEGRA_GPIO(Z, 4) GPIO_ACTIVE_HIGH>;
 			reg = <0x1c>;
 			jd_src = <4>;
 			sel_jd_source = <4>;
-		};*/
+		};
 		bm92t: bm92t@18 {
 			compatible = "rohm,bm92t";
 			reg = <0x18>;
@@ -635,9 +635,9 @@
 			pd_bat_chg-supply = <&battery_charger>;
 		};
 	};
-/*
+
 	sound_card: sound {
-		compatible = "nvidia,tegra-audio-t210ref-mobile-rt565x";
+		compatible = "nvidia,tegra-audio-t210ref-mobile-rt5640";
 		nvidia,model = "tegra-snd-t210ref-mobile-rt565x";
 
 		clocks = <&tegra_car TEGRA210_CLK_PLL_P_OUT1>,
@@ -689,7 +689,7 @@
 			name-prefix = "x";
 		};
 	};
-*/
+
 	modem {
 		status = "disabled";
 		/* using XHCI UTMI */
