@@ -407,7 +407,8 @@
 
 	cpufreq {
 		cpu-scaling-data {
-			freq-table = <204000
+			freq-table = <102000
+						  204000
 						  306000
 						  408000
 						  510000
@@ -426,8 +427,18 @@
 						  1887000
 						  1989000
 						  2091000>;
-			default-max-frequency = <1785000>;
 		};
+		emc-scaling-data {
+			emc-cpu-limit-table = <
+				/* CPU    EMC */
+				102000	68000
+				204800	102000
+				307200	204000
+				403000	408000
+				800000	1600000
+			>;
+		};
+
 	};
 
 	joyconr_charger: joyconr_charger {
