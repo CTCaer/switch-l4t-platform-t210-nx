@@ -40,7 +40,7 @@
 		/* tegradc.0 */
 		dc@54200000 {
 			status = "okay";
-			nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>;
+			nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>, <TEGRA_DC_FLAG_FBCON_DISABLED>;
 			nvidia,emc-clk-rate = <300000000>;
 			nvidia,fb-bpp = <32>; /* bits per pixel */
 			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
