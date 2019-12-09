@@ -372,15 +372,16 @@
 				ti,ir-comp-resister-ohm = <1>;
 				ti,pre-charge-current-limit-milliamp = <128>;
 				ti,thermal-regulation-threshold-degc = <120>;
-				ti,fast-charge-current-limit-milliamp = <512>;
+				ti,fast-charge-current-limit-milliamp = <2048>;
 				ti,min-system-voltage-limit-millivolt = <3200>; // f0f
 				ti,input-voltage-limit-millivolt = <4360>;
-				ti,temp-range = <45 50>;
-				ti,charge-thermal-voltage-limit = <4208 4208>;
-				ti,charge-current-limit = <512 512>;
+				ti,temp-range = <40 45 50>;
+				ti,charge-thermal-voltage-limit = <4208 4208 4208>;
+				ti,charge-current-limit = <2048 512 512>;
 				ti,thermal-zone = "max170xx_battery";
 				ti,temp-polling-time-sec = <20>;
 				ti,pre-to-fast-charge-voltage-millivolt = <3000>;
+				ti,enable-full-plug-detection;
 			};
 
 			usb0_vbus: vbus {
