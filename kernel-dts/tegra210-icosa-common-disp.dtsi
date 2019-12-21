@@ -29,13 +29,10 @@
 		};
 		panel-o-720p-6-0-bl {
 			pwms = <&tegra_pwm 0 40000>;
-			max-brightness = <168>;
-			default-brightness = <168>;
 		};
 		panel-o-720p-6-0-01-bl {
 			status = "okay";
 			pwms = <&tegra_pwm 0 35000>;
-			default-brightness = <168>;
 		};
 	};
 
