@@ -187,8 +187,6 @@
 		default-drv-type = <0x01>;
 		nvidia,update-pinctrl-settings;
 		nvidia,sd-device;
-		mmc-ddr-1_8v;
-		mmc-hs200-1_8v;
 		no-sdio;
 		no-mmc;
 		status = "okay";
