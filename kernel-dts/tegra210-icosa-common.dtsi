@@ -720,16 +720,6 @@
 
 	soctherm@0x700E2000 {
 		throttle-cfgs {
-			throttle_oc1: oc1 {
-				nvidia,priority = <50>;
-				nvidia,polarity-active-low = <1>;
-				nvidia,count-threshold = <100>;
-				nvidia,alarm-filter = <5100000>;
-				nvidia,alarm-period = <0>;
-				nvidia,cpu-throt-percent = <75>;
-				nvidia,gpu-throt-level =
-					<TEGRA_SOCTHERM_THROT_LEVEL_MED>;
-			};
 			throttle_oc3: oc3 {
 				nvidia,priority = <40>;
 				nvidia,polarity-active-low = <1>;
