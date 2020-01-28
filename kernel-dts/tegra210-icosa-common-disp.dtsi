@@ -46,7 +46,6 @@
 			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
 			nvidia,dc-or-node = "/host1x/dsi";
 			nvidia,dc-connector = <&dsi>;
-			win-mask = <0xf>;
 			extcon-cables = <&bm92t 2>;
 			extcon-cable-names = "typec1";
 			#extcon-cells = <1>;
@@ -61,7 +60,6 @@
 			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
 			nvidia,dc-or-node = "/host1x/sor1";
 			nvidia,dc-connector = <&sor1>;
-			win-mask = <0xf>;
 			extcon-cables = <&bm92t 2>;
 			extcon-cable-names = "typec1";
 			#extcon-cells = <1>;
