@@ -50,7 +50,8 @@
 
 	chosen {
 		bootargs = "root=/dev/mmcblk0p1 rw rootwait fbcon=rotate:3 printk.synchronous=1 loglevel=8 console=fb0 console=ttyGS0";
-		nvidia,bluetooth-mac = "11:22:33:44:55:66";
+		nvidia,bluetooth-mac = "11:22:33:44:55:66"; // both overwritten by U-Boot
+		nvidia,wifi-mac = "11:22:33:44:55:66";
 	};
 
 	firmware {
