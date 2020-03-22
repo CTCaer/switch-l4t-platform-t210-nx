@@ -115,6 +115,7 @@
 				nvidia,hpd-gpio = <&gpio TEGRA_GPIO(CC, 1) 1>; /* PN7 */
 				nvidia,is_ext_dp_panel = <1>;
 				nvidia,lanes = <2>;
+				nvidia,fast-lt-disable;
 				disp-default-out {
 					nvidia,out-max-pixclk = <3333>; /* KHZ2PICOS(300000) */
 					nvidia,out-type = <TEGRA_DC_OUT_DP>;
@@ -126,29 +127,6 @@
 							   TEGRA_DC_OUT_PIN_PIXEL_CLOCK TEGRA_DC_OUT_PIN_POL_LOW
 							   TEGRA_DC_OUT_PIN_DATA_ENABLE TEGRA_DC_OUT_PIN_POL_HIGH>;
 					nvidia,out-parent-clk = "pll_d2_out0";
-				};
-				dp-lt-settings {
-					lt-setting@0 {
-						nvidia,drive-current = <DRIVE_CURRENT_L0 DRIVE_CURRENT_L0 DRIVE_CURRENT_L0 DRIVE_CURRENT_L0>;
-						nvidia,lane-preemphasis = <PRE_EMPHASIS_L0 PRE_EMPHASIS_L0 PRE_EMPHASIS_L0 PRE_EMPHASIS_L0>;
-						nvidia,post-cursor = <POST_CURSOR2_L0 POST_CURSOR2_L0 POST_CURSOR2_L0 POST_CURSOR2_L0>;
-						nvidia,tx-pu = <0>;
-						nvidia,load-adj = <0x3>;
-					};
-					lt-setting@1 {
-						nvidia,drive-current = <DRIVE_CURRENT_L0 DRIVE_CURRENT_L0 DRIVE_CURRENT_L0 DRIVE_CURRENT_L0>;
-						nvidia,lane-preemphasis = <PRE_EMPHASIS_L0 PRE_EMPHASIS_L0 PRE_EMPHASIS_L0 PRE_EMPHASIS_L0>;
-						nvidia,post-cursor = <POST_CURSOR2_L0 POST_CURSOR2_L0 POST_CURSOR2_L0 POST_CURSOR2_L0>;
-						nvidia,tx-pu = <0>;
-						nvidia,load-adj = <0x4>;
-					};
-					lt-setting@2 {
-						nvidia,drive-current = <DRIVE_CURRENT_L0 DRIVE_CURRENT_L0 DRIVE_CURRENT_L0 DRIVE_CURRENT_L0>;
-						nvidia,lane-preemphasis = <PRE_EMPHASIS_L1 PRE_EMPHASIS_L1 PRE_EMPHASIS_L1 PRE_EMPHASIS_L1>;
-						nvidia,post-cursor = <POST_CURSOR2_L0 POST_CURSOR2_L0 POST_CURSOR2_L0 POST_CURSOR2_L0>;
-						nvidia,tx-pu = <0>;
-						nvidia,load-adj = <0x6>;
-					};
 				};
 			};
 			hdmi-display {
