@@ -130,16 +130,19 @@
 	};
 
 	sdhci@700b0600 { /* SDMMC4 for EMMC */
-		uhs-mask = <0x0>;	/* hs400 */
-		tap-delay = <0>;
-		max-clk-limit = <200000000>;
-		pll_source = "pll_p", "pll_c4_out2";
-		clocks = <&tegra_car TEGRA210_CLK_SDMMC4>,
-			   <&tegra_car TEGRA210_CLK_PLL_P>,
-			   <&tegra_car TEGRA210_CLK_PLL_C4_OUT2>;
-		clock-names = "sdmmc", "pll_p", "pll_c4_out2";
-		status = "disabled";
-	};
+                bus-width = <8>;
+                uhs-mask = <0x0>;       /* hs400 */
+                tap-delay = <0>;
+                max-clk-limit = <200000000>;
+                pll_source = "pll_p", "pll_c4_out2";
+                clocks = <&tegra_car TEGRA210_CLK_SDMMC4>,
+                        <&tegra_car TEGRA210_CLK_PLL_P>,
+                        <&tegra_car TEGRA210_CLK_PLL_C4_OUT2>,
+                        <&tegra_car TEGRA210_CLK_SDMMC_LEGACY>;
+                clock-names = "sdmmc", "pll_p", "pll_c4_out2", "sdmmc_legacy_tm";
+                status = "disabled";
+        };
+
 
 	sdhci@700b0400 { /* SDMMC3 Not Used */
 		status = "disabled";
