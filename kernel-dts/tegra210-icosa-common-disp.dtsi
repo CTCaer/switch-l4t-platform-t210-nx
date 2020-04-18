@@ -80,18 +80,12 @@
 				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
 				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(V, 0) 0>; /* PV0 */
 				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
-				disp-default-out {
-					nvidia,out-rotation = <270>;
-				};
 			};
 			panel-o-720p-6-0-01 {
 				status = "okay";
 				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
 				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(V, 0) 0>; /* PV0 */
 				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
-				disp-default-out {
-					nvidia,out-rotation = <270>;
-				};
 			};
 		};
 
