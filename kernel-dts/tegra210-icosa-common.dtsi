@@ -36,7 +36,7 @@
 #include <dt-bindings/thermal/tegra210-trips.h>
 
 / {
-	model = "icosa";
+	model = "icosa_emmc";
 	compatible = "nintendo,icosa", "nvidia,tegra210";
 	nvidia,dtsfilename = __FILE__;
 
@@ -57,13 +57,13 @@
 	firmware {
 		android {
 			compatible = "android,firmware";
-			hardware = "icosa";
+			hardware = "icosa_emmc";
 			fstab {
 				compatible = "android,fstab";
 				first_stage_delay = "1";
 				vendor {
 					compatible = "android,vendor";
-					dev = "/dev/block/platform/sdhci-tegra.0/by-name/vendor";
+					dev = "/dev/block/platform/sdhci-tegra.3/by-name/vendor";
 					type = "ext4";
 					mnt_flags = "ro,noatime";
 					fsmgr_flags = "wait";
@@ -141,7 +141,7 @@
                         <&tegra_car TEGRA210_CLK_PLL_C4_OUT2>,
                         <&tegra_car TEGRA210_CLK_SDMMC_LEGACY>;
                 clock-names = "sdmmc", "pll_p", "pll_c4_out2", "sdmmc_legacy_tm";
-                status = "disabled";
+                status = "okay";
         };
 
 
