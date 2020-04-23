@@ -1,0 +1,28 @@
+/dts-v1/;
+/plugin/;
+/ {
+    fragment@1 {
+        target-path = "/";
+        __overlay__ {
+            model = "icosa_emmc";
+        };
+    };
+    fragment@2 {
+        target-path = "/firmware/android";
+        __overlay__ {
+            hardware = "icosa_emmc";
+        };
+    };
+    fragment@3 {
+        target-path = "/firmware/android/fstab/vendor";
+        __overlay__ {
+            dev = "/dev/block/platform/sdhci-tegra.3/by-name/vendor";
+        };
+    };
+    fragment@4 {
+        target-path = "/sdhci@700b0600";
+        __overlay__ {
+            status="okay";
+        };
+    };
+ };

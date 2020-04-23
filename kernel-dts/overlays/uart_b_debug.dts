@@ -1,0 +1,34 @@
+/dts-v1/;
+/plugin/;
+/ {
+    fragment@1 {
+        target-path = "/serial@70006040";
+        __overlay__ {
+            compatible = "nvidia,tegra20-uart";
+        };
+    };
+    fragment@2 {
+        target-path = "/serial@70006040/joyconr";
+        __overlay__ {
+            status = "disabled";
+        };
+    };
+    fragment@3 {
+        target-path = "/joyconr_charger";
+        __overlay__ {
+            status = "disabled";
+        };
+    };
+    fragment@4 {
+        target-path = "/pinmux@700008d4/common/pk3";
+        __overlay__ {
+            nvidia,open-drain = <0x1>;
+        };
+    };
+    fragment@5 {
+        target-path = "/pinmux@700008d4/common/ph6";
+        __overlay__ {
+            nvidia,open-drain = <0x1>;
+        };
+    };
+};
