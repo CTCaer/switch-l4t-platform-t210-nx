@@ -385,15 +385,6 @@
 		};
 	};
 
-	spi@7000d400 {
-		status = "okay";
-		spi@0 {
-			compatible = "spidev";
-			reg = <0>;
-			spi-max-frequency = <13000000>;
-		};
-	};
-
 	spi@7000da00 {
 		status = "okay";
 		imu: lsm6dsm@0 {
