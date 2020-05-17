@@ -222,6 +222,7 @@
 					regulator-disable-ramp-delay = <32000>;
 					maxim,ramp-rate-setting = <27500>;
 					regulator-ramp-delay = <7900>;
+					regulator-always-on;
 				};
 
 				max77620_sd3: sd3 {
@@ -244,7 +245,6 @@
 					regulator-name = "avdd-sys";
 					regulator-min-microvolt = <1200000>;
 					regulator-max-microvolt = <1200000>;
-					regulator-always-on;
 					regulator-boot-on;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
 					regulator-enable-ramp-delay = <26>;
@@ -262,6 +262,7 @@
 					regulator-disable-ramp-delay = <630>;
 					maxim,ramp-rate-setting = <100000>;
 					regulator-ramp-delay = <50000>;
+					regulator-always-on;
 				};
 
 				max77620_ldo2: ldo2 {
@@ -299,6 +300,7 @@
 					regulator-disable-ramp-delay = <610>;
 					maxim,ramp-rate-setting = <100000>;
 					regulator-ramp-delay = <50000>;
+					regulator-disable-active-discharge;
 				};
 
 				max77620_ldo5: ldo5 {
