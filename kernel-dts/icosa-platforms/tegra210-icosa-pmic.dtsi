@@ -146,11 +146,11 @@
 				gpio-hog;
 				output-high;
 				gpios = <2 0>;
-				label = "spmic-default-output-high";
+				line-name = "spmic-default-output-high";
 			};
 
 			watchdog {
-				maxim,wdt-boot-timeout = <16>;
+				maxim,wdt-timeout = <16>;
 				maxim,wdt-clear-time = <13>;
 				status = "disabled";
 				dt-override-status-odm-data = <0x00020000 0x00020000>;
