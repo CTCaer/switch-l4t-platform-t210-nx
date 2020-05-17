@@ -19,7 +19,6 @@
 #include "icosa-platforms/tegra210-icosa-power-tree.dtsi"
 #include "icosa-platforms/tegra210-icosa-emc.dtsi"
 #include "icosa-platforms/tegra210-icosa-sensor.dtsi"
-#include "icosa-platforms/tegra210-icosa-powermon.dtsi"
 
 / {
 	nvidia,dtsfilename = __FILE__;
