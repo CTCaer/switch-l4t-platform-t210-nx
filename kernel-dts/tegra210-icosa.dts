@@ -35,13 +35,6 @@
 		};
 	};
 
-	actmon@6000c800 {
-		status = "disabled"; // FIXME: enabling causes crashes on clock change
-		mc_all {
-			status = "disabled";
-		};
-	};
-
 	r2p {
 		compatible = "tegra-reboot2payload";
 		status = "okay";
