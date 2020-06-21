@@ -645,8 +645,8 @@
 			stm,irq_type = <0x2000>;
 			stm,regulator_avdd = "vdd-tp-3v1";
 			stm,max_coords = <1280 720>;
-			stm,max-real-coords = <1259 699>;
-			stm,edge-offset = <20 20>;
+			stm,max-real-coords = <1264 704>;
+			stm,edge-offset = <15 15>;
 			stm,firmware_name = "odin.bin";
 		};
 	};
