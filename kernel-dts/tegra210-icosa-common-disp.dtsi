@@ -40,15 +40,12 @@
 		/* tegradc.0 */
 		dc@54200000 {
 			status = "okay";
-			nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>, <TEGRA_DC_FLAG_FBCON_DISABLED>;
+			nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>;
 			nvidia,emc-clk-rate = <300000000>;
 			nvidia,fb-bpp = <32>; /* bits per pixel */
 			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
 			nvidia,dc-or-node = "/host1x/dsi";
 			nvidia,dc-connector = <&dsi>;
-			extcon-cables = <&bm92t 2>;
-			extcon-cable-names = "typec1";
-			#extcon-cells = <1>;
 		};
 
 		/* tegradc.1 */
@@ -78,18 +75,12 @@
 				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
 				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(V, 0) 0>; /* PV0 */
 				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
-				disp-default-out {
-					nvidia,out-rotation = <270>;
-				};
 			};
 			panel-o-720p-6-0-01 {
 				status = "okay";
 				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
 				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(V, 0) 0>; /* PV0 */
 				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
-				disp-default-out {
-					nvidia,out-rotation = <270>;
-				};
 			};
 		};
 
