@@ -14,7 +14,6 @@
  *
  */
 
-#include <panels/panel-a-wuxga-8-0.dtsi>
 #include <panels/panel-o-720p-6-0.dtsi>
 #include <panels/panel-o-720p-6-0-01.dtsi>
 
@@ -24,9 +23,6 @@
 		status = "okay";
 		label = "pwm-backlight";
 		power-supply = <&max77620_sd3>;
-		panel-a-wuxga-8-0-bl {
-			pwms = <&tegra_pwm 0 40161>;
-		};
 		panel-o-720p-6-0-bl {
 			pwms = <&tegra_pwm 0 40000>;
 		};
@@ -66,11 +62,6 @@
 			nvidia,dsi-controller-vs = <DSI_VS_1>;
 			status = "okay";
 			nvidia,active-panel = <&panel_o_720p_6_0_01>;
-			panel-a-wuxga-8-0 {
-				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
-				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
-				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(V, 0) 0>; /* PV0 */
-			};
 			panel-o-720p-6-0 {
 				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
 				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(V, 0) 0>; /* PV0 */
