@@ -131,18 +131,18 @@
 	};
 
 	sdhci@700b0600 { /* SDMMC4 for EMMC */
-                bus-width = <8>;
-                uhs-mask = <0x0>;       /* hs400 */
-                tap-delay = <0>;
-                max-clk-limit = <200000000>;
-                pll_source = "pll_p", "pll_c4_out2";
-                clocks = <&tegra_car TEGRA210_CLK_SDMMC4>,
-                        <&tegra_car TEGRA210_CLK_PLL_P>,
-                        <&tegra_car TEGRA210_CLK_PLL_C4_OUT2>,
-                        <&tegra_car TEGRA210_CLK_SDMMC_LEGACY>;
-                clock-names = "sdmmc", "pll_p", "pll_c4_out2", "sdmmc_legacy_tm";
-                status = "disabled";
-        };
+		bus-width = <8>;
+		uhs-mask = <0x0>;       /* hs400 */
+		tap-delay = <0>;
+		max-clk-limit = <200000000>;
+		pll_source = "pll_p", "pll_c4_out2";
+		clocks = <&tegra_car TEGRA210_CLK_SDMMC4>,
+			   <&tegra_car TEGRA210_CLK_PLL_P>,
+			   <&tegra_car TEGRA210_CLK_PLL_C4_OUT2>,
+			   <&tegra_car TEGRA210_CLK_SDMMC_LEGACY>;
+		clock-names = "sdmmc", "pll_p", "pll_c4_out2", "sdmmc_legacy_tm";
+		status = "disabled";
+    };
 
 
 	sdhci@700b0400 { /* SDMMC3 Not Used */
@@ -390,7 +390,10 @@
 		imu: lsm6dsm@0 {
 			compatible = "st,lsm6ds3";
 			reg = <0>;
-			spi-max-frequency = <13000000>;
+			spi-max-frequency = <10000000>;
+			/* TODO: Find the interrupt PIN */
+			/* interrupt-parent = <&gpio>; */
+			/* interrupts = <TEGRA_GPIO(X, 2) IRQ_TYPE_LEVEL_HIGH>; */
 			status = "okay";
 			#address-cells = <0x1>;
 			#size-cells = <0x0>;
