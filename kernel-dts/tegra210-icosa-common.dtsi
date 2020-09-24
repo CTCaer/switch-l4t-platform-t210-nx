@@ -665,6 +665,7 @@
 			interrupts = <TEGRA_GPIO(K, 4) 0x01>;
 			#extcon-cells = <1>;
 			pd_bat_chg-supply = <&battery_charger>;
+			vbus-supply = <&usb0_vbus>;
 		};
 	};
 
