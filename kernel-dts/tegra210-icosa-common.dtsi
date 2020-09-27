@@ -308,6 +308,11 @@
 			phy-names = "pcie-0";
 			nvidia,num-lanes = <1>;
 			status = "okay";
+
+			brcmf { /* PCIE-1 lane */
+				compatible = "brcm,bcm4356-fmac";
+				brcm,reset_on_wake;
+			};
 		};
 
 		pci@2,0 {
