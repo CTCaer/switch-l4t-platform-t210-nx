@@ -50,7 +50,7 @@
 
 		/* tegradc.1 */
 		dc@54240000 {
-			status = "okay";
+			status = "okay"; /* Disable to enable built-in display fbcon */
 			nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>;
 			nvidia,emc-clk-rate = <300000000>;
 			nvidia,fb-bpp = <32>; /* bits per pixel */
@@ -58,7 +58,7 @@
 			nvidia,dc-or-node = "/host1x/sor1";
 			nvidia,dc-connector = <&sor1>;
 			win-mask = <0xf>;
-			extcon-cables = <&bm92t 2>;
+			extcon-cables = <&bm92t 3>;
 			extcon-cable-names = "typec1";
 			#extcon-cells = <1>;
 		};
