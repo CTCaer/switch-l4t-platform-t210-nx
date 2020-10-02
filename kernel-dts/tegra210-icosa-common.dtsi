@@ -508,7 +508,7 @@
 
 	psy_extcon {
 		compatible = "power-supply-extcon";
-		extcon-cables = <&bm92t 1>;
+		extcon-cables = <&bq2419x 0>;
 		extcon-cable-names = "usb-charger";
 	};
 
