@@ -33,6 +33,7 @@
 			wlan-pwr-gpio = <&gpio TEGRA_GPIO(H, 0) 0>;
 			wlreg_on-supply = <&vdd_wlreg_on>;
 			reset-on-wake;
+			use-board-nvram;
 			status = "okay";
 			country_code_map {
 					CC_XV {
