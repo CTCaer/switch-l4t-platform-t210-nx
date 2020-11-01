@@ -446,11 +446,6 @@
 
 	};
 
-	joycon_base {
-		status = "okay";
-		compatible = "nintendo,joycon-base";
-	};
-
 	joyconr_charger: joyconr_charger {
 		status = "okay";
 		compatible = "regulator-fixed";
