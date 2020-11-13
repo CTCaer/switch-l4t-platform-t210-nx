@@ -462,6 +462,7 @@
 
 		joyconr {
 			status = "okay";
+			name = "joyconr";
 			compatible = "nintendo,joycon-serdev";
 			charger-supply = <&joyconr_charger>;
 		};
@@ -488,6 +489,7 @@
 
 		joyconl {
 			status = "okay";
+			name = "joyconl";
 			compatible = "nintendo,joycon-serdev";
 			charger-supply = <&joyconl_charger>;
 		};
