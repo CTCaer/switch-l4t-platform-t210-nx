@@ -446,6 +446,13 @@
 
 	};
 
+	tegra_wdt: watchdog@60005100 {
+		dt-override-status-odm-data = <0x00010000 0x00010000>;
+		timeout-sec = <120>;
+		status = "okay";
+	};
+
+
 	joyconr_charger: joyconr_charger {
 		status = "okay";
 		compatible = "regulator-fixed";
