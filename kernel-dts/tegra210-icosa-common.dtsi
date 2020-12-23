@@ -579,25 +579,44 @@
 
 		num_resources = <0>;
 		shared_data = <&thermal_fan_est_shared_data>;
-		trip_length = <10>;
-		active_trip_temps = <0 30000 35000 37000 40000
-				43000 45000 50000 54000 60000>;
-		active_hysteresis = <0 0 0 0 0
-				0 0 0 0 0>;
+		trip_length = <5>;
+
+		profiles {
+			status = "okay";
+			default = "docked";
+
+			docked {
+				status = "okay";
+				name = "docked";
+
+				active_trip_temps = <0 40000 43000 53000 58000>;
+				active_hysteresis = <0 4000 0 0 0>;
+
+			};
+
+			handheld {
+				status = "okay";
+				name = "handheld";
+
+				active_trip_temps = <0 40000 43000 48000 53000>;
+				active_hysteresis = <0 4000 0 0 5000>;
+			};
+		};
+
 		pwms = <&tegra_pwm 1 40000>;
 	};
 
 	pwm_fan_shared_data: pfsd {
-		active_steps = <10>;
-		active_rpm = <0 1000 2000 3000 4000 5000 6000 7000 10000 11000>;
-		active_rru = <40 2 1 1 1 1 1 1 1 1>;
-		active_rrd = <40 2 1 1 1 1 1 1 1 1>;
-		state_cap_lookup = <2 2 2 7 7 7 7 7 9 9>;
+		active_steps = <5>;
+		active_rpm = <0 2000 4000 6000 10000>;
+		active_rru = <40 1 1 1 1>;
+		active_rrd = <40 1 1 1 1>;
+		state_cap_lookup = <1 1 2 2 4>;
 
 		step_time = <100>; /* mesecs */
 		pwm_period = <40000>;
 		pwm_id = <1>;
-		state_cap = <9>;
+		state_cap = <4>;
 		active_pwm_max = <256>;
 		tach_gpio =  <&gpio TEGRA_GPIO(S, 7) GPIO_ACTIVE_LOW>; /* TEGRA_GPIO_PS7 */
 		pwm_gpio = <&gpio TEGRA_GPIO(V, 4) GPIO_ACTIVE_LOW>; /* TEGRA_GPIO_PV4 */
@@ -611,22 +630,22 @@
 		status = "okay";
 		pwms = <&tegra_pwm 1 40000>;
 		shared_data = <&pwm_fan_shared_data>;
-		
+
 		profiles {
 			status = "okay";
-			default = "tight";
+			default = "docked";
 
-			tight {
+			docked {
 				status = "okay";
-				name = "tight";
-				state_cap = <9>;
-				active_pwm = <0 65 75 85 105 125 150 175 200 225>;
+				name = "docked";
+				state_cap = <4>;
+				active_pwm = <0 51 153 255 255>;
 			};
-			stock {
+			handheld {
 				status = "okay";
-				name = "stock";
-				state_cap = <9>;
-				active_pwm = <0 25 35 45 75 105 125 150 200 225>;
+				name = "handheld";
+				state_cap = <4>;
+				active_pwm = <0 51 102 153 153>;
 			};
 		};
 	};
