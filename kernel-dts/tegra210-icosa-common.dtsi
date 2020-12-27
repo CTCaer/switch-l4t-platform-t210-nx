@@ -568,7 +568,7 @@
 
 		pwms = <&tegra_pwm 1 40000>;
 		dev1 {
-			dev_data = "Tboard_tegra";
+			dev_data = "Tdiode_tegra";
 			coeffs = <100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>;
 		};
 	};
