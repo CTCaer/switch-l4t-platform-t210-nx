@@ -385,6 +385,7 @@
 				ti,temp-polling-time-sec = <20>;
 				ti,pre-to-fast-charge-voltage-millivolt = <3000>;
 				ti,enable-full-plug-detection;
+				ti,disable-suspend-on-charging;
 			};
 
 			usb0_vbus: vbus {
