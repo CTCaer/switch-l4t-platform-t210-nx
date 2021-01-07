@@ -602,31 +602,6 @@
 				active_hysteresis = <0 4000 0 0 5000>;
 			};
 		};
-
-		pwms = <&tegra_pwm 1 40000>;
-
-		profiles {
-			status = "okay";
-			default = "docked";
-
-			docked {
-				status = "okay";
-				name = "docked";
-
-				active_trip_temps = <0 40000 43000 53000 58000>;
-				active_hysteresis = <0 4000 0 0 0>;
-
-			};
-
-			handheld {
-				status = "okay";
-				name = "handheld";
-
-				active_trip_temps = <0 40000 43000 48000 53000>;
-				active_hysteresis = <0 4000 0 0 4000>;
-			};
-		};
-
 	};
 
 	pwm_fan_shared_data: pfsd {
