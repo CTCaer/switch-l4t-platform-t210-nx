@@ -108,6 +108,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* SD Card Power Enable */
 			dmic3_clk_pe4 {
 				nvidia,pins = "dmic3_clk_pe4";
 				nvidia,function = "rsvd2";
@@ -116,6 +117,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Gamecard Power Enable */
 			dmic3_dat_pe5 {
 				nvidia,pins = "dmic3_dat_pe5";
 				nvidia,function = "rsvd2";
@@ -151,6 +153,7 @@
 				nvidia,io-high-voltage = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Gamecard Detect */
 			cam_i2c_sda_ps3 {
 				nvidia,pins = "cam_i2c_sda_ps3";
 				nvidia,function = "rsvd2";
@@ -168,6 +171,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Charger IC (BQ24193) Battery Charge Status */
 			cam2_mclk_ps1 {
 				nvidia,pins = "cam2_mclk_ps1";
 				nvidia,function = "rsvd1";
@@ -383,6 +387,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* SD Card Detect */
 			pz1 {
 				nvidia,pins = "pz1";
 				nvidia,function = "rsvd2";
@@ -391,6 +396,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Audio Codec (ALC5639) Power Enable */
 			pz4 {
 				nvidia,pins = "pz4";
 				nvidia,function = "rsvd1";
@@ -463,6 +469,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Touchscreen (4CD60D) Reset */
 			dap4_sclk_pj7 {
 				nvidia,pins = "dap4_sclk_pj7";
 				nvidia,function = "rsvd1";
@@ -547,6 +554,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Bluetooth GPIO2 */
 			pk0 {
 				nvidia,pins = "pk0";
 				nvidia,function = "rsvd2";
@@ -555,6 +563,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Bluetooth GPIO3 */
 			pk1 {
 				nvidia,pins = "pk1";
 				nvidia,function = "rsvd2";
@@ -563,6 +572,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Bluetooth GPIO4 */
 			pk2 {
 				nvidia,pins = "pk2";
 				nvidia,function = "rsvd2";
@@ -571,9 +581,20 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Joycon (R) Charge Enable */
 			pk3 {
 				nvidia,pins = "pk3";
 				nvidia,function = "rsvd2";
+				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+				nvidia,open-drain = <TEGRA_PIN_DISABLE>;
+			};
+
+			/* Joycon (L) Charge Enable */
+			spdif_in_pcc3 {
+				nvidia,pins = "spdif_in_pcc3";
+				nvidia,function = "rsvd1";
 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
@@ -792,6 +813,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* 5V Regulator - USB */
 			usb_vbus_en0_pcc4 {
 				nvidia,pins = "usb_vbus_en0_pcc4";
 				nvidia,function = "rsvd1";
@@ -828,6 +850,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Gamecard Reset */
 			gpio_x1_aud_pbb3 {
 				nvidia,pins = "gpio_x1_aud_pbb3";
 				nvidia,function = "rsvd0";
@@ -836,6 +859,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Audio Codec (ALC5639) Alert */
 			gpio_x3_aud_pbb4 {
 				nvidia,pins = "gpio_x3_aud_pbb4";
 				nvidia,function = "rsvd0";
@@ -844,6 +868,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Joycon (L) Wake Detect */
 			pe6 {
 				nvidia,pins = "pe6";
 				nvidia,function = "rsvd0";
@@ -869,6 +894,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Charger IC (BQ24193) Battery Charge Enable */
 			cam_flash_en_ps6 {
 				nvidia,pins = "cam_flash_en_ps6";
 				nvidia,function = "rsvd2";
@@ -877,6 +903,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Fan Tachometer */
 			cam1_pwdn_ps7 {
 				nvidia,pins = "cam1_pwdn_ps7";
 				nvidia,function = "rsvd1";
@@ -901,6 +928,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* 5V Regulator - Battery */
 			sata_led_active_pa5 {
 				nvidia,pins = "sata_led_active_pa5";
 				nvidia,function = "rsvd1";
@@ -917,6 +945,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Temperature Sensor (TMP451) Alert */
 			temp_alert_px4 {
 				nvidia,pins = "temp_alert_px4";
 				nvidia,function = "rsvd0";
@@ -925,6 +954,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Motion IRQ (Unused?) */
 			motion_int_px2 {
 				nvidia,pins = "motion_int_px2";
 				nvidia,function = "rsvd0";
@@ -933,6 +963,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Audio Codec (ALC5639) Headphone Detect */
 			touch_rst_pv6 {
 				nvidia,pins = "touch_rst_pv6";
 				nvidia,function = "rsvd0";
@@ -949,6 +980,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Touchscreen (4CD60D) IRQ */
 			touch_int_px1 {
 				nvidia,pins = "touch_int_px1";
 				nvidia,function = "rsvd0";
@@ -965,6 +997,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Sleep Button 2 (Unused?) */
 			button_power_on_px5 {
 				nvidia,pins = "button_power_on_px5";
 				nvidia,function = "rsvd0";
@@ -973,6 +1006,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Volume Up Button */
 			button_vol_up_px6 {
 				nvidia,pins = "button_vol_up_px6";
 				nvidia,function = "rsvd0";
@@ -981,6 +1015,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Volume Down Button */
 			button_vol_down_px7 {
 				nvidia,pins = "button_vol_down_px7";
 				nvidia,function = "rsvd0";
@@ -989,6 +1024,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Home Button (RCM) */
 			button_home_py1 {
 				nvidia,pins = "button_home_py1";
 				nvidia,function = "rsvd0";
@@ -997,6 +1033,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* LCD Backlight Power Enable */
 			lcd_bl_en_pv1 {
 				nvidia,pins = "lcd_bl_en_pv1";
 				nvidia,function = "rsvd0";
@@ -1005,6 +1042,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* LCD Reset */
 			lcd_rst_pv2 {
 				nvidia,pins = "lcd_rst_pv2";
 				nvidia,function = "rsvd0";
@@ -1013,6 +1051,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* USB-PD (BM92T36) Reset */
 			ap_ready_pv5 {
 				nvidia,pins = "ap_ready_pv5";
 				nvidia,function = "rsvd0";
@@ -1021,6 +1060,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Charger IC (BQ24193) IRQ */
 			pz0 {
 				nvidia,pins = "pz0";
 				nvidia,function = "rsvd1";
@@ -1029,6 +1069,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* SD Card Write Protect */
 			pz3 {
 				nvidia,pins = "pz3";
 				nvidia,function = "rsvd1";
@@ -1037,6 +1078,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* USB-PD (BM92T36) IRQ */
 			pk4 {
 				nvidia,pins = "pk4";
 				nvidia,function = "rsvd1";
@@ -1045,6 +1087,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* USB-PD (BM92T36) VCONN Power Enable */
 			pk5 {
 				nvidia,pins = "pk5";
 				nvidia,function = "rsvd1";
@@ -1053,6 +1096,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* PMIC CPU (MAX77621_CPU) IRQ */
 			pk6 {
 				nvidia,pins = "pk6";
 				nvidia,function = "rsvd1";
@@ -1061,6 +1105,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* PMIC GPU (MAX77621_GPU) IRQ */
 			pk7 {
 				nvidia,pins = "pk7";
 				nvidia,function = "rsvd1";
@@ -1077,6 +1122,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Wi-Fi RF Disable */
 			wifi_en_ph0 {
 				nvidia,pins = "wifi_en_ph0";
 				nvidia,function = "rsvd0";
@@ -1085,6 +1131,16 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Wi-Fi Reset */
+			wifi_rst_ph1 {
+				nvidia,pins = "wifi_rst_ph1";
+				nvidia,function = "rsvd0";
+				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+			};
+
+			/* Bluetooth - BT Module -> Wake Host */
 			wifi_wake_ap_ph2 {
 				nvidia,pins = "wifi_wake_ap_ph2";
 				nvidia,function = "rsvd0";
@@ -1093,6 +1149,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Bluetooth - AP -> Wake BT Module */
 			ap_wake_bt_ph3 {
 				nvidia,pins = "ap_wake_bt_ph3";
 				nvidia,function = "rsvd0";
@@ -1101,6 +1158,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Bluetooth Reset */
 			bt_rst_ph4 {
 				nvidia,pins = "bt_rst_ph4";
 				nvidia,function = "rsvd0";
@@ -1109,6 +1167,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Bluetooth - BT Module -> Wake AP */
 			bt_wake_ap_ph5 {
 				nvidia,pins = "bt_wake_ap_ph5";
 				nvidia,function = "rsvd0";
@@ -1117,6 +1176,7 @@
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 
+			/* Joycon (R) Wake Detect */
 			ph6 {
 				nvidia,pins = "ph6";
 				nvidia,function = "rsvd0";
@@ -1126,6 +1186,7 @@
 				nvidia,open-drain = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Bluetooth GPIO5 */
 			ap_wake_nfc_ph7 {
 				nvidia,pins = "ap_wake_nfc_ph7";
 				nvidia,function = "rsvd0";
@@ -1134,6 +1195,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* LCD Power Enable +5V */
 			nfc_en_pi0 {
 				nvidia,pins = "nfc_en_pi0";
 				nvidia,function = "rsvd0";
@@ -1142,6 +1204,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* LCD Power Enable -5V */
 			nfc_int_pi1 {
 				nvidia,pins = "nfc_int_pi1";
 				nvidia,function = "rsvd0";
@@ -1182,6 +1245,15 @@
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 				nvidia,io-high-voltage = <TEGRA_PIN_DISABLE>;
+			};
+
+			/* Fuel Gauge IC (MAX17050) IRQ */
+			button_slide_sw_py0 {
+				nvidia,pins = "button_slide_sw_py0";
+				nvidia,function = "rsvd0";
+				nvidia,pull = <TEGRA_PIN_PULL_UP>;
+				nvidia,tristate = <TEGRA_PIN_ENABLE>;
+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 		};
 
@@ -1242,14 +1314,6 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
-			button_slide_sw_py0 {
-				nvidia,pins = "button_slide_sw_py0";
-				nvidia,function = "rsvd0";
-				nvidia,pull = <TEGRA_PIN_PULL_UP>;
-				nvidia,tristate = <TEGRA_PIN_ENABLE>;
-				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
-			};
-
 			lcd_gpio1_pv3 {
 				nvidia,pins = "lcd_gpio1_pv3";
 				nvidia,function = "rsvd1";
@@ -1264,22 +1328,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
-			};
-
-			pz4 {
-				nvidia,pins = "pz4";
-				nvidia,function = "rsvd1";
-				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
-				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-			};
-
-			wifi_rst_ph1 {
-				nvidia,pins = "wifi_rst_ph1";
-				nvidia,function = "rsvd0";
-				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
-				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
 			gps_rst_pi3 {
@@ -1345,16 +1393,6 @@
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
-
-			spdif_in_pcc3 {
-				nvidia,pins = "spdif_in_pcc3";
-				nvidia,function = "rsvd1";
-				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
-				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				nvidia,open-drain = <TEGRA_PIN_DISABLE>;
-			};
-
 		};
 
 		drive_default: drive {
