@@ -1396,10 +1396,60 @@
 		};
 
 		drive_default: drive {
+			aud_mclk_pbb0 {
+				nvidia,pins = "aud_mclk_pbb0";
+				nvidia,pull-down-strength = <0x10>;
+				nvidia,pull-up-strength = <0x10>;
+			};
+			cam2_mclk_ps1 {
+				nvidia,pins = "cam2_mclk_ps1";
+				nvidia,pull-down-strength = <0x10>;
+				nvidia,pull-up-strength = <0x10>;
+			};
+			cam_flash_en_ps6 {
+				nvidia,pins = "cam_flash_en_ps6";
+				nvidia,pull-down-strength = <0x10>;
+				nvidia,pull-up-strength = <0x10>;
+			};
+			cam_i2c_sda_ps3 {
+				nvidia,pins = "cam_i2c_sda_ps3";
+				nvidia,pull-down-strength = <0x1F>;
+			};
+			dmic3_clk_pe4 {
+				nvidia,pins = "dmic3_clk_pe4";
+				nvidia,pull-down-strength = <0x1F>;
+				nvidia,pull-up-strength = <0x1F>;
+			};
+			dmic3_dat_pe5 {
+				nvidia,pins = "dmic3_dat_pe5";
+				nvidia,pull-down-strength = <0x1F>;
+				nvidia,pull-up-strength = <0x1F>;
+			};
+			dap4_sclk_pj7 {
+				nvidia,pins = "dap4_sclk_pj7";
+				nvidia,pull-down-strength = <0x10>;
+				nvidia,pull-up-strength = <0x10>;
+			};
 			touch_clk_pv7 {
 				nvidia,pins = "touch_clk_pv7";
 				nvidia,pull-down-strength = <0x14>;
 				nvidia,pull-up-strength = <0x14>;
+			};
+			gen1_i2c_scl_pj1 {
+				nvidia,pins = "gen1_i2c_scl_pj1";
+				nvidia,pull-down-strength = <0x1F>;
+			};
+			gen1_i2c_sda_pj0 {
+				nvidia,pins = "gen1_i2c_sda_pj0";
+				nvidia,pull-down-strength = <0x1F>;
+			};
+			gen2_i2c_scl_pj2 {
+				nvidia,pins = "gen2_i2c_scl_pj2";
+				nvidia,pull-down-strength = <0x1F>;
+			};
+			gen2_i2c_sda_pj3 {
+				nvidia,pins = "gen2_i2c_sda_pj3";
+				nvidia,pull-down-strength = <0x1F>;
 			};
 			gen3_i2c_scl_pf0 {
 				nvidia,pins = "gen3_i2c_scl_pf0";
@@ -1408,6 +1458,54 @@
 			gen3_i2c_sda_pf1 {
 				nvidia,pins = "gen3_i2c_sda_pf1";
 				nvidia,pull-down-strength = <0x7>;
+			};
+			pwr_i2c_scl_py3 {
+				nvidia,pins = "pwr_i2c_scl_py3";
+				nvidia,pull-down-strength = <0x1F>;
+			};
+			pwr_i2c_sda_py4 {
+				nvidia,pins = "pwr_i2c_sda_py4";
+				nvidia,pull-down-strength = <0x1F>;
+			};
+			pz0 {
+				nvidia,pins = "pz0";
+				nvidia,pull-down-strength = <0x10>;
+				nvidia,pull-up-strength = <0x10>;
+			};
+			pz1 {
+				nvidia,pins = "pz1";
+				nvidia,pull-down-strength = <0x10>;
+				nvidia,pull-up-strength = <0x10>;
+			};
+			gpio_x1_aud_pbb3 {
+				nvidia,pins = "gpio_x1_aud_pbb3";
+				nvidia,pull-down-strength = <0x04>;
+				nvidia,pull-up-strength = <0x14>;
+			};
+			gpio_x3_aud_pbb4 {
+				nvidia,pins = "gpio_x3_aud_pbb4";
+				nvidia,pull-down-strength = <0x04>;
+				nvidia,pull-up-strength = <0x14>;
+			};
+			uart3_tx_pd1 {
+				nvidia,pins = "uart3_tx_pd1";
+				nvidia,pull-down-strength = <0x04>;
+				nvidia,pull-up-strength = <0x14>;
+			};
+			uart3_rx_pd2 {
+				nvidia,pins = "uart3_rx_pd2";
+				nvidia,pull-down-strength = <0x04>;
+				nvidia,pull-up-strength = <0x14>;
+			};
+			uart3_rts_pd3 {
+				nvidia,pins = "uart3_rts_pd3";
+				nvidia,pull-down-strength = <0x04>;
+				nvidia,pull-up-strength = <0x14>;
+			};
+			uart3_cts_pd4 {
+				nvidia,pins = "uart3_cts_pd4";
+				nvidia,pull-down-strength = <0x04>;
+				nvidia,pull-up-strength = <0x14>;
 			};
 		};
 	};
