@@ -661,12 +661,11 @@
 			interrupt-parent = <&gpio>;
 			interrupts = <TEGRA_GPIO(X, 1) IRQ_TYPE_LEVEL_LOW>;
 			stm,vio-gpio = <&gpio TEGRA_GPIO(J, 7) GPIO_ACTIVE_HIGH>;
-			stm,irq_type = <0x2000>;
+			stm,irq_type = <0x2000>; /* IRQF_ONESHOT */
 			stm,regulator_avdd = "vdd-tp-3v1";
 			stm,max_coords = <1280 720>;
 			stm,max-real-coords = <1264 704>;
 			stm,edge-offset = <15 15>;
-			stm,firmware_name = "odin.bin";
 		};
 	};
 
