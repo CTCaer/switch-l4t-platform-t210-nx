@@ -72,13 +72,23 @@
 			gpio-hog;
 			output-high;
 			gpios = <
-				TEGRA_GPIO(K, 3) 0  /* Joycon (R) Charge Enable */
 				TEGRA_GPIO(CC, 3) 0 /* Joycon (L) Charge Enable */
+				TEGRA_GPIO(K, 3) 0  /* Joycon (R) Charge Enable */
 				>;
 			line-name = "boot-default-output-high";
 		};
 
-		suspend-output-low {
+		system-suspend-output-low {
+			gpio-suspend;
+			suspend-output-low;
+			output-low;
+			gpios = <
+				TEGRA_GPIO(CC, 3) 0 /* Joycon (L) Charge Enable */
+				TEGRA_GPIO(K, 3) 0  /* Joycon (R) Charge Enable */
+				TEGRA_GPIO(V, 0) 0  /* LCD Backlight PWM */
+				TEGRA_GPIO(V, 2) 0  /* LCD Reset */
+				TEGRA_GPIO(V, 4) 0  /* Fan PWM */
+				>;
 		};
 	};
 };
