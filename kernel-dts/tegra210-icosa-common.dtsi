@@ -682,7 +682,7 @@
 		clock-frequency = <100000>;
 		rt5639: rt5639.0-001c@1c {
 			compatible = "realtek,rt5639";
-			gpios = <&gpio TEGRA_GPIO(V, 6) GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio TEGRA_GPIO(V, 6) GPIO_ACTIVE_LOW>;
 			realtek,ldo1-en-gpios = <&gpio TEGRA_GPIO(Z, 4) GPIO_ACTIVE_HIGH>;
 			reg = <0x1c>;
 			jd_src = <4>;
@@ -692,7 +692,7 @@
 			compatible = "rohm,bm92t";
 			reg = <0x18>;
 			interrupt-parent = <&gpio>;
-			interrupts = <TEGRA_GPIO(K, 4) 0x01>;
+			interrupts = <TEGRA_GPIO(K, 4) IRQ_TYPE_EDGE_RISING>;
 			#extcon-cells = <1>;
 			pd_bat_chg-supply = <&battery_charger>;
 			vbus-supply = <&usb0_vbus>;

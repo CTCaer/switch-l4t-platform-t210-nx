@@ -1142,7 +1142,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
-			/* Bluetooth - BT Module -> Wake Host */
+			/* Wi-Fi Wake Host */
 			wifi_wake_ap_ph2 {
 				nvidia,pins = "wifi_wake_ap_ph2";
 				nvidia,function = "rsvd0";

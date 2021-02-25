@@ -19,7 +19,7 @@
 		wlan-default-input {
 			gpio-hog;
 			input;
-			gpios = <TEGRA_GPIO(H, 2) 0>;
+			gpios = <TEGRA_GPIO(H, 2) 1>;
 			label = "wlan-default-input-h2";
 		};
 	};
