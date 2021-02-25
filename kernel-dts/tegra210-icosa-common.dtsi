@@ -199,6 +199,7 @@
 			   <&tegra_car TEGRA210_CLK_PLL_C4_OUT2>,
 			   <&tegra_car TEGRA210_CLK_SDMMC_LEGACY>;
 		clock-names = "sdmmc", "pll_p", "pll_c4_out2", "sdmmc_legacy_tm";
+		nvidia,cd-wakeup-capable;
 		status = "okay";
 	};
 
@@ -484,7 +485,10 @@
 			compatible = "brcm,bcm43438-bt";
 			shutdown-gpios = <&gpio TEGRA_GPIO(H, 4) GPIO_ACTIVE_HIGH>;
 			device-wakeup-gpios = <&gpio TEGRA_GPIO(H, 3) GPIO_ACTIVE_LOW>;
+			/* host-wakeup-gpios = <&gpio TEGRA_GPIO(H, 5) GPIO_ACTIVE_LOW>; */
 			max-speed = <3000000>; /* Max supported 4 MBaud */
+			/* nvidia,pmc-wakeup = <&tegra_pmc PMC_WAKE_TYPE_EVENT 52 PMC_TRIGGER_TYPE_LOW>; */
+
 		};
 	};
 
@@ -536,9 +540,6 @@
 		phys = <&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-0}>,
 			   <&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-6}>;
 		phy-names = "usb2-0", "usb3-0";
-		nvidia,pmc-wakeup =
-			<&tegra_pmc
-				PMC_WAKE_TYPE_EVENT 41 PMC_TRIGGER_TYPE_HIGH>;
 		extcon-cables = <&bm92t 0>;
 		extcon-cable-names = "id";
 
@@ -696,6 +697,8 @@
 			#extcon-cells = <1>;
 			pd_bat_chg-supply = <&battery_charger>;
 			vbus-supply = <&usb0_vbus>;
+			nvidia,pmc-wakeup = <&tegra_pmc
+				PMC_WAKE_TYPE_EVENT 14 PMC_TRIGGER_TYPE_LOW>;
 		};
 	};
 

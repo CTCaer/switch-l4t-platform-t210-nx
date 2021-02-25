@@ -28,5 +28,7 @@
 		compatible = "brcm,bcm4356-fmac";
 		status = "okay";
 		brcm,reset_on_wake;
+		nvidia,pmc-wakeup = <&tegra_pmc
+				PMC_WAKE_TYPE_EVENT 8 PMC_TRIGGER_TYPE_HIGH>; /* WiFi Wake Ap (H, 2) */
 	};
 };
