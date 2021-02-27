@@ -360,8 +360,11 @@
 			reg = <0x6b>;
 
 			interrupt-parent = <&gpio>;
-			interrupts = <TEGRA_GPIO(Z, 0) 0x0>;
+			interrupts = <TEGRA_GPIO(Z, 0) IRQ_TYPE_NONE>;
 			#extcon-cells = <1>;
+
+			//nvidia,pmc-wakeup = <&tegra_pmc
+			//	PMC_WAKE_TYPE_EVENT 34 PMC_TRIGGER_TYPE_LOW>;
 
 			#thermal-sensor-cells = <0>;
 
@@ -386,6 +389,8 @@
 				ti,pre-to-fast-charge-voltage-millivolt = <3000>;
 				ti,enable-full-plug-detection;
 				ti,disable-suspend-on-charging;
+				ti,watchdog-timeout = <0>; /* Disable OTG/Charging Watchdog */
+				ti,no-otg-watchdog; /* Allow suspend while in OTG */
 			};
 
 			usb0_vbus: vbus {
