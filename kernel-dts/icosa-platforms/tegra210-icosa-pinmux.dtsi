@@ -337,6 +337,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* LCD Backlight PWM */
 			lcd_bl_pwm_pv0 {
 				nvidia,pins = "lcd_bl_pwm_pv0";
 				nvidia,function = "pwm0";
@@ -345,6 +346,7 @@
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 
+			/* Fan PWM */
 			lcd_gpio2_pv4 {
 				nvidia,pins = "lcd_gpio2_pv4";
 				nvidia,function = "pwm1";
