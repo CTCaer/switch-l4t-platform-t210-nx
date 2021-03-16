@@ -24,25 +24,23 @@
 			gpio-hog;
 			input;
 			gpios = <
-				TEGRA_GPIO(E, 6) 0 /* Joycon (L) Wake Detect */
-				TEGRA_GPIO(X, 3) 0
+				TEGRA_GPIO(E, 6) 1 /* Joycon (L) Wake Detect */
 				TEGRA_GPIO(X, 4) 0 /* Temperature Sensor (TMP451) Alert */
-				TEGRA_GPIO(X, 2) 0 /* Motion IRQ (Unused?) */
+				TEGRA_GPIO(X, 2) 1 /* Motion IRQ (Unused?) */
 				TEGRA_GPIO(X, 1) 0 /* Touchscreen (4CD60D) IRQ */
-				TEGRA_GPIO(X, 0) 0
 				TEGRA_GPIO(X, 5) 0 /* Sleep Button 2 (Unused?) */
 				TEGRA_GPIO(X, 6) 0 /* Volume Up Button */
 				TEGRA_GPIO(X, 7) 0 /* Volume Down Button */
-				TEGRA_GPIO(Y, 1) 0 /* Home Button (RCM) */
+				TEGRA_GPIO(Y, 1) 1 /* Home Button (RCM) */
 				TEGRA_GPIO(Y, 0) 0 /* Fuel Gauge IC (MAX17050) IRQ */
 				TEGRA_GPIO(Z, 0) 0 /* Charger IC (BQ24193) IRQ */
-				TEGRA_GPIO(S, 1) 0 /* Charger IC (BQ24193) Battery Charge Status */
+				TEGRA_GPIO(S, 1) 1 /* Charger IC (BQ24193) Battery Charge Status */
 				TEGRA_GPIO(K, 4) 0 /* USB-PD (BM92T36) IRQ */
-				TEGRA_GPIO(H, 2) 0 /* Bluetooth - BT Module -> Wake Host */
-				TEGRA_GPIO(H, 5) 0 /* Bluetooth - BT Module -> Wake AP */
-				TEGRA_GPIO(H, 6) 0 /* Joycon (R) Wake Detect */
-				TEGRA_GPIO(P, 0) 0
-				TEGRA_GPIO(V, 6) 0 /* Audio Codec (ALC5639) Headphone Detect */
+				TEGRA_GPIO(H, 2) 1 /* Wi-Fi Wake Host */
+				TEGRA_GPIO(H, 5) 1 /* Bluetooth - BT Module -> Wake AP */
+				TEGRA_GPIO(H, 6) 1 /* Joycon (R) Wake Detect */
+				TEGRA_GPIO(P, 0) 1
+				TEGRA_GPIO(V, 6) 1 /* Audio Codec (ALC5639) Headphone Detect */
 				>;
 			line-name = "boot-default-input";
 		};
@@ -86,8 +84,8 @@
 				TEGRA_GPIO(CC, 3) 0 /* Joycon (L) Charge Enable */
 				TEGRA_GPIO(K, 3) 0  /* Joycon (R) Charge Enable */
 				TEGRA_GPIO(V, 0) 0  /* LCD Backlight PWM */
+				TEGRA_GPIO(V, 1) 0  /* LCD Backlight Enable */
 				TEGRA_GPIO(V, 2) 0  /* LCD Reset */
-				TEGRA_GPIO(V, 4) 0  /* Fan PWM */
 				>;
 		};
 	};
