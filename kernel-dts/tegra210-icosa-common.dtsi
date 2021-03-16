@@ -420,26 +420,29 @@
 
 	cpufreq {
 		cpu-scaling-data {
-			freq-table = <102000
-						  204000
-						  306000
-						  408000
-						  510000
-						  612000
-						  714000
-						  816000
-						  918000
-						  1020000
-						  1122000
-						  1224000
-						  1326000
-						  1428000
-						  1581000
-						  1683000
-						  1785000
-						  1887000
-						  1989000
-						  2091000>;
+			freq-table = <
+				102000
+				204000
+				306000
+				408000
+				510000
+				612000
+				714000
+				816000
+				918000
+				1020000
+				1122000
+				1224000
+				1326000
+				1428000
+				1581000
+				1683000
+				1785000
+				/* OC */
+				1887000
+				1989000
+				2091000
+			>;
 			default-max-frequency = <1785000>;
 		};
 
@@ -473,6 +476,7 @@
 
 		joyconr {
 			status = "okay";
+			name = "joyconr";
 			compatible = "nintendo,joycon-serdev";
 			charger-supply = <&joyconr_charger>;
 		};
@@ -509,6 +513,7 @@
 
 		joyconl {
 			status = "okay";
+			name = "joyconl";
 			compatible = "nintendo,joycon-serdev";
 			charger-supply = <&joyconl_charger>;
 		};
@@ -567,13 +572,20 @@
 		secret = <37>;
 		toffset = <0>;
 		polling_period = <1100>;
-		ndevs = <1>;
+		ndevs = <2>;
 		cdev_type = "pwm-fan";
-		tzp_governor_name = "pid_thermal_gov";
+		tzp_governor_name = "continuous_therm_gov";
 
-		pwms = <&tegra_pwm 1 40000>;
 		dev1 {
+			dev_data = "Tdiode_tegra";
+			group = <0>;
+			/* Based on Console profile's SoC: 95%  */
+			coeffs = <95 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>;
+		};
+
+		dev2 {
 			dev_data = "Tboard_tegra";
+			group = <1>;
 			coeffs = <100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>;
 		};
 	};
@@ -581,57 +593,112 @@
 	thermal-fan-est {
 		compatible = "thermal-fan-est";
 		name = "thermal-fan-est";
+		status = "okay";
 
 		num_resources = <0>;
 		shared_data = <&thermal_fan_est_shared_data>;
 		trip_length = <10>;
-		active_trip_temps = <0 30000 35000 37000 40000
-				43000 45000 50000 54000 60000>;
-		active_hysteresis = <0 0 0 0 0
-				0 0 0 0 0>;
-		pwms = <&tegra_pwm 1 40000>;
+
+		thermal-zone-params {
+			governor-name = "continuous_therm_gov";
+			iir_power = <7>;
+			iir_min = <10>;
+			iir_max = <1000>;
+			iir_gain_qp = <1000>;
+			iir_upper_width = <5000>;
+			iir_lower_width = <15000>;
+		};
+
+		/*
+		 * HOS Thermal Trips
+		 * Estimated shell:
+		 * Tskin        36000 40000 43000 48000 53000 58000
+		 *
+		 * Console profile actual:
+		 * Tdiode       36000 45701 50554 58642 66730 74818
+		 * Tboard       36000 43084 47774 55592 63409 71227
+		 * Ratio b/d:   1.00  0.94  0.95  0.95  0.95  0.95 : 0.95
+		 * Ratio s/d:   1.00  0.88  0.85  0.82  0.79  0.78
+		 * Ratio s/b:   1.00  0.93  0.90  0.86  0.84  0.81
+		 *
+		 * Handheld profile actual:
+		 * Tdiode       36000 40412 45904 55054 64204 73356
+		 * Tboard       36000 45630 50786 59382 67978 76573
+		 * Ratio d/b:   1.00  0.89  0.90  0.93  0.94  0.96 : 0.92
+		 * Ratio s/d:   1.00  0.99  0.94  0.87  0.83  0.79
+		 * Ratio s/b:   1.00  0.88  0.85  0.81  0.78  0.76
+		 */
+
+		profiles {
+			default = "Console";
+			Console {
+				name = "Console";
+				active_trip_temps = <
+					0 36000 43100 47800 55600 63400 71200
+					80000 90000 100000>; /* Unused */
+				active_hysteresis = <0 0 7000 4600 0 0 0 0 0 0>;
+			};
+			Handheld {
+				name = "Handheld";
+				active_trip_temps = <
+					0 36000 40400 45900 55100 64200 73400
+					80000 90000 100000>; /* Unused */
+				active_hysteresis = <0 0 4300 5400 0 0 9100 0 0 0>;
+			};
+			Cool {
+				name = "Cool";
+				active_trip_temps = <
+					0 30000 36000 40400 45900 55100 64200
+					80000 90000 100000>; /* Unused */
+				active_hysteresis = <0 0 0 0 0 0 0 0 0 0>;
+			};
+		};
 	};
 
 	pwm_fan_shared_data: pfsd {
+		secret = <47>;
+		num_resources = <0>;
 		active_steps = <10>;
-		active_rpm = <0 1000 2000 3000 4000 5000 6000 7000 10000 11000>;
-		active_rru = <40 2 1 1 1 1 1 1 1 1>;
-		active_rrd = <40 2 1 1 1 1 1 1 1 1>;
-		state_cap_lookup = <2 2 2 7 7 7 7 7 9 9>;
+		active_rpm = <0 0 2600 2600 4900 6900 10000 10000 10000 10000>;
+		active_rru = <10 10 10 1 1 1 1 1 1 1>;
+		active_rrd = <10 10 10 1 1 1 1 1 1 1>;
+		state_cap_lookup = <1 1 2 6 6 6 6 6 6 6>;
 
-		step_time = <100>; /* mesecs */
-		pwm_period = <40000>;
+		pwm_period = <33333>;
 		pwm_id = <1>;
-		state_cap = <9>;
+		pwm_polarity = <1>;
+		step_time = <100>;
+		state_cap = <6>;
 		active_pwm_max = <256>;
 		tach_gpio =  <&gpio TEGRA_GPIO(S, 7) GPIO_ACTIVE_LOW>; /* TEGRA_GPIO_PS7 */
 		pwm_gpio = <&gpio TEGRA_GPIO(V, 4) GPIO_ACTIVE_LOW>; /* TEGRA_GPIO_PV4 */
 		tach_period = <1000>;
-		pwms = <&tegra_pwm 1 40000>;
 	};
 
 	pwm-fan {
 		compatible = "pwm-fan";
 		name = "pwm-fan";
 		status = "okay";
-		pwms = <&tegra_pwm 1 40000>;
+		pwms = <&tegra_pwm 1 33333>;
 		shared_data = <&pwm_fan_shared_data>;
-		
-		profiles {
-			status = "okay";
-			default = "tight";
+		continuous_gov_boot_on;
 
-			tight {
-				status = "okay";
-				name = "tight";
-				state_cap = <9>;
-				active_pwm = <0 65 75 85 105 125 150 175 200 225>;
+		profiles {
+			default = "Console";
+			Console {
+				name = "Console";
+				state_cap = <6>;
+				active_pwm = <0 0 51 51 102 153 255 255 255 255>;
 			};
-			stock {
-				status = "okay";
-				name = "stock";
-				state_cap = <9>;
-				active_pwm = <0 25 35 45 75 105 125 150 200 225>;
+			Handheld {
+				name = "Handheld";
+				state_cap = <6>;
+				active_pwm = <0 0 51 51 102 153 204 204 204 204>;
+			};
+			Cool {
+				name = "Cool";
+				state_cap = <6>;
+				active_pwm = <0 0 51 51 102 153 255 255 255 255>;
 			};
 		};
 	};
@@ -904,13 +971,67 @@
 		};
 		Tboard_tegra {
 			status = "okay";
+			polling-delay = <0>;
+			polling-delay-passive = <5500>;
+
+			trips {
+				board_emergency {
+					temperature = <85000>;
+					hysteresis = <1000>;
+					type = "active";
+					writable;
+				};
+			};
+			cooling-maps {
+				map0 {
+					trip = <&{/thermal-zones/Tboard_tegra/trips/board_emergency}>;
+					cdev-type = "emergency-balanced";
+					cooling-device = <&{/bthrot_cdev/emergency_balanced}
+						THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+				};
+			};
 		};
 		Tdiode_tegra {
 			status = "okay";
+			polling-delay = <0>;
+			polling-delay-passive = <1100>;
+
+			trips {
+				soc_critical {
+					temperature = <96000>;
+					hysteresis = <0>;
+					type = "critical";
+					writable;
+				};
+				soc_emergency {
+					temperature = <85000>;
+					hysteresis = <1000>;
+					type = "active";
+					writable;
+				};
+			};
+			cooling-maps {
+				map0 {
+					trip = <&{/thermal-zones/Tdiode_tegra/trips/soc_critical}>;
+					cdev-type = "tegra-shutdown";
+					cooling-device = <&{/soctherm@0x700E2000/throttle@critical}
+						THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+				};
+				map1 {
+					trip = <&{/thermal-zones/Tdiode_tegra/trips/soc_emergency}>;
+					cdev-type = "emergency-balanced";
+					cooling-device = <&{/bthrot_cdev/emergency_balanced}
+						THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+				};
+			};
 		};
 		AO-therm {
 			status = "okay";
 		};
+	};
+
+	dummy_cool_dev: dummy-cool-dev {
+		status = "disabled";
 	};
 
 	clock@70110000 {
