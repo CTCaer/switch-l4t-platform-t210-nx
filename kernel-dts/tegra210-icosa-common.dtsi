@@ -200,6 +200,7 @@
 			   <&tegra_car TEGRA210_CLK_PLL_C4_OUT2>,
 			   <&tegra_car TEGRA210_CLK_SDMMC_LEGACY>;
 		clock-names = "sdmmc", "pll_p", "pll_c4_out2", "sdmmc_legacy_tm";
+		nvidia,cd-wakeup-capable;
 		status = "okay";
 	};
 
@@ -315,6 +316,8 @@
 			brcmf { /* PCIE-1 lane */
 				compatible = "brcm,bcm4356-fmac";
 				brcm,reset_on_wake;
+				/* nvidia,pmc-wakeup = <&tegra_pmc
+					PMC_WAKE_TYPE_EVENT 8 PMC_TRIGGER_TYPE_HIGH>; */ /* WiFi Wake Ap (H, 2) */
 			};
 		};
 
@@ -451,7 +454,6 @@
 				1036800 1600000
 			>;
 		};
-
 	};
 
 	joyconr_charger: joyconr_charger {
@@ -484,7 +486,9 @@
 			compatible = "brcm,bcm43438-bt";
 			shutdown-gpios = <&gpio TEGRA_GPIO(H, 4) GPIO_ACTIVE_HIGH>;
 			device-wakeup-gpios = <&gpio TEGRA_GPIO(H, 3) GPIO_ACTIVE_LOW>;
+			/* host-wakeup-gpios = <&gpio TEGRA_GPIO(H, 5) GPIO_ACTIVE_LOW>; */
 			max-speed = <3000000>; /* Max supported 4 MBaud */
+			/* nvidia,pmc-wakeup = <&tegra_pmc PMC_WAKE_TYPE_EVENT 52 PMC_TRIGGER_TYPE_LOW>; */
 		};
 	};
 
@@ -535,9 +539,6 @@
 		phys = <&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-0}>,
 			   <&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-6}>;
 		phy-names = "usb2-0", "usb3-0";
-		nvidia,pmc-wakeup =
-			<&tegra_pmc
-				PMC_WAKE_TYPE_EVENT 41 PMC_TRIGGER_TYPE_HIGH>;
 		extcon-cables = <&bm92t 0>;
 		extcon-cable-names = "id";
 
@@ -647,12 +648,11 @@
 			interrupt-parent = <&gpio>;
 			interrupts = <TEGRA_GPIO(X, 1) IRQ_TYPE_LEVEL_LOW>;
 			stm,vio-gpio = <&gpio TEGRA_GPIO(J, 7) GPIO_ACTIVE_HIGH>;
-			stm,irq_type = <0x2000>;
+			stm,irq_type = <0x2000>; /* IRQF_ONESHOT */
 			stm,regulator_avdd = "vdd-tp-3v1";
 			stm,max_coords = <1280 720>;
 			stm,max-real-coords = <1264 704>;
 			stm,edge-offset = <15 15>;
-			stm,firmware_name = "odin.bin";
 		};
 	};
 
@@ -661,7 +661,7 @@
 		clock-frequency = <100000>;
 		rt5639: rt5639.0-001c@1c {
 			compatible = "realtek,rt5639";
-			gpios = <&gpio TEGRA_GPIO(V, 6) GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio TEGRA_GPIO(V, 6) GPIO_ACTIVE_LOW>;
 			realtek,ldo1-en-gpios = <&gpio TEGRA_GPIO(Z, 4) GPIO_ACTIVE_HIGH>;
 			reg = <0x1c>;
 			jd_src = <4>;
@@ -671,10 +671,13 @@
 			compatible = "rohm,bm92t";
 			reg = <0x18>;
 			interrupt-parent = <&gpio>;
-			interrupts = <TEGRA_GPIO(K, 4) 0x01>;
+			interrupts = <TEGRA_GPIO(K, 4) IRQ_TYPE_EDGE_RISING>;
 			#extcon-cells = <1>;
 			pd_bat_chg-supply = <&battery_charger>;
 			vbus-supply = <&usb0_vbus>;
+
+			nvidia,pmc-wakeup = <&tegra_pmc
+				PMC_WAKE_TYPE_EVENT 14 PMC_TRIGGER_TYPE_LOW>;
 		};
 	};
 
