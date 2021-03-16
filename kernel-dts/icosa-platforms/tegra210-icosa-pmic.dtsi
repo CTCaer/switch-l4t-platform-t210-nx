@@ -356,6 +356,10 @@
 					regulator-ramp-delay = <50000>;
 				};
 			};
+
+			onoff {
+				maxim,onoff-keycode = <KEY_SLEEP>;
+			};
 		};
 	};
 
