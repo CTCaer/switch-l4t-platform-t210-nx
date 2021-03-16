@@ -420,6 +420,8 @@
 			maxim,dqacc = <0x007d>;
 			maxim,dpacc = <0x0c80>;
 			maxim,fctc = <0x05e0>;
+			/* Actual is 5000 but driver does not account for CGAIN */
+			/* And does not take into account Rsense and CGAIN for capacity */
 			maxim,rsns-microohm = <10000>;
 			/* custom parameters */
 			maxim,current-gain = <0x7FFF>;
