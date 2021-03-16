@@ -457,6 +457,7 @@
 		regulator-name = "right-joycon-charger";
 		gpio = <&gpio TEGRA_GPIO(K, 3) GPIO_ACTIVE_HIGH>;
 		enable-active-high;
+		vin-supply = <&v_vdd50_a>;
 	};
 
 	/* right joycon */
@@ -490,6 +491,7 @@
 		regulator-name = "left-joycon-charger";
 		gpio = <&gpio TEGRA_GPIO(CC, 3) GPIO_ACTIVE_HIGH>;
 		enable-active-high;
+		vin-supply = <&v_vdd50_a>;
 	};
 
 	/* left joycon */
