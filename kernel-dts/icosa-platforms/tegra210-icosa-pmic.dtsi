@@ -240,6 +240,7 @@
 					regulator-ramp-delay = <7700>;
 				};
 
+				/* Display Panel */
 				max77620_ldo0: ldo0 {
 					regulator-name = "avdd-sys";
 					regulator-min-microvolt = <1200000>;
@@ -253,6 +254,7 @@
 					regulator-ramp-delay = <50000>;
 				};
 
+				/* XUSB, PCIE */
 				max77620_ldo1: ldo1 {
 					regulator-name = "vdd-pex";
 					regulator-min-microvolt = <1050000>;
@@ -264,6 +266,7 @@
 					regulator-ramp-delay = <50000>;
 				};
 
+				/* SD Card (SDMMC1) */
 				max77620_ldo2: ldo2 {
 					regulator-name = "vddio-sdmmc1";
 					regulator-min-microvolt = <1800000>;
@@ -275,8 +278,9 @@
 					regulator-ramp-delay = <50000>;
 				};
 
+				/* GC Asic */
 				max77620_ldo3: ldo3 {
-					regulator-name = "vdd-gc-3v1"; // Gamecard?
+					regulator-name = "vdd-gc-3v1";
 					regulator-min-microvolt = <3100000>;
 					regulator-max-microvolt = <3100000>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
@@ -286,6 +290,7 @@
 					regulator-ramp-delay = <50000>;
 				};
 
+				/* RTC domain. Always On */
 				max77620_ldo4: ldo4 {
 					regulator-name = "vdd-rtc";
 					regulator-min-microvolt = <850000>;
@@ -301,8 +306,9 @@
 					regulator-ramp-delay = <50000>;
 				};
 
+				/* GC Card */
 				max77620_ldo5: ldo5 {
-					regulator-name = "vdd-gc-1v8"; // Gamecard?
+					regulator-name = "vdd-gc-1v8";
 					regulator-min-microvolt = <1800000>;
 					regulator-max-microvolt = <1800000>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
@@ -312,8 +318,9 @@
 					regulator-ramp-delay = <50000>;
 				};
 
+				/* Touch Panel, ALS */
 				max77620_ldo6: ldo6 {
-					regulator-name = "vdd-tp-3v1"; // touchscreen
+					regulator-name = "vdd-tp-3v1";
 					regulator-min-microvolt = <2900000>;
 					regulator-max-microvolt = <2900000>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
@@ -323,6 +330,7 @@
 					regulator-ramp-delay = <50000>;
 				};
 
+				/* XUSB */
 				max77620_ldo7: ldo7 {
 					regulator-name = "vdd-gen-pll-edp";
 					regulator-min-microvolt = <1050000>;
@@ -336,6 +344,7 @@
 					regulator-ramp-delay = <50000>;
 				};
 
+				/* XUSB, DP */
 				max77620_ldo8: ldo8 {
 					regulator-name = "vdd-hdmi-dp";
 					regulator-min-microvolt = <1050000>;
@@ -356,7 +365,7 @@
 			reg = <0x6b>;
 
 			interrupt-parent = <&gpio>;
-			interrupts = <TEGRA_GPIO(Z, 0) 0x0>;
+			interrupts = <TEGRA_GPIO(Z, 0) IRQ_TYPE_NONE>;
 			#extcon-cells = <1>;
 
 			#thermal-sensor-cells = <0>;
