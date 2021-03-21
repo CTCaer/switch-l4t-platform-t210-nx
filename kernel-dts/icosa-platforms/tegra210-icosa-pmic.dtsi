@@ -245,8 +245,7 @@
 					regulator-name = "avdd-sys";
 					regulator-min-microvolt = <1200000>;
 					regulator-max-microvolt = <1200000>;
-					regulator-always-on;
-					regulator-boot-on;
+					regulator-boot-on; /* Must be set for seamless display */
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
 					regulator-enable-ramp-delay = <26>;
 					regulator-disable-ramp-delay = <626>;
