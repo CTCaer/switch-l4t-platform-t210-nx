@@ -576,12 +576,13 @@
 		dev1 {
 			dev_data = "Tdiode_tegra";
 			group = <0>;
-			/* Based on Console profile's SoC: 95%  */
+			/* Based on Console profile SoC: 95% (100% at Handheld) */
 			coeffs = <95 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>;
 		};
 		dev2 {
 			dev_data = "Tboard_tegra";
 			group = <1>;
+			/* Based on Console profile SoC: 100% (92% at Handheld) */
 			coeffs = <100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>;
 		};
 	};
@@ -970,8 +971,8 @@
 			trips {
 				board_emergency {
 					temperature = <85000>;
-					hysteresis = <1000>;
-					type = "active";
+					hysteresis = <2000>;
+					type = "passive";
 					writable;
 				};
 			};
@@ -998,8 +999,8 @@
 				};
 				soc_emergency {
 					temperature = <85000>;
-					hysteresis = <1000>;
-					type = "active";
+					hysteresis = <2000>;
+					type = "passive";
 					writable;
 				};
 			};
