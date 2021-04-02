@@ -384,7 +384,7 @@
 				ti,temp-range = <3 16 50 59>;
 				ti,charge-current-limit = <512 768 2048 2048>;
 				ti,charge-thermal-voltage-limit = <4208 4208 4208 3952>;
-				ti,thermal-zone = "max170xx_battery";
+				ti,thermal-zone = "battery";
 				ti,temp-polling-time-sec = <20>;
 				ti,pre-to-fast-charge-voltage-millivolt = <3000>;
 				ti,enable-full-plug-detection;
