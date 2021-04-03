@@ -176,6 +176,9 @@
 		phy-names = "otg-phy";
 		nvidia,dcp-current-limit-ua = <1500000>;
 		status = "okay";
+		#extcon-cells = <1>;
+		extcon-cables = <&bm92t 2>;
+		extcon-cable-names = "pd";
 	};
 
 	xusb@70090000 {
