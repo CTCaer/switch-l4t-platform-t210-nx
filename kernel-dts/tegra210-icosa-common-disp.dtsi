@@ -28,7 +28,7 @@
 		};
 		panel-o-720p-6-0-01-bl {
 			status = "okay";
-			pwms = <&tegra_pwm 0 35000>;
+			pwms = <&tegra_pwm 0 33898>;
 		};
 	};
 
