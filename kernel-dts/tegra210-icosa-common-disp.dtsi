@@ -43,9 +43,6 @@
 			nvidia,dc-or-node = "/host1x/dsi";
 			nvidia,dc-connector = <&dsi>;
 			win-mask = <0xf>;
-			extcon-cables = <&bm92t 2>;
-			extcon-cable-names = "typec1";
-			#extcon-cells = <1>;
 		};
 
 		/* tegradc.1 */
