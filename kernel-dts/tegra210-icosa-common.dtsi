@@ -312,23 +312,22 @@
 			phy-names = "pcie-0", "pcie-1", "pcie-2", "pcie-3";
 			nvidia,num-lanes = <4>;
 			status = "okay";
-
-			brcmf { /* PCIE-1 lane */
-				compatible = "brcm,bcm4356-fmac";
-				brcm,reset_on_wake;
-				/* nvidia,pmc-wakeup = <&tegra_pmc
-					PMC_WAKE_TYPE_EVENT 8 PMC_TRIGGER_TYPE_HIGH>; */ /* WiFi Wake Ap (H, 2) */
-			};
 		};
 
 		pci@2,0 {
 			phys = <&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-0}>;
 			phy-names = "pcie-0";
 			status = "okay";
+
+			brcmf { /* PCIE-0 (Port 1) */
+				compatible = "brcm,bcm4356-fmac";
+				brcm,reset_on_wake;
+				/* nvidia,pmc-wakeup = <&tegra_pmc
+					PMC_WAKE_TYPE_EVENT 8 PMC_TRIGGER_TYPE_HIGH>; */ /* WiFi Wake Ap (H, 2) */
+			};
 		};
 	};
 
-	// from f0f
 	xusb_padctl@7009f000 {
 		status = "okay";
 
@@ -348,12 +347,12 @@
 				status = "okay";
 
 				lanes {
-					// PCI bridge
+					/* bcm4356A3-wifi */
 					pcie-0 {
 						nvidia,function = "pcie-x1";
 						status = "okay";
 					};
-					// bcm4356A3-wifi
+					/* Unused ports */
 					pcie-1 {
 						nvidia,function = "pcie-x4";
 						status = "okay";
@@ -370,6 +369,7 @@
 						nvidia,function = "pcie-x4";
 						status = "okay";
 					};
+					/* XUSB */
 					pcie-5 {
 						nvidia,function = "xusb";
 						status = "okay";
