@@ -723,6 +723,8 @@
 			stm,max_coords = <1280 720>;
 			stm,max-real-coords = <1264 704>;
 			stm,edge-offset = <15 15>;
+			stm,delayed-open;
+			stm,delayed-open-time = <0>;
 		};
 	};
 
@@ -1120,12 +1122,6 @@
 	memory-controller@70019000 {
 		status = "okay";
 	};
-
-	//reserved-memory {
-	//	vpr-carveout {
-	//		status = "disabled";
-	//	};
-	//};
 
 	nvpmodel {
 		status = "okay";
