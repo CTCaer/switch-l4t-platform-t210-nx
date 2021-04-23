@@ -322,7 +322,6 @@
 		};
 	};
 
-	// from f0f
 	xusb_padctl@7009f000 {
 		status = "okay";
 
@@ -342,12 +341,12 @@
 				status = "okay";
 
 				lanes {
-					// PCI bridge
+					/* bcm4356A3-wifi */
 					pcie-0 {
 						nvidia,function = "pcie-x1";
 						status = "okay";
 					};
-					// bcm4356A3-wifi
+					/* Unused ports */
 					pcie-1 {
 						nvidia,function = "pcie-x4";
 						status = "okay";
@@ -364,6 +363,7 @@
 						nvidia,function = "pcie-x4";
 						status = "okay";
 					};
+					/* XUSB */
 					pcie-5 {
 						nvidia,function = "xusb";
 						status = "okay";
