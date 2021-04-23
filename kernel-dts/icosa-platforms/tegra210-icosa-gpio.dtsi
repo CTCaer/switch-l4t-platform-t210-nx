@@ -71,6 +71,7 @@
 			gpios = <
 				TEGRA_GPIO(CC, 3) 0 /* Joycon (L) Charge Enable */
 				TEGRA_GPIO(K, 3) 0  /* Joycon (R) Charge Enable */
+				TEGRA_GPIO(H, 1) 0  /* Wi-Fi Reset. Powered on by default. */
 				>;
 			line-name = "boot-default-output-high";
 		};
@@ -85,6 +86,7 @@
 				TEGRA_GPIO(V, 0) 0  /* LCD Backlight PWM */
 				TEGRA_GPIO(V, 1) 0  /* LCD Backlight Enable */
 				TEGRA_GPIO(V, 2) 0  /* LCD Reset */
+				TEGRA_GPIO(H, 1) 0  /* Wi-Fi Reset. Powered off in suspend. */
 				>;
 		};
 	};

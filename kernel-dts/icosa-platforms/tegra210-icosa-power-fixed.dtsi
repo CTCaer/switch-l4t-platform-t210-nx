@@ -158,6 +158,7 @@
 			vin-supply = <&vdd_3v3>;
 		};
 
+#if 0
 		vdd_wlreg_on: regulator@20 {
 			compatible = "regulator-fixed";
 			reg = <20>;
@@ -169,6 +170,7 @@
 			regulator-always-on;
 			enable-active-high;
 		};
+#endif
 
 		vdd_cdc_1v2_aud: regulator@101 {
 			compatible = "regulator-fixed-sync";
