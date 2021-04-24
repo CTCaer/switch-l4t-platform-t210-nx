@@ -54,6 +54,7 @@
 				TEGRA_GPIO(S, 5) 0
 				TEGRA_GPIO(T, 0) 0
 				TEGRA_GPIO(T, 1) 0
+				TEGRA_GPIO(V, 2) 0  /* LCD Reset */
 				TEGRA_GPIO(V, 5) 0  /* USB-PD (BM92T36) Reset */
 				TEGRA_GPIO(K, 5) 0  /* USB-PD (BM92T36) VCONN Power Enable */
 				TEGRA_GPIO(L, 0) 0

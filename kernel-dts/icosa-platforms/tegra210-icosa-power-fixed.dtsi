@@ -68,7 +68,7 @@
 			regulator-min-microvolt = <1800000>;
 			regulator-max-microvolt = <1800000>;
 			gpio = <&gpio TEGRA_GPIO(V, 1) 0>;
-			regulator-boot-on; /* Must be set for seamless display */
+			/* regulator-boot-on;*/ /* Must be set for seamless display */
 			enable-active-high;
 		};
 
