@@ -21,13 +21,19 @@
 		bh1730fvc@29 {
 			compatible = "rohm,bh1730fvc";
 			reg = <0x29>;
-			bh1730fvc-lux-coeff =   < 500 5002 7502
-						  754 2250 2000
-						 1029 1999 1667
-						 1373  884  583
-						 1879  309  165>;
-			bh1730fvc-lux-resolution = <1000>;
-			bh1730fvc-lux-multiplier = <360>;
+			rohm,integration-cycle = <38>;
+			rohm,lux-multiplier = <3600>;
+
+			rohm,opt-win-coeff = < 500 5002 7502
+								   754 2250 2000
+								  1029 1999 1667
+								  1373  884  583
+								  1879  309  165>;
+
+			rohm,gain-coeff = < 2500     0
+								1600  7800
+								  10 50000
+								   0  1000>;
 		};
 	};
 };
