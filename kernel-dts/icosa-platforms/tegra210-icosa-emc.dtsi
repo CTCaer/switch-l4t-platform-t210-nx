@@ -23,6 +23,8 @@
 		clock-names = "emc", "pll_m", "pll_c", "pll_p", "clk_m",
 			"pll_mb", "pll_mb_ud", "pll_p_ud", "emc_override";
 		#thermal-sensor-cells = <0>;
+
+/*
 		emc-table@40800 {
 			compatible = "nvidia,tegra21-emc-table";
 			nvidia,revision = <0x07>;
@@ -24863,5 +24865,6 @@
 				0x00800080
 			>;
 		};
+*/
 	};
 };

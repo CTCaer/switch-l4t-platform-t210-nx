@@ -328,6 +328,7 @@
 					regulator-disable-ramp-delay = <674>;
 					maxim,ramp-rate-setting = <100000>;
 					regulator-ramp-delay = <50000>;
+					regulator-boot-on; /* Decrease por time for Touch Panel. */
 				};
 
 				/* XUSB */
