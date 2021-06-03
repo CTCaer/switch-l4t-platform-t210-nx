@@ -19,6 +19,9 @@
 / {
 	i2c@7000c400 {
 		bh1730fvc@29 {
+			/* Only enable on distros with proper auto-brightness support */
+			status = "disabled";
+
 			compatible = "rohm,bh1730fvc";
 			reg = <0x29>;
 			rohm,integration-cycle = <38>;
