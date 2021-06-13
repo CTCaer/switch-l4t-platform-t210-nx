@@ -15,7 +15,7 @@
  */
 
 #include <panels/panel-o-720p-6-0.dtsi>
-#include <panels/panel-o-720p-6-0-01.dtsi>
+#include "icosa-panels/panel-j-720p-6-2.dtsi"
 
 / {
 	backlight {
