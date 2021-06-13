@@ -21,7 +21,7 @@
 	backlight {
 		compatible = "pwm-backlight";
 		status = "okay";
-		label = "pwm-backlight";
+		label = "backlight";
 		power-supply = <&max77620_sd3>;
 		panel-o-720p-6-0-bl {
 			pwms = <&tegra_pwm 0 40000>;
