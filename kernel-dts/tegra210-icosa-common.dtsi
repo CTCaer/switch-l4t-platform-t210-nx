@@ -1123,6 +1123,12 @@
 		status = "okay";
 	};
 
+	reserved-memory {
+		iram-carveout {
+			status = "disabled";
+		};
+	};
+
 	nvpmodel {
 		status = "okay";
 	};
