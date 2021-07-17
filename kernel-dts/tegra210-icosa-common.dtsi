@@ -36,7 +36,7 @@
 #include <dt-bindings/thermal/tegra210-trips.h>
 
 / {
-	model = "icosa";
+	model = "Nintendo Switch (2017)";
 	compatible = "nintendo,icosa", "nvidia,tegra210";
 	nvidia,dtsfilename = __FILE__;
 
