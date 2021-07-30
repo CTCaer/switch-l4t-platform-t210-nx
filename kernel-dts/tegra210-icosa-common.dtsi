@@ -548,7 +548,7 @@
 		phy-names = "usb2-0", "usb3-0";
 		extcon-cables = <&bm92t 0>;
 		extcon-cable-names = "id";
-
+		nvidia,boost_cpu_freq = <1200>;
 	};
 
 	xudc@700d0000 {
