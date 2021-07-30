@@ -1118,6 +1118,10 @@
 		status = "okay";
 	};
 
+	nvdumper {
+		status = "disabled";
+	};
+
 	dfll_cap: dfll-cdev-cap {
 		compatible = "nvidia,tegra-dfll-cdev-action";
 		act-dev = <&tegra_clk_dfll>;
