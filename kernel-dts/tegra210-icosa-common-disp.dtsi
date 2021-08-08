@@ -42,7 +42,7 @@
 			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
 			nvidia,dc-or-node = "/host1x/dsi";
 			nvidia,dc-connector = <&dsi>;
-			win-mask = <0xf>;
+			win-mask = <0x7>; /* Limit to Window A/B/C. (Window D disabled) */
 		};
 
 		/* tegradc.1 */
@@ -54,7 +54,7 @@
 			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
 			nvidia,dc-or-node = "/host1x/sor1";
 			nvidia,dc-connector = <&sor1>;
-			win-mask = <0xf>;
+			win-mask = <0x7>; /* Use all supported windows (Window A/B/C) */
 			extcon-cables = <&bm92t 3>;
 			extcon-cable-names = "typec1";
 			#extcon-cells = <1>;
