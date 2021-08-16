@@ -716,17 +716,23 @@
 		};
 	};
 
-
 	i2c@7000c000 {
 		clock-frequency = <100000>;
-		rt5639: rt5639.0-001c@1c {
+
+		rt5639: rt5639@1c {
 			compatible = "realtek,rt5639";
-			gpios = <&gpio TEGRA_GPIO(V, 6) GPIO_ACTIVE_LOW>;
-			realtek,ldo1-en-gpios = <&gpio TEGRA_GPIO(Z, 4) GPIO_ACTIVE_HIGH>;
 			reg = <0x1c>;
-			jd_src = <4>;
-			sel_jd_source = <4>;
+			interrupt-parent = <&gpio>;
+			interrupts = <TEGRA_GPIO(BB, 4) IRQ_TYPE_EDGE_RISING>;
+			realtek,ldo1-en-gpios = <&gpio TEGRA_GPIO(Z, 4) GPIO_ACTIVE_HIGH>;
+			realtek,jack-detect-gpios = <&gpio TEGRA_GPIO(V, 6) GPIO_ACTIVE_LOW>;
+			realtek,over-current-threshold-microamp = <600>;
+			realtek,over-current-scale-factor = <2>;
+			realtek,external-microphone;
+			realtek,sel-jd-source = <4>;
+			realtek,jack-detect-is-jd1;
 		};
+
 		bm92t: bm92t@18 {
 			compatible = "rohm,bm92t";
 			reg = <0x18>;

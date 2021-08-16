@@ -41,6 +41,7 @@
 				TEGRA_GPIO(H, 6) 1 /* Joycon (R) Wake Detect */
 				TEGRA_GPIO(P, 0) 1
 				TEGRA_GPIO(V, 6) 1 /* Audio Codec (ALC5639) Headphone Detect */
+				TEGRA_GPIO(BB, 4) 0 /* Audio Codec (ALC5639) Alert */
 				>;
 			line-name = "boot-default-input";
 		};
