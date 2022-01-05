@@ -76,8 +76,7 @@
 	};
 
 	rtc {
-		nvidia,pmc-wakeup = <&tegra_pmc PMC_WAKE_TYPE_EVENT 16
-			PMC_TRIGGER_TYPE_HIGH>;
+		nvidia,pmc-wakeup = <0>; // Disable wakeup alarms
 	};
 
 	tegra_fiq_debugger {
@@ -141,7 +140,7 @@
 			   <&tegra_car TEGRA210_CLK_SDMMC_LEGACY>;
 		clock-names = "sdmmc", "pll_p", "pll_c4_out2", "sdmmc_legacy_tm";
 		status = "disabled";
-    };
+	};
 
 
 	sdhci@700b0400 { /* SDMMC3 Not Used */
@@ -317,6 +316,7 @@
 
 		pci@2,0 {
 			phys = <&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-0}>;
+			nvidia,plat-gpios = <&gpio TEGRA_GPIO(H, 1) 0>; /* WiFi reset */
 			phy-names = "pcie-0";
 			status = "okay";
 		};
