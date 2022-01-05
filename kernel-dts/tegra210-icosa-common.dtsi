@@ -650,7 +650,7 @@
 	pwm_fan_shared_data: pfsd {
 		secret = <47>;
 		num_resources = <0>;
- 		active_steps = <10>;
+		active_steps = <10>;
 		active_rpm = <0 0 2600 2600 4900 6900 10000 10000 10000 10000>;
 		active_rru = <10 10 10 1 1 1 1 1 1 1>;
 		active_rrd = <10 10 10 1 1 1 1 1 1 1>;
@@ -1113,12 +1113,6 @@
 	memory-controller@70019000 {
 		status = "okay";
 	};
-
-	//reserved-memory {
-	//	vpr-carveout {
-	//		status = "disabled";
-	//	};
-	//};
 
 	reserved-memory {
 		iram-carveout {
