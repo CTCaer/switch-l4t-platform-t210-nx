@@ -47,6 +47,7 @@
 			nvidia,emc-clk-rate = <300000000>;
 			nvidia,fb-bpp = <32>; /* bits per pixel */
 			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
+			nvidia,fbmem-size = <8388608>; /* 8MB: double buffered panning 720x1280 */
 			nvidia,dc-or-node = "/host1x/dsi";
 			nvidia,dc-connector = <&dsi>;
 			win-mask = <0xf>; /* Use all supported windows (Window A/B/C/D) for Android */
