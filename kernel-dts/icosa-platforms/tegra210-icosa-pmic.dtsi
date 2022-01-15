@@ -217,6 +217,7 @@
 					regulator-name = "vdd-pre-reg";
 					regulator-min-microvolt = <1350000>;
 					regulator-max-microvolt = <1350000>;
+					regulator-boot-on; /* Must be set for seamless display */
 					maxim,active-fps-source = <MAX77620_FPS_SRC_1>;
 					regulator-enable-ramp-delay = <176>;
 					regulator-disable-ramp-delay = <32000>;
