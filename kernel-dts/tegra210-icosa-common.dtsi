@@ -1,7 +1,7 @@
 /*
  * arch/arm64/boot/dts/tegra210-icosa-common.dtsi
  *
- * Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2014-2019, NVIDIA CORPORATION.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -582,9 +582,9 @@
 		};
 	};
 
-	thermal-fan-est {
+	thermal_fan_est {
 		compatible = "thermal-fan-est";
-		name = "thermal-fan-est";
+		name = "thermal_fan_est";
 		status = "okay";
 
 		num_resources = <0>;
