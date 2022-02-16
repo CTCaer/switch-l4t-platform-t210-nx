@@ -35,7 +35,7 @@
 		};
 
 		vdd_3v3: regulator@1 {
-			compatible = "regulator-fixed-sync";
+			compatible = "regulator-fixed-sync", "regulator-fixed";
 			reg = <1>;
 			regulator-name = "vdd-3v3";
 			regulator-min-microvolt = <3300000>;
@@ -48,7 +48,7 @@
 		};
 
 		max77620_gpio7: regulator@2 {
-			compatible = "regulator-fixed-sync";
+			compatible = "regulator-fixed-sync", "regulator-fixed";
 			reg = <2>;
 			regulator-name = "max77620-gpio7";
 			regulator-min-microvolt = <1200000>;
@@ -62,7 +62,7 @@
 		};
 
 		lcd_bl_en: regulator@3 {
-			compatible = "regulator-fixed-sync";
+			compatible = "regulator-fixed-sync", "regulator-fixed";
 			reg = <3>;
 			regulator-name = "lcd-bl-en";
 			regulator-min-microvolt = <1800000>;
@@ -73,7 +73,7 @@
 		};
 
 		en_vdd_sd: regulator@4 {
-			compatible = "regulator-fixed-sync";
+			compatible = "regulator-fixed-sync", "regulator-fixed";
 			reg = <4>;
 			regulator-name = "en-vdd-sd";
 			regulator-min-microvolt = <3300000>;
@@ -102,7 +102,7 @@
 		};
 
 		v_pavdd_5v0: regulator@9 {
-			compatible = "regulator-fixed-sync";
+			compatible = "regulator-fixed-sync", "regulator-fixed";
 			reg = <9>;
 			regulator-name = "v_pavdd_5v0";
 			regulator-min-microvolt = <1800000>;
@@ -114,7 +114,7 @@
 		};
 
 		v_navdd_5v0: regulator@10 {
-			compatible = "regulator-fixed-sync";
+			compatible = "regulator-fixed-sync", "regulator-fixed";
 			reg = <10>;
 			regulator-name = "v_navdd_5v0";
 			regulator-min-microvolt = <1800000>;
@@ -126,7 +126,7 @@
 		};
 
 		v_vdd50_a: regulator@11 {
-			compatible = "regulator-fixed-sync";
+			compatible = "regulator-fixed-sync", "regulator-fixed";
 			reg = <11>;
 			regulator-name = "v_vdd50_a";
 			regulator-min-microvolt = <5000000>;
@@ -136,7 +136,7 @@
 		};
 
 		v_vdd50_b: regulator@12 {
-			compatible = "regulator-fixed-sync";
+			compatible = "regulator-fixed-sync", "regulator-fixed";
 			reg = <12>;
 			regulator-name = "v_vdd50_b";
 			regulator-min-microvolt = <5000000>;
@@ -146,7 +146,7 @@
 		};
 
 		vdd3v3_gc: regulator@13 {
-			compatible = "regulator-fixed-sync";
+			compatible = "regulator-fixed-sync", "regulator-fixed";
 			reg = <13>;
 			regulator-name = "vdd3v3_gc";
 			regulator-min-microvolt = <3300000>;
@@ -160,7 +160,7 @@
 
 		vdd_wlreg_on: regulator@20 {
 			status = "disabled"; // Controlled by PCIE plat-gpios instead
-			compatible = "regulator-fixed";
+			compatible = "regulator-fixed", "regulator-fixed";
 			reg = <20>;
 			regulator-name = "vdd-wlreg_on";
 			regulator-min-microvolt = <1800000>;
@@ -172,7 +172,7 @@
 		};
 
 		vdd_cdc_1v2_aud: regulator@101 {
-			compatible = "regulator-fixed-sync";
+			compatible = "regulator-fixed-sync", "regulator-fixed";
 			reg = <101>;
 			status = "disabled";
 			regulator-name = "vdd_cdc_1v2_aud";
