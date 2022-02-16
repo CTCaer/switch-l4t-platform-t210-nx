@@ -21,7 +21,7 @@
 #include <dt-bindings/display/tegra-panel.h>
 
 / {
-	host1x {
+	host1x@50000000 {
 		dsi {
 			panel_i_720p_6_2: panel-i-720p-6-2 {
 				status = "disabled";

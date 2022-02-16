@@ -17,7 +17,7 @@
  */
 
 / {
-	host1x {
+	host1x@50000000 {
 		sor1 {
 			prod-settings {
 				#prod-cells = <3>;
