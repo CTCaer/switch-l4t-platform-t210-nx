@@ -1081,7 +1081,7 @@
 	clock@70110000 {
 		status = "okay";
 		vdd-cpu-supply = <&cpu_max77621_reg>;
-		nvidia,align-step-uv = <6250>;
+		nvidia,pwm-voltage-step-microvolts = <6250>;
 		nvidia,sample-rate = <25000>;
 		nvidia,droop-ctrl = <0x00000f00>;
 		nvidia,force-mode = <1>;
