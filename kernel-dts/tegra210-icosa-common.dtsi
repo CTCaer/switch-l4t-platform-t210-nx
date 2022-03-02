@@ -369,6 +369,7 @@
 			spi-max-frequency = <10000000>;
 			interrupt-parent = <&gpio>;
 			interrupts = <TEGRA_GPIO(X, 2) IRQ_TYPE_LEVEL_HIGH>;
+			st,drdy-int-pin = <2>;
 			status = "okay";
 			#address-cells = <0x1>;
 			#size-cells = <0x0>;
