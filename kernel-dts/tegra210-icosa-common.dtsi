@@ -528,6 +528,7 @@
 		compatible = "power-supply-extcon";
 		extcon-cables = <&bq2419x 0>;
 		extcon-cable-names = "usb-charger";
+		status = "disabled"; /* Power supply extcon usb is managed by bq2419x */
 	};
 
 	xusb@70090000 {
