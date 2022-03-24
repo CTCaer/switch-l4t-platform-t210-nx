@@ -1,0 +1,18 @@
+[
+ {
+   "repository": "android_hardware_nvidia_platform_tegra_common",
+   "target_path": "hardware/nvidia/platform/tegra/common"
+ },
+ {
+   "repository": "android_hardware_nvidia_soc_tegra",
+   "target_path": "hardware/nvidia/soc/tegra"
+ },
+ {
+   "repository": "android_hardware_nvidia_platform_t210_common",
+   "target_path": "hardware/nvidia/platform/t210/common"
+ },
+ {
+   "repository": "android_hardware_nvidia_soc_t210",
+   "target_path": "hardware/nvidia/soc/t210"
+ }
+]
