@@ -182,19 +182,37 @@
 	};
 
 	xusb@70090000 {
+#if TEGRA_XUSB_DT_VERSION <= DT_VERSION_2
 		hvdd_usb-supply = <&vdd_3v3>;
 		avdd_pll_utmip-supply = <&max77620_sd3>;
 		vddio_hsic-supply = <&max77620_ldo0>;
 		avddio_usb-supply = <&max77620_ldo1>;
 		dvdd_sata-supply = <&max77620_ldo8>;
 		avddio_pll_uerefe-supply = <&max77620_ldo7>;
+#else
+		dvddio-pex-supply = <&max77620_ldo1>;
+		hvddio-pex-supply = <&max77620_sd3>;
+		avdd-usb-supply = <&vdd_3v3>;
+		avdd-pll-utmip-supply = <&max77620_sd3>;
+		avdd-pll-uerefe-supply = <&max77620_ldo7>;
+		dvdd-pex-pll-supply = <&max77620_ldo1>;
+		hvdd-pex-pll-e-supply = <&max77620_sd3>;
+
+		power-domains = <&pd_xusbhost>, <&pd_xusbss>;
+		power-domain-names = "xusb_host", "xusb_ss";
+#endif
 	};
 
 	xudc@700d0000 {
+#if TEGRA_XUSB_DT_VERSION <= DT_VERSION_2
 		hvdd_usb-supply = <&vdd_3v3>;
 		avdd_pll_utmip-supply = <&max77620_sd3>;
 		avddio_usb-supply = <&max77620_ldo1>;
 		avddio_pll_uerefe-supply = <&max77620_ldo7>;
+#else
+		hvdd-usb-supply = <&vdd_3v3>;
+		avddio-usb-supply = <&max77620_ldo1>;
+#endif
 	};
 
 	xotg {
@@ -202,6 +220,7 @@
 	};
 
 	xusb_padctl@7009f000 {
+#if TEGRA_XUSB_DT_VERSION <= DT_VERSION_2
 		vddio-hsic-supply = <&max77620_ldo0>;
 		avdd_pll_uerefe-supply = <&max77620_ldo7>;
 		hvdd_pex_pll_e-supply = <&max77620_sd3>;
@@ -212,7 +231,12 @@
 		dvdd_sata_pll-supply = <&max77620_ldo8>;
 		hvddio_sata-supply = <&max77620_sd3>;
 		dvddio_sata-supply = <&max77620_ldo8>;
-
+#else
+		avdd-pll-utmip-supply = <&max77620_sd3>;
+		avdd-pll-uerefe-supply = <&max77620_ldo7>;
+		dvdd-pex-pll-supply = <&max77620_ldo1>;
+		hvdd-pex-pll-e-supply = <&max77620_sd3>;
+#endif
 
 		ports {
 			usb2-0 {
