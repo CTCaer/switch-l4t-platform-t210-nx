@@ -85,7 +85,7 @@
 				/* nvidia,panel-bl-en-gpio = <&gpio TEGRA_GPIO(V, 1) 0>; */ /* PV1. - Handled by vdd_lcd_bl_en-supply */
 				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
 				disp-default-out {
-					nvidia,out-rotation = <270>;
+					nvidia,out-rotation = <0>;	// Portrait - Handled by SurfaceFlinger
 				};
 			};
 			panel-a-720p-6-2 {
@@ -95,7 +95,7 @@
 				/* nvidia,panel-bl-en-gpio = <&gpio TEGRA_GPIO(V, 1) 0>; */ /* PV1. - Handled by vdd_lcd_bl_en-supply */
 				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
 				disp-default-out {
-					nvidia,out-rotation = <270>;
+					nvidia,out-rotation = <0>;	// Portrait - Handled by SurfaceFlinger
 				};
 			};
 			panel-i-720p-6-2 {
@@ -105,7 +105,7 @@
 				/* nvidia,panel-bl-en-gpio = <&gpio TEGRA_GPIO(V, 1) 0>; */ /* PV1. - Handled by vdd_lcd_bl_en-supply */
 				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
 				disp-default-out {
-					nvidia,out-rotation = <270>;
+					nvidia,out-rotation = <0>;	// Portrait - Handled by SurfaceFlinger
 				};
 			};
 			panel-o-720p-6-2 {
@@ -115,7 +115,7 @@
 				/* nvidia,panel-bl-en-gpio = <&gpio TEGRA_GPIO(V, 1) 0>; */ /* PV1. - Handled by vdd_lcd_bl_en-supply */
 				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
 				disp-default-out {
-					nvidia,out-rotation = <270>;
+					nvidia,out-rotation = <0>;	// Portrait - Handled by SurfaceFlinger
 				};
 			};
 		};
