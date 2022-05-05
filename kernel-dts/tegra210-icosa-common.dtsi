@@ -698,6 +698,8 @@
 			realtek,external-microphone;
 			realtek,sel-jd-source = <4>;
 			realtek,jack-detect-is-jd1;
+
+			#sound-dai-cells = <1>;
 		};
 
 		bm92t: bm92t@18 {
@@ -721,8 +723,8 @@
 	};
 
 	tegra_sound: sound {
-		compatible = "nvidia,tegra-audio-t210ref-mobile-rt5640";
-		nvidia-audio-card,name = "tegra-snd-t210ref-mobile-rt5640";
+		compatible = "nvidia,tegra210-ape-rt5640";
+		nvidia-audio-card,name = "Nintendo Switch APE";
 
 		clocks = <&tegra_car TEGRA210_CLK_PLL_P_OUT1>,
 						<&tegra_car TEGRA210_CLK_PLL_A>,
@@ -741,9 +743,6 @@
 		assigned-clock-rates = <368640000>, <36864000>,
 			<36864000>, <12288000>;
 
-		nvidia-audio-card,widgets =
-			"x Headphone Jack",	"SND_JACK_HEADSET";
-
 		nvidia-audio-card,routing =
 			"x Headphone Jack", 	"x HPOL",
 			"x Headphone Jack", 	"x HPOR",
@@ -754,7 +753,12 @@
 			"x IN1P",		"x Mic Jack",
 			"x IN1P",		"x Mic Jack";
 
-		mclk-fs = <256>;
+		nvidia-audio-card,widgets =
+			"Headphone",	"x Headphone Jack",
+			"Microphone",	"x Mic Jack",
+			"Speaker",		"x Int Spk";
+
+		nvidia-audio-card,mclk-fs = <256>;
 	};
 
 	modem {
@@ -1153,6 +1157,14 @@
 				};
 			};
 		};
+	};
+};
+
+&i2s1_to_codec {
+	link-name = "rt565x-playback";
+	codec { 
+		sound-dai = <&rt5639 0>;
+		prefix = "x";
 	};
 };
 
