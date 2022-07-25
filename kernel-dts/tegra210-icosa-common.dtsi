@@ -86,6 +86,7 @@
 	};
 
 	pmc@7000e400 {
+		/delete-property/ nvidia,secure-pmc;
 		nvidia,invert-interrupt;
 		nvidia,suspend-mode = <0>;
 		nvidia,cpu-pwr-good-time = <0>;
