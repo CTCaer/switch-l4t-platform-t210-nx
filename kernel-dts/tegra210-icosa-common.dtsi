@@ -1099,6 +1099,9 @@
 		iram-carveout {
 			status = "disabled";
 		};
+		vpr-carveout {
+			status = "disabled";
+		};
 	};
 
 	nvpmodel {
