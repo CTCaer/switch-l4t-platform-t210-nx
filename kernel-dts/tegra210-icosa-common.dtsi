@@ -449,19 +449,9 @@
 		};
 	};
 
-	
 	serial@70006300 {
 		dma-names = "tx";
 		status = "okay";
-		
-		bluetooth {
-			compatible = "brcm,bcm43438-bt";
-			shutdown-gpios = <&gpio TEGRA_GPIO(H, 4) GPIO_ACTIVE_HIGH>;
-			device-wakeup-gpios = <&gpio TEGRA_GPIO(H, 3) GPIO_ACTIVE_LOW>;
-			/* host-wakeup-gpios = <&gpio TEGRA_GPIO(H, 5) GPIO_ACTIVE_LOW>; */
-			max-speed = <3000000>; /* Max supported 4 MBaud */
-			/* nvidia,pmc-wakeup = <&tegra_pmc PMC_WAKE_TYPE_EVENT 52 PMC_TRIGGER_TYPE_LOW>; */
-		};
 	};
 
 	joyconl_charger: joyconl_charger {
