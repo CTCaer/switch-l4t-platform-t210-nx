@@ -411,15 +411,6 @@
 		};
 	};
 
-	joyconr_charger: joyconr_charger {
-		status = "okay";
-		compatible = "regulator-fixed";
-		regulator-name = "right-joycon-charger";
-		gpio = <&gpio TEGRA_GPIO(K, 3) GPIO_ACTIVE_HIGH>;
-		enable-active-high;
-		vin-supply = <&v_vdd50_a>;
-	};
-
 	/* right joycon */
 	serial@70006040 {
 		status = "okay";
@@ -430,22 +421,13 @@
 			status = "okay";
 			name = "joyconr";
 			compatible = "nintendo,joycon-serdev";
-			charger-supply = <&joyconr_charger>;
+			charger-supply = <&en_vdd_jcr_chgr>;
 		};
 	};
 
 	serial@70006300 {
 		dma-names = "tx";
 		status = "okay";
-	};
-
-	joyconl_charger: joyconl_charger {
-		status = "okay";
-		compatible = "regulator-fixed";
-		regulator-name = "left-joycon-charger";
-		gpio = <&gpio TEGRA_GPIO(CC, 3) GPIO_ACTIVE_HIGH>;
-		enable-active-high;
-		vin-supply = <&v_vdd50_a>;
 	};
 
 	/* left joycon */
@@ -458,7 +440,7 @@
 			status = "okay";
 			name = "joyconl";
 			compatible = "nintendo,joycon-serdev";
-			charger-supply = <&joyconl_charger>;
+			charger-supply = <&en_vdd_jcl_chgr>;
 		};
 	};
 
