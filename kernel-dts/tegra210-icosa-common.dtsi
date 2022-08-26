@@ -58,7 +58,6 @@
 		android {
 			compatible = "android,firmware";
 			hardware = "nx";
-			boot_devices = "sdhci-tegra.0,sdhci-tegra.3";
 			fstab {
 				compatible = "android,fstab";
 				first_stage_delay = "1";
