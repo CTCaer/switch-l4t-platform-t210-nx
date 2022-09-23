@@ -73,6 +73,7 @@
 					nvidia,out-parent-clk = "pll_d_out0";
 					nvidia,out-xres = <720>;
 					nvidia,out-yres = <1280>;
+					nvidia,out-rotation = <0>; // WAR: handled by surfaceflinger
 				};
 				display-timings {
 					720x1280-24 {
