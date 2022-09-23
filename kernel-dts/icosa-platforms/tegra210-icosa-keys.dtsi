@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2016, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2019-2022, CTCaer <ctcaer@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -11,6 +11,7 @@
  * more details.
  *
  */
+
 #include <dt-bindings/gpio/tegra-gpio.h>
 #include <dt-bindings/input/input.h>
 #include <dt-bindings/soc/tegra-pmc.h>
@@ -19,6 +20,17 @@
 	gpio-keys {
 		compatible = "gpio-keys";
 		gpio-keys,name = "gpio-keys";
+
+		power {
+			label = "Power";
+			gpios = <&gpio TEGRA_GPIO(X, 5) GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_POWER>;
+			gpio-key,wakeup;
+			nvidia,pmc-wakeup = <&tegra_pmc
+				PMC_WAKE_TYPE_GPIO 24 PMC_TRIGGER_TYPE_NONE>;
+
+			status = "disabled"; /* Only hooked on Vali. max77620 is preferred. */
+		};
 
 		volume_down {
 			label = "Volume Down";
