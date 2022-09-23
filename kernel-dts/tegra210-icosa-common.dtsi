@@ -1013,6 +1013,7 @@
 
 	cpus {
 		cpu@0 {
+			compatible = "arm,cortex-a57", "arm,armv8";
 			clocks = <&tegra_car TEGRA210_CLK_CCLK_G>,
 				 <&tegra_car TEGRA210_CLK_CCLK_LP>,
 				 <&tegra_car TEGRA210_CLK_PLL_X>,
@@ -1020,6 +1021,18 @@
 				 <&tegra_clk_dfll>;
 			clock-names = "cpu_g", "cpu_lp", "pll_x", "pll_p", "dfll";
 			clock-latency = <300000>;
+		};
+
+		cpu@1 {
+			compatible = "arm,cortex-a57", "arm,armv8";
+		};
+
+		cpu@2 {
+			compatible = "arm,cortex-a57", "arm,armv8";
+		};
+
+		cpu@3 {
+			compatible = "arm,cortex-a57", "arm,armv8";
 		};
 	};
 
