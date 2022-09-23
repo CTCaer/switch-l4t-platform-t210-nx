@@ -52,6 +52,10 @@
 				nvidia,dsi-power-saving-suspend = <TEGRA_DSI_ENABLE>;
 				nvidia,dsi-ulpm-not-support = <TEGRA_DSI_ENABLE>;
 				nvidia,dsi-phy-tlpx = <100>;
+				nvidia,dsi-phy-wakeup = <1970>;
+				nvidia,dsi-phy-taget = <450>;
+				nvidia,dsi-phy-tasure = <180>;
+				nvidia,dsi-phy-tago = <360>;
 				nvidia,dsi-init-cmd =
 					<TEGRA_DSI_PACKET_CMD DSI_DCS_WRITE_0_PARAM DSI_DCS_EXIT_SLEEP_MODE 0x00 0x0>,
 					<TEGRA_DSI_DELAY_MS 180>, //180ms
