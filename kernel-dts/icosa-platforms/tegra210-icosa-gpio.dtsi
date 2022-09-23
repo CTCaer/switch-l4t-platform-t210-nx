@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2019-2022, CTCaer <ctcaer@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,22 +26,31 @@
 			gpios = <
 				TEGRA_GPIO(E, 6) 1 /* Joycon (L) Wake Detect */
 				TEGRA_GPIO(X, 4) 0 /* Temperature Sensor (TMP451) Alert */
-				TEGRA_GPIO(X, 2) 1 /* Motion IRQ (Unused?) */
+				TEGRA_GPIO(X, 2) 1 /* Motion IRQ */
 				TEGRA_GPIO(X, 1) 0 /* Touchscreen (4CD60D) IRQ */
-				TEGRA_GPIO(X, 5) 0 /* Sleep Button 2 (Unused?) */
+				TEGRA_GPIO(X, 5) 0 /* Power Button (Not connected) */
 				TEGRA_GPIO(X, 6) 0 /* Volume Up Button */
 				TEGRA_GPIO(X, 7) 0 /* Volume Down Button */
 				TEGRA_GPIO(Y, 1) 1 /* Home Button (RCM) */
 				TEGRA_GPIO(Y, 0) 0 /* Fuel Gauge IC (MAX17050) IRQ */
 				TEGRA_GPIO(Z, 0) 0 /* Charger IC (BQ24193) IRQ */
 				TEGRA_GPIO(S, 1) 1 /* Charger IC (BQ24193) Battery Charge Status */
+				TEGRA_GPIO(S, 3) 1 /* Gamecard Detect */
+				TEGRA_GPIO(Z, 3) 1 /* SD Card Write Protected */
 				TEGRA_GPIO(K, 4) 0 /* USB-PD (BM92T36) IRQ */
 				TEGRA_GPIO(H, 2) 1 /* Wi-Fi Wake Host */
 				TEGRA_GPIO(H, 5) 1 /* Bluetooth - BT Module -> Wake AP */
 				TEGRA_GPIO(H, 6) 1 /* Joycon (R) Wake Detect */
-				TEGRA_GPIO(P, 0) 1
 				TEGRA_GPIO(V, 6) 1 /* Audio Codec (ALC5639) Headphone Detect */
 				TEGRA_GPIO(BB, 4) 0 /* Audio Codec (ALC5639) Alert */
+				TEGRA_GPIO(K, 0) 0  /* Bluetooth Gpio2 */
+				TEGRA_GPIO(K, 1) 0  /* Bluetooth Gpio3 */
+				TEGRA_GPIO(K, 2) 0  /* Bluetooth Gpio4 */
+				TEGRA_GPIO(V, 3) 1
+
+				TEGRA_GPIO(P, 0) 1  /* SDEV Odin/Modin */
+				TEGRA_GPIO(BB, 2) 0 /* Ram Code 3 */
+				TEGRA_GPIO(CC, 2) 0 /* Ram Code 2 */
 				>;
 			line-name = "boot-default-input";
 		};
@@ -50,18 +59,16 @@
 			gpio-hog;
 			output-low;
 			gpios = <
-				TEGRA_GPIO(BB, 2) 0
 				TEGRA_GPIO(BB, 3) 0 /* Gamecard Reset */
-				TEGRA_GPIO(S, 5) 0
-				TEGRA_GPIO(T, 0) 0
-				TEGRA_GPIO(T, 1) 0
 				TEGRA_GPIO(V, 5) 0  /* USB-PD (BM92T36) Reset */
 				TEGRA_GPIO(K, 5) 0  /* USB-PD (BM92T36) VCONN Power Enable */
-				TEGRA_GPIO(L, 0) 0
+				TEGRA_GPIO(J, 5) 0  /* Charger IC (BQ24193) Charge Select 1 */
+				TEGRA_GPIO(L, 0) 0  /* Charger IC (BQ24193) Charge Select 2 */
+				TEGRA_GPIO(S, 6) 0  /* Charger IC (BQ24193) Charge Disable */
 				TEGRA_GPIO(H, 0) 0  /* Wi-Fi RF Disable */
 				TEGRA_GPIO(H, 3) 0  /* Bluetooth - AP -> Wake BT Module */
 				TEGRA_GPIO(H, 4) 0  /* Bluetooth Reset */
-				TEGRA_GPIO(I, 2) 0
+				TEGRA_GPIO(H, 7) 0  /* TODO: What's this? Bluetooth Gpio5 */
 				>;
 			line-name = "boot-default-output-low";
 		};
@@ -70,9 +77,9 @@
 			gpio-hog;
 			output-high;
 			gpios = <
+				TEGRA_GPIO(H, 1) 0  /* Wi-Fi Reset. Powered on by default. */
 				TEGRA_GPIO(CC, 3) 0 /* Joycon (L) Charge Enable */
 				TEGRA_GPIO(K, 3) 0  /* Joycon (R) Charge Enable */
-				TEGRA_GPIO(H, 1) 0  /* Wi-Fi Reset. Powered on by default. */
 				>;
 			line-name = "boot-default-output-high";
 		};
@@ -82,12 +89,11 @@
 			suspend-output-low;
 			output-low;
 			gpios = <
-				TEGRA_GPIO(CC, 3) 0 /* Joycon (L) Charge Enable */
-				TEGRA_GPIO(K, 3) 0  /* Joycon (R) Charge Enable */
-				TEGRA_GPIO(V, 0) 0  /* LCD Backlight PWM */
 				TEGRA_GPIO(V, 1) 0  /* LCD Backlight Enable */
 				TEGRA_GPIO(V, 2) 0  /* LCD Reset */
 				TEGRA_GPIO(H, 1) 0  /* Wi-Fi Reset. Powered off in suspend. */
+				TEGRA_GPIO(CC, 3) 0 /* Joycon (L) Charge Enable */
+				TEGRA_GPIO(K, 3) 0  /* Joycon (R) Charge Enable */
 				>;
 		};
 	};
