@@ -468,6 +468,25 @@
 			maxim,dead-volt = <3000>;
 			maxim,over-volt = <4300>;
 		};
+
+		bm92t: bm92t@18 {
+			compatible = "rohm,bm92t";
+			reg = <0x18>;
+			interrupt-parent = <&gpio>;
+			interrupts = <TEGRA_GPIO(K, 4) IRQ_TYPE_EDGE_RISING>;
+			#extcon-cells = <1>;
+			pd_bat_chg-supply = <&battery_charger>;
+			vbus-supply = <&usb0_vbus>;
+
+			nvidia,pmc-wakeup = <&tegra_pmc
+				PMC_WAKE_TYPE_EVENT 14 PMC_TRIGGER_TYPE_LOW>;
+
+			rohm,dp-signal-toggle-on-resume;
+			rohm,pd-5v-current-limit-ma = <2000>;
+			rohm,pd-9v-current-limit-ma = <2000>;
+			rohm,pd-12v-current-limit-ma = <1500>;
+			rohm,pd-15v-current-limit-ma = <1200>;
+		};
 	};
 
 	dummy_cool_dev: dummy-cool-dev {
