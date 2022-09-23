@@ -49,7 +49,7 @@
 
 		/* tegradc.1: DP */
 		dc@54240000 {
-			status = "okay"; /* Disable to enable built-in display fbcon */
+			status = "okay";
 			nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>;
 			nvidia,emc-clk-rate = <300000000>;
 			nvidia,fb-bpp = <32>; /* bits per pixel */
@@ -116,7 +116,7 @@
 				nvidia,lanes = <2>;
 				nvidia,fast-lt-disable;
 				disp-default-out {
-					nvidia,out-max-pixclk = <3333>; /* KHZ2PICOS(300000) */
+					/* nvidia,out-max-pixclk = <3333>; */ /* KHZ2PICOS(300000) */
 					nvidia,out-type = <TEGRA_DC_OUT_DP>;
 					nvidia,out-align = <TEGRA_DC_ALIGN_MSB>;
 					nvidia,out-order = <TEGRA_DC_ORDER_RED_BLUE>;
