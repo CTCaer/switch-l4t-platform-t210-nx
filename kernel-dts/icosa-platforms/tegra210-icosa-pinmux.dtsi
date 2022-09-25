@@ -661,7 +661,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			spi4_miso_pd0 { /* 307c */
@@ -670,7 +669,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_UP>;
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			spi4_sck_pc5 { /* 3080 */
@@ -679,7 +677,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			spi4_cs0_pc6 { /* 3084 */
@@ -688,7 +685,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_UP>;
 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			uart2_tx_pg0 { /* 30f4 */
