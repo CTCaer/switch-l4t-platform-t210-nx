@@ -340,7 +340,7 @@
 			usb2-0 {
 				status = "okay";
 				mode = "otg";
-				nvidia,usb3-port-fake = <3>;
+				nvidia,usb3-port-fake = <0>;
 			};
 
 			usb3-0 {
