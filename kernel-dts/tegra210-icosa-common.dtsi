@@ -282,6 +282,7 @@
 
 	xusb_padctl@7009f000 {
 		status = "okay";
+		usb3-no-mapping-war = <0>; /* Enable if usb3 is disabled */
 
 		pads {
 			usb2 {
