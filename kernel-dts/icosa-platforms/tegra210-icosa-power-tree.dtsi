@@ -170,7 +170,7 @@
 		vddio-dp-supply = <&max77620_sd3>;
 	};
 
-	usb_cd {
+	tegra_ucd: usb_cd {
 		usb_bat_chg-supply = <&battery_charger>;
 		phys = <&{/xusb_padctl@7009f000/pads/usb2/lanes/usb2-0}>;
 		phy-names = "otg-phy";
