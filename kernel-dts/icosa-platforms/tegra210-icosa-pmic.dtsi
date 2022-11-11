@@ -373,26 +373,29 @@
 			interrupts = <TEGRA_GPIO(Z, 0) IRQ_TYPE_NONE>;
 			#extcon-cells = <1>;
 
-			/* nvidia,pmc-wakeup = <&tegra_pmc PMC_WAKE_TYPE_EVENT 34 PMC_TRIGGER_TYPE_LOW>; */
+			/* nvidia,pmc-wakeup = <&tegra_pmc
+				PMC_WAKE_TYPE_EVENT 34 PMC_TRIGGER_TYPE_LOW>; */ /* gpio_pz0_IB */
 
 			#thermal-sensor-cells = <0>;
 
 			battery_charger: charger {
-				status = "okay";//not used?
+				status = "okay";
 				dt-override-status-odm-data = <0x00C00000 0x00400000>;
 				regulator-name = "batt_regulator";
-				regulator-max-microamp = <3000000>;
-				ti,charge-voltage-limit-millivolt = <4208>;
-				ti,charge-term-current-limit-milliamp = <128>;
+				regulator-max-microamp = <4500000>;
+				ti,chg-dis-gpio = <&gpio TEGRA_GPIO(S, 6) GPIO_ACTIVE_HIGH>;
 				ti,ir-comp-voltage-millivolt = <1>;
 				ti,ir-comp-resister-ohm = <1>;
-				ti,pre-charge-current-limit-milliamp = <128>;
+				ti,input-voltage-limit-millivolt = <4360>;
+				ti,sys-input-voltage-limit-millivolt = <3000>;
 				ti,thermal-regulation-threshold-degc = <120>;
+				ti,pre-charge-current-limit-milliamp = <128>;
+				ti,charge-term-current-limit-milliamp = <128>;
+				ti,charge-voltage-limit-millivolt = <4208>;
 				ti,fast-charge-current-limit-milliamp = <2048>;
-				ti,input-voltage-limit-millivolt = <3880>;
 				ti,temp-range = <3 16 50 59>;
-				ti,charge-current-limit = <512 768 2048 2048>;
 				ti,charge-thermal-voltage-limit = <4208 4208 4208 3952>;
+				ti,charge-current-limit = <512 768 2048 2048>;
 				ti,thermal-zone = "battery";
 				ti,temp-polling-time-sec = <20>;
 				ti,pre-to-fast-charge-voltage-millivolt = <3000>;
