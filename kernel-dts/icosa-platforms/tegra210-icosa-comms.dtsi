@@ -24,7 +24,7 @@
 		};
 	};
 
-	brcmfmac_pcie_wlan_upstream {
+	brcmfmac_pcie_wlan {
 		compatible = "brcm,bcm4356-fmac";
 		status = "okay";
 		brcm,reset_on_wake;
