@@ -20,6 +20,7 @@
 
 / {
 	nvidia,dtsfilename = __FILE__;
+	nvidia,dtbbuildtime = __DATE__, __TIME__;
 
 	tlk {
 		status = "disabled"; // FIXME: needs keys, where are they
