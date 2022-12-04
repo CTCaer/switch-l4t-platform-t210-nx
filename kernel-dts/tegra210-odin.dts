@@ -1,7 +1,5 @@
 /*
- * arch/arm64/boot/dts/tegra210-icosa.dts
- *
- * Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2019-2022, CTCaer <ctcaer@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,11 +12,11 @@
  *
  */
 
-#include "tegra210-icosa-common.dtsi"
-#include "tegra210-icosa-common-disp.dtsi"
-#include "icosa-platforms/tegra210-icosa-power-tree.dtsi"
-#include "icosa-platforms/tegra210-icosa-emc.dtsi"
-#include "icosa-platforms/tegra210-icosa-sensor.dtsi"
+#include "nx-platforms/tegra210-odin-common.dtsi"
+#include "nx-platforms/tegra210-nx-common-disp.dtsi"
+#include "nx-platforms/tegra210-odin-power-tree.dtsi"
+#include "nx-platforms/tegra210-odin-emc.dtsi"
+#include "nx-platforms/tegra210-nx-sensor.dtsi"
 
 / {
 	nvidia,dtsfilename = __FILE__;

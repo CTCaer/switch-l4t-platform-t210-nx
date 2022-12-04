@@ -1,7 +1,5 @@
 /*
- * arch/arm64/boot/dts/tegra210-icosa-common.dtsi
- *
- * Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
+ * Copyright (c) 2019-2022, CTCaer <ctcaer@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,12 +18,12 @@
 
 #include <t210-common-platforms/tegra210-common.dtsi>
 #include <t210-common-platforms/tegra210-cpufreq.dtsi>
-#include "icosa-platforms/tegra210-icosa-gpio.dtsi"
-#include "icosa-platforms/tegra210-icosa-pinmux.dtsi"
-#include "icosa-platforms/tegra210-icosa-prods.dtsi"
-#include "icosa-platforms/tegra210-icosa-comms.dtsi"
+#include "tegra210-odin-gpio.dtsi"
+#include "tegra210-odin-pinmux.dtsi"
+#include "tegra210-odin-prods.dtsi"
+#include "tegra210-nx-comms.dtsi"
 #include <tegra210-soc/tegra210-sdhci.dtsi>
-#include "icosa-platforms/tegra210-icosa-keys.dtsi"
+#include "tegra210-nx-keys.dtsi"
 #include <tegra210-soc/tegra210-audio.dtsi>
 #include <t210-common-platforms/tegra210-thermal-nct72-p2530.dtsi>
 #include <tegra210-soc/tegra210-thermal-Tboard-Tdiode.dtsi>

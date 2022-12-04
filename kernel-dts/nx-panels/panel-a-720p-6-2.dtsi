@@ -1,21 +1,17 @@
 /*
- * Generic Icosa/Iowa Compatible panel
+ * AUO A062TAN0X
  *
- * Copyright (c) 2021, CTCaer <ctcaer@gmail.com>
+ * Copyright (c) 2020, CTCaer <ctcaer@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
+ * the Free Software Foundation; version 2 of the License.
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
  * more details.
  *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 #include <dt-bindings/display/tegra-dc.h>
 #include <dt-bindings/display/tegra-panel.h>
@@ -23,7 +19,7 @@
 / {
 	host1x {
 		dsi {
-			panel_o_720p_6_2: panel-o-720p-6-2 {
+			panel_a_720p_6_2: panel-a-720p-6-2 {
 				status = "disabled";
 				compatible = "o,720-1280-6-0-01"; /* Compatible id must not change! */
 				/*
@@ -59,16 +55,50 @@
 				nvidia,dsi-init-cmd =
 					<TEGRA_DSI_PACKET_CMD DSI_DCS_WRITE_0_PARAM DSI_DCS_EXIT_SLEEP_MODE 0x00 0x0>,
 					<TEGRA_DSI_DELAY_MS 180>, //180ms
+					<TEGRA_DSI_PACKET_CMD DSI_DCS_LONG_WRITE 0x04 0x00 0x0
+						0xB9 0xFF 0x83 0x94
+						0x0 0x0>,
+					<TEGRA_DSI_DELAY_MS 5>, //5ms
+					<TEGRA_DSI_PACKET_CMD DSI_DCS_LONG_WRITE 0x07 0x00 0x0
+						0xB1 0x48 0x11 0x71 0x09 0x32 0x14
+						0x0 0x0>,
+					<TEGRA_DSI_DELAY_MS 5>, //5ms
 					/* TODO, Do we need to find a way to set set_display_on after "operate DSI_A in video mode"? */
 					<TEGRA_DSI_PACKET_CMD DSI_DCS_WRITE_0_PARAM DSI_DCS_SET_DISPLAY_ON 0x00 0x0>,
 					<TEGRA_DSI_DELAY_MS 20>; //20ms
-				nvidia,dsi-n-init-cmd = <4>;
+				nvidia,dsi-n-init-cmd = <8>;
 				nvidia,dsi-suspend-cmd =
 					<TEGRA_DSI_PACKET_CMD DSI_DCS_WRITE_0_PARAM DSI_DCS_SET_DISPLAY_OFF 0x00 0x0>,
 					<TEGRA_DSI_DELAY_MS 50>, //40ms + 10ms
+					<TEGRA_DSI_PACKET_CMD DSI_DCS_LONG_WRITE 0x04 0x00 0x0
+						0xB9 0xFF 0x83 0x94
+						0x0 0x0>,
+					<TEGRA_DSI_PACKET_CMD DSI_DCS_LONG_WRITE 0x2C 0x00 0x0
+						0xD5 0x19 0x19 0x19 0x19 0x19 0x19 0x19
+						0x19 0x19 0x19 0x19 0x19 0x19 0x19 0x19
+						0x19 0x19 0x19 0x19 0x19 0x19 0x19 0x19
+						0x19 0x19 0x19 0x19 0x19 0x19 0x19 0x19
+						0x19 0x19 0x19 0x19 0x19 0x19 0x19 0x19
+						0x19 0x19 0x19 0x19
+						0x0 0x0>,
+					<TEGRA_DSI_PACKET_CMD DSI_DCS_LONG_WRITE 0x2C 0x00 0x0
+						0xD6 0x19 0x19 0x19 0x19 0x19 0x19 0x19
+						0x19 0x19 0x19 0x19 0x19 0x19 0x19 0x19
+						0x19 0x19 0x19 0x19 0x19 0x19 0x19 0x19
+						0x19 0x19 0x19 0x19 0x19 0x19 0x19 0x19
+						0x19 0x19 0x19 0x19 0x19 0x19 0x19 0x19
+						0x19 0x19 0x19 0x19
+						0x0 0x0>,
+					<TEGRA_DSI_PACKET_CMD DSI_DCS_LONG_WRITE 0x0B 0x00 0x0
+						0xB1 0x48 0x11 0x71 0x09 0x32 0x14 0x71
+						0x31 0x4D 0x11
+						0x0 0x0>,
+					<TEGRA_DSI_PACKET_CMD DSI_DCS_LONG_WRITE 0x04 0x00 0x0
+						0xB9 0x00 0x00 0x00
+						0x0 0x0>,
 					<TEGRA_DSI_PACKET_CMD DSI_DCS_WRITE_0_PARAM DSI_DCS_ENTER_SLEEP_MODE 0x00 0x0>,
 					<TEGRA_DSI_DELAY_MS 50>; //50ms
-				nvidia,dsi-n-suspend-cmd = <4>;
+				nvidia,dsi-n-suspend-cmd = <9>;
 				disp-default-out {
 					nvidia,out-type = <TEGRA_DC_OUT_DSI>;
 					nvidia,out-width = <77>;
