@@ -13,10 +13,10 @@
  *
  */
 
-#include "icosa-panels/panel-o-720p-6-2.dtsi"
-#include "icosa-panels/panel-j-720p-6-2.dtsi"
-#include "icosa-panels/panel-a-720p-6-2.dtsi"
-#include "icosa-panels/panel-i-720p-6-2.dtsi"
+#include "nx-panels/panel-o-720p-6-2.dtsi"
+#include "nx-panels/panel-j-720p-6-2.dtsi"
+#include "nx-panels/panel-a-720p-6-2.dtsi"
+#include "nx-panels/panel-i-720p-6-2.dtsi"
 
 / {
 	backlight {
