@@ -24,7 +24,7 @@
 	nvidia,dtbbuildtime = __DATE__, __TIME__;
 
 	tlk {
-		status = "disabled"; // FIXME: needs keys, where are they
+		status = "disabled"; /* Only enable if TOS/NVDECBL/TSEC/EKS are setup */
 	};
 
 	cpus {
@@ -36,12 +36,14 @@
 	};
 
 	r2p {
-		compatible = "tegra-reboot2payload";
+		compatible = "tegra-r2p";
 		status = "okay";
-		default-payload = "reboot_payload.bin";
-		// This can be either "bootloader" to boot payload, or "via-payload" to also apply hekate config.
-		// Any other string will reboot normally.
-		normal-reboot-action = "via-payload";
-		hekate-config-id = "SWANDR";
+	};
+
+	host1x {
+		/* tegradc.0: DSI */
+		dc@54200000 {
+			nvidia,emc-clk-rate = <300000000>;
+		};
 	};
 };
