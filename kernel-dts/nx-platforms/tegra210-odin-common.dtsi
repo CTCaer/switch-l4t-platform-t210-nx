@@ -442,6 +442,8 @@
 			name = "joyconr";
 			compatible = "nintendo,joycon-serdev";
 			charger-supply = <&en_vdd_jcr_chgr>;
+			detect-en-gpios = <&gpio TEGRA_GPIO(G, 0) GPIO_ACTIVE_HIGH>;
+			detect-gpios = <&gpio TEGRA_GPIO(H, 6) GPIO_ACTIVE_LOW>;
 		};
 	};
 
@@ -456,6 +458,8 @@
 			name = "joyconl";
 			compatible = "nintendo,joycon-serdev";
 			charger-supply = <&en_vdd_jcl_chgr>;
+			detect-en-gpios = <&gpio TEGRA_GPIO(D, 1) GPIO_ACTIVE_HIGH>;
+			detect-gpios = <&gpio TEGRA_GPIO(E, 6) GPIO_ACTIVE_LOW>;
 		};
 	};
 
