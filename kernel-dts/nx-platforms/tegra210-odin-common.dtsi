@@ -469,6 +469,8 @@
 			device-wakeup-gpios = <&gpio TEGRA_GPIO(H, 3) GPIO_ACTIVE_LOW>;
 			/* host-wakeup-gpios = <&gpio TEGRA_GPIO(H, 5) GPIO_ACTIVE_LOW>; */ /* Enables auto-sleep */
 			max-speed = <3000000>; /* Max supported 4 MBaud */
+			sco-routing = <1>; /* Over HCI */
+
 			/* nvidia,pmc-wakeup = <&tegra_pmc PMC_WAKE_TYPE_EVENT 52 PMC_TRIGGER_TYPE_LOW>; */ /* bt_wake_ap_IB */
 		};
 	};
