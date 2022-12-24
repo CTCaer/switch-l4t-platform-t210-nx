@@ -1,0 +1,164 @@
+/*
+ * Copyright (c) 2022, CTCaer <ctcaer@gmail.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 2 of the License.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.
+ *
+ */
+
+#include "nx-platforms/tegra210b01-nx-common.dtsi"
+#include "nx-platforms/tegra210b01-frig-gpio.dtsi"
+#include "nx-platforms/tegra210b01-frig-pinmux.dtsi"
+#include "nx-platforms/tegra210-nx-common-disp.dtsi"
+#include "nx-platforms/tegra210b01-frig-power-tree.dtsi"
+#include "nx-platforms/tegra210-nx-sensor.dtsi"
+
+/ {
+	nvidia,dtsfilename = __FILE__;
+	nvidia,dtbbuildtime = __DATE__, __TIME__;
+
+	model = "Nintendo Switch (OLED model)";
+	compatible = "nvidia,frig", "nintendo,aula", "nintendo,nx", "nvidia,tegra210b01";
+
+	firmware {
+		android {
+			hardware = "frig";
+		};
+	};
+
+	tlk {
+		status = "disabled"; /* Only enable if TOS/NVDECBL/TSEC/EKS are setup */
+	};
+
+	cpus {
+		idle-states {
+			c7 {
+				status = "disabled"; // FIXME: enabling causes crashes on cpu idle
+			};
+		};
+	};
+
+	r2p {
+		compatible = "tegra-r2p";
+		status = "okay";
+	};
+
+	backlight {
+		status = "disabled";
+		panel-o-720p-6-0-bl {
+			status = "disabled";
+		};
+	};
+
+	i2c@7000c000 {
+		rt5639: rt5639@1c {
+			realtek,eq-config-type = <2>;
+		};
+		bm92t: bm92t@18 {
+			rohm,dp-lanes = <4>;
+		};
+	};
+
+	host1x {
+		dsi {
+			nvidia,active-panel = <&panel_s_720p_7_0>;
+			prod-settings {
+				#prod-cells = <3>;
+				dsi-padctrl-prod {
+					prod = <
+						0x00000148 0x000fffff 0x00077777	/* PAD_CONTROL_4 */
+						0x0000014c 0x000fffff 0x00077777	/* PAD_CONTROL_5 */
+						0x00000150 0x00003333 0x00001111	/* PAD_CONTROL_6 */
+						>;
+				};
+			};
+		};
+		sor1 {
+			dp-display {
+				nvidia,lanes = <4>;
+			};
+		};
+	};
+
+	i2c@7000c400 {
+		bh1730fvc@29 {
+			rohm,opt-win-coeff = < 231 9697 7502
+					       993 3333 2778
+					      1478 1621 1053
+					      7500   81   10>;
+
+			rohm,gain-coeff = < 2500     0
+					    1600  7800
+					      10 50000
+					       0  1000>;
+		};
+	};
+
+	spi@7000da00 {
+		imu_stm: lsm6dsl@0 {
+			status = "disabled"; /* Disabled for Vali/Frig */
+		};
+	};
+
+	thermal_fan_est_shared_data: tfesd {
+		dev1 {
+			/* Frig SoC Console */
+			coeffs_mode0 = <7831 57590>;
+
+			/* Frig SoC Handheld */
+			coeffs_mode1 = <9029 4274>;
+		};
+
+		dev2 {
+			/* Frig PCB Console */
+			coeffs_mode0 = <8051 0xFFFF4F63>;
+
+			/* Frig PCB Handheld */
+			coeffs_mode1 = <7176 0xFFFF7B5E>;
+		};
+	};
+
+	thermal-fan-est {
+		profiles {
+			Console {
+				active_trip_temps = <
+					0 36000 40000 43000 49000 53000
+					70000 80000 90000 100000>; /* Unused */
+				active_hysteresis = <0 0 3900 2900 0 0 0 0 0 0>;
+			};
+			Handheld {
+				active_trip_temps = <
+					0 36000 40000 43000 44000 45000 46500
+					80000 90000 100000>; /* Unused */
+				active_hysteresis = <0 0 3900 2900 0 0 1000 0 0 0>;
+			};
+			/* Uses Handheld tskin coeffs and Console fan duties */
+			Cool {
+				active_trip_temps = <
+					0 30000 36000 40000 43000 49000
+					70000 80000 90000 100000>; /* Unused */
+				active_hysteresis = <0 0 0 0 0 0 0 0 0 0>;
+			};
+		};
+	};
+
+	pwm-fan {
+		profiles {
+			Console {
+				active_pwm = <0 0 51 51 128 255 255 255 255 255>;
+			};
+			Handheld {
+				active_pwm = <0 0 51 51 76 128 255 255 255 255>;
+			};
+			Cool {
+				active_pwm = <0 0 51 51 128 255 255 255 255 255>;
+			};
+		};
+	};
+};
