@@ -126,9 +126,14 @@
 	};
 
 	sdhci@700b0600 { /* SDMMC4 for EMMC */
+		cd-gpios = <&gpio TEGRA_GPIO(Z, 1) 0>;
 		bus-width = <8>;
 		uhs-mask = <0x0>;       /* hs400 */
 		tap-delay = <0>;
+		trim-delay = <8>;
+		only-1-8-v;
+		no-sdio;
+		no-sd;
 		max-clk-limit = <200000000>;
 		pll_source = "pll_p", "pll_c4_out2";
 		clocks = <&tegra_car TEGRA210_CLK_SDMMC4>,
@@ -181,6 +186,8 @@
 
 	sdhci@700b0000 { /* SDMMC1 for uSD card */
 		uhs-mask = <0x0c>;
+		tap-delay = <4>;
+		trim-delay = <2>;
 		power-off-rail;
 		default-drv-type = <0x01>;
 		nvidia,update-pinctrl-settings;
@@ -188,6 +195,7 @@
 		no-sdio;
 		no-mmc;
 		max-clk-limit = <200000000>;
+		default-drv-type = <1>;
 		pll_source = "pll_p", "pll_c4_out2";
 		clocks = <&tegra_car TEGRA210_CLK_SDMMC1>,
 			   <&tegra_car TEGRA210_CLK_PLL_P>,
@@ -196,6 +204,9 @@
 		clock-names = "sdmmc", "pll_p", "pll_c4_out2", "sdmmc_legacy_tm";
 		nvidia,cd-wakeup-capable;
 		status = "okay";
+
+		nvidia,pmc-wakeup = <&tegra_pmc
+			PMC_WAKE_TYPE_EVENT 35 (PMC_TRIGGER_TYPE_RISING | PMC_TRIGGER_TYPE_FALLING)>; /* gpio_pz1_IB */
 	};
 
 	aconnect@702c0000 {
