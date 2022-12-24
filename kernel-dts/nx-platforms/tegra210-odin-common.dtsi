@@ -1026,6 +1026,8 @@
 		nvidia,ci = <0>;
 		nvidia,cg = <2>;
 		nvidia,i2c-fs-rate = <400000>;
+		nvidia,pmic-undershoot-gb = <0>; /* Use pmic default min */
+		/* nvidia,dfll-max-freq-khz = <1224000>; */
 	};
 
 	cpus {
