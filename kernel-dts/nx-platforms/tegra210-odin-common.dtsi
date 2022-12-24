@@ -213,6 +213,7 @@
 				regulator-supplies = "vdd-1v8-audio-hv", "vdd-1v8-audio-hv-bias";
 				vdd-1v8-audio-hv-supply = <&max77620_sd3>;
 				vdd-1v8-audio-hv-bias-supply = <&max77620_sd3>;
+				fsync-width = <31>;
 				status = "okay";
 			};
 
@@ -225,6 +226,18 @@
 				vdd-1v8-spi-hv-bias-supply = <&max77620_sd3>;
 				fsync-width = <0>;
 				status = "okay";
+			};
+
+			i2s@702d1200 {
+				status = "disabled";
+			};
+
+			i2s@702d1300 {
+				status = "disabled";
+			};
+
+			i2s@702d1400 {
+				status = "disabled";
 			};
 		};
 
@@ -678,6 +691,7 @@
 			realtek,external-microphone;
 			realtek,sel-jd-source = <4>;
 			realtek,jack-detect-is-jd1;
+			realtek,eq-config-type = <0>;
 		};
 	};
 
@@ -702,22 +716,25 @@
 		assigned-clock-rates = <368640000>, <36864000>,
 			<36864000>, <12288000>;
 
-		nvidia,num-codec-link = <1>;
+		nvidia,num-codec-link = <2>;
 
 		nvidia,audio-routing =
-			"x Headphone Jack", 	"x HPOL",
-			"x Headphone Jack", 	"x HPOR",
-			"x Int Spk", 	"x SPORP",
-			"x Int Spk", 	"x SPORN",
-			"x Int Spk", 	"x SPOLP",
-			"x Int Spk", 	"x SPOLN",
+			"x Headphone Jack",	"x HPOL",
+			"x Headphone Jack",	"x HPOR",
+			"x Int Spk",		"x SPORP",
+			"x Int Spk",		"x SPORN",
+			"x Int Spk",		"x SPOLP",
+			"x Int Spk",		"x SPOLN",
 			"x IN1P",		"x Mic Jack",
-			"x IN1P",		"x Mic Jack";
+			"x IN1P",		"x Mic Jack",
+			"y Headphone",		"y OUT",
+			"y IN",			"y Mic";
 
 		nvidia,xbar = <&tegra_axbar>;
 
 		mclk-fs = <256>;
 
+		/* RT5639 I2S1 */
 		nvidia,dai-link-1 {
 			link-name = "rt565x-playback";
 			cpu-dai = <&tegra_i2s1>;
@@ -730,9 +747,29 @@
 			bitclock-noninversion;
 			frame-noninversion;
 			bit-format = "s16_le";
+			bclk-ratio = <0>;
 			srate = <48000>;
 			num-channel = <2>;
 			name-prefix = "x";
+		};
+
+		/* BCM4356-BT PCM */
+		nvidia,dai-link-2 {
+			link-name = "spdif-dit-1";
+			cpu-dai = <&tegra_i2s2>;
+			codec-dai = <&spdif_dit1>;
+			cpu-dai-name = "I2S2";
+			codec-dai-name = "dit-hifi";
+			format = "dsp_a";
+			bitclock-slave;
+			frame-slave;
+			bitclock-inversion;
+			frame-noninversion;
+			bit-format = "s16_le";
+			bclk-ratio = <4>;
+			srate = <8000>;
+			num-channel = <1>;
+			name-prefix = "y";
 		};
 	};
 
