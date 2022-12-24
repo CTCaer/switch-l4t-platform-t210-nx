@@ -32,20 +32,23 @@
 			regulator-name = "vdd-cpu";
 			regulator-min-microvolt = <618750>;
 			regulator-max-microvolt = <1400000>;
-			regulator-max-microamp = <15000000>;
+			regulator-max-microamp = <9000000>;
+			regulator-init-microvolt = <1000000>;
 			regulator-n-voltages = <126>;
 			regulator-ramp-delay = <12000>;
-			regulator-enable-ramp-delay = <150>;
+			regulator-enable-ramp-delay = <500>;
 			regulator-disable-ramp-delay = <60000>;
 			regulator-boot-on;
 			regulator-always-on;
 			#thermal-sensor-cells = <0>;
 			maxim,enable-active-discharge;
+			maxim,enable-falling-slew-rate;
+			maxim,enable-remote-sense;
 			maxim,externally-enable;
 			maxim,sleep-on-dvs;
 			maxim,dvs-default-state = <1>;
 			maxim,enable-gpio = <&max77620 5 0>;
-			junction-warn-millicelsius = <120>;
+			junction-warn-millicelsius = <120000>;
 		};
 
 		gpu_max77621_reg: max77621@1c {
@@ -58,24 +61,24 @@
 			regulator-max-microvolt = <1150000>;
 			regulator-max-microamp = <9000000>;
 			regulator-init-microvolt = <1000000>;
-			regulator-enable-ramp-delay = <200>;
-			regulator-disable-ramp-delay = <60000>;
-			regulator-boot-off;
 			regulator-ramp-delay = <12000>;
+			regulator-enable-ramp-delay = <500>;
+			regulator-disable-ramp-delay = <60000>;
 			#thermal-sensor-cells = <0>;
 			maxim,enable-active-discharge;
-			maxim,enable-bias-control;
+			maxim,enable-falling-slew-rate;
+			maxim,enable-remote-sense;
 			maxim,dvs-default-state = <1>;
 			maxim,enable-gpio = <&max77620 6 0>;
-			junction-warn-millicelsius = <120>;
+			junction-warn-millicelsius = <120000>;
 		};
 
 		max77620: max77620@3c {
 			compatible = "maxim,max77620";
 			reg = <0x3c>;
-			interrupts = <0 86 IRQ_TYPE_NONE>; /* TEGRA_GPIO(K, 6) */
+			interrupts = <GIC_SPI 86 IRQ_TYPE_NONE>; /* PMU_EXT */
 			nvidia,pmc-wakeup = <&tegra_pmc
-				PMC_WAKE_TYPE_EVENT 51 PMC_TRIGGER_TYPE_LOW>;
+				PMC_WAKE_TYPE_EVENT 51 PMC_TRIGGER_TYPE_LOW>; /* pwr_int_n_IB */
 
 			#interrupt-cells = <2>;
 			interrupt-controller;
@@ -119,6 +122,7 @@
 					maxim,active-fps-source = <MAX77620_FPS_SRC_0>;
 				};
 
+				/* vdd_3v3 */
 				pin_gpio3 {
 					pins = "gpio3";
 					function = "fps-out";
@@ -183,44 +187,50 @@
 
 				max77620_sd0: sd0 {
 					regulator-name = "vdd-core";
-					regulator-min-microvolt = <825000>;
-					regulator-max-microvolt = <1125000>;
+					regulator-min-microvolt = <625000>;
+					regulator-max-microvolt = <1400000>;
 					regulator-boot-on;
 					regulator-always-on;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_1>;
 					maxim,active-fps-power-up-slot = <1>;
 					maxim,active-fps-power-down-slot = <7>;
-					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
-					regulator-enable-ramp-delay = <146>;
+					regulator-initial-mode = <REGULATOR_MODE_NORMAL>;
+					regulator-enable-ramp-delay = <50>;
 					regulator-disable-ramp-delay = <4080>;
 					maxim,ramp-rate-setting = <27500>;
-					regulator-ramp-delay = <9100>;
+					regulator-ramp-delay = <27500>;
 				};
 
 				max77620_sd1: sd1 {
 					regulator-name = "vddio-ddr";
+					regulator-min-microvolt = <1050000>;
+					regulator-max-microvolt = <1200000>;
 					regulator-always-on;
 					regulator-boot-on;
-					regulator-init-mode = <REGULATOR_MODE_NORMAL>; //1.125v
+					/* regulator-init-microvolt = <1125000>; */ /* Controlled by bootloader */
+					regulator-initial-mode = <REGULATOR_MODE_NORMAL>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_0>;
 					maxim,active-fps-power-up-slot = <5>;
 					maxim,active-fps-power-down-slot = <1>;
-					regulator-enable-ramp-delay = <130>;
+					regulator-enable-ramp-delay = <1000>;
 					regulator-disable-ramp-delay = <145800>;
 					maxim,ramp-rate-setting = <27500>;
-					regulator-ramp-delay = <9100>;
+					regulator-ramp-delay = <27500>;
 				};
 
 				max77620_sd2: sd2 {
 					regulator-name = "vdd-pre-reg";
-					regulator-min-microvolt = <1350000>;
+					regulator-min-microvolt = <1325000>;
 					regulator-max-microvolt = <1350000>;
-					regulator-boot-on; /* Must be set for seamless display */
+					regulator-always-on;
+					regulator-boot-on;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_1>;
-					regulator-enable-ramp-delay = <176>;
+					maxim,active-fps-power-up-slot = <2>;
+					maxim,active-fps-power-down-slot = <5>;
+					regulator-enable-ramp-delay = <50>;
 					regulator-disable-ramp-delay = <32000>;
 					maxim,ramp-rate-setting = <27500>;
-					regulator-ramp-delay = <7900>;
+					regulator-ramp-delay = <27500>;
 				};
 
 				max77620_sd3: sd3 {
@@ -232,11 +242,11 @@
 					maxim,active-fps-source = <MAX77620_FPS_SRC_0>;
 					maxim,active-fps-power-up-slot = <3>;
 					maxim,active-fps-power-down-slot = <3>;
-					regulator-init-mode = <REGULATOR_MODE_NORMAL>;
-					regulator-enable-ramp-delay = <242>;
+					regulator-initial-mode = <REGULATOR_MODE_NORMAL>;
+					regulator-enable-ramp-delay = <50>;
 					regulator-disable-ramp-delay = <118000>;
 					maxim,ramp-rate-setting = <27500>;
-					regulator-ramp-delay = <7700>;
+					regulator-ramp-delay = <27500>;
 				};
 
 				/* Display Panel */
@@ -246,9 +256,11 @@
 					regulator-max-microvolt = <1200000>;
 					regulator-boot-on; /* Must be set for seamless display */
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
-					regulator-enable-ramp-delay = <26>;
-					regulator-disable-ramp-delay = <626>;
-					maxim,ramp-rate-setting = <100000>;
+					maxim,active-fps-power-up-slot = <0>;
+					maxim,active-fps-power-down-slot = <7>;
+					regulator-enable-ramp-delay = <50>;
+					regulator-disable-ramp-delay = <4000>;
+					maxim,ramp-rate-setting = <50000>;
 					regulator-ramp-delay = <50000>;
 				};
 
@@ -258,9 +270,11 @@
 					regulator-min-microvolt = <1050000>;
 					regulator-max-microvolt = <1050000>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
-					regulator-enable-ramp-delay = <22>;
-					regulator-disable-ramp-delay = <630>;
-					maxim,ramp-rate-setting = <100000>;
+					maxim,active-fps-power-up-slot = <0>;
+					maxim,active-fps-power-down-slot = <7>;
+					regulator-enable-ramp-delay = <50>;
+					regulator-disable-ramp-delay = <6000>;
+					maxim,ramp-rate-setting = <50000>;
 					regulator-ramp-delay = <50000>;
 				};
 
@@ -269,22 +283,27 @@
 					regulator-name = "vddio-sdmmc1";
 					regulator-min-microvolt = <1800000>;
 					regulator-max-microvolt = <3300000>;
+					/* regulator-max-microamp = <150000>; */
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
-					regulator-enable-ramp-delay = <62>;
-					regulator-disable-ramp-delay = <650>;
-					maxim,ramp-rate-setting = <100000>;
+					maxim,active-fps-power-up-slot = <0>;
+					maxim,active-fps-power-down-slot = <7>;
+					regulator-enable-ramp-delay = <100>;
+					regulator-disable-ramp-delay = <7000>;
+					maxim,ramp-rate-setting = <50000>;
 					regulator-ramp-delay = <50000>;
 				};
 
-				/* GC Asic */
+				/* GC Card Vdd */
 				max77620_ldo3: ldo3 {
 					regulator-name = "vdd-gc-3v1";
 					regulator-min-microvolt = <3100000>;
 					regulator-max-microvolt = <3100000>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
-					regulator-enable-ramp-delay = <50>;
-					regulator-disable-ramp-delay = <1110>;
-					maxim,ramp-rate-setting = <100000>;
+					maxim,active-fps-power-up-slot = <0>;
+					maxim,active-fps-power-down-slot = <7>;
+					regulator-enable-ramp-delay = <100>;
+					regulator-disable-ramp-delay = <3000>;
+					maxim,ramp-rate-setting = <50000>;
 					regulator-ramp-delay = <50000>;
 				};
 
@@ -298,35 +317,39 @@
 					maxim,active-fps-power-up-slot = <1>;
 					maxim,active-fps-power-down-slot = <7>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_0>;
-					regulator-enable-ramp-delay = <22>;
+					regulator-enable-ramp-delay = <50>;
 					regulator-disable-ramp-delay = <610>;
-					maxim,ramp-rate-setting = <100000>;
+					maxim,ramp-rate-setting = <50000>;
 					regulator-ramp-delay = <50000>;
 				};
 
-				/* GC Card */
+				/* GC Card Vddio */
 				max77620_ldo5: ldo5 {
 					regulator-name = "vdd-gc-1v8";
 					regulator-min-microvolt = <1800000>;
 					regulator-max-microvolt = <1800000>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
-					regulator-enable-ramp-delay = <62>;
-					regulator-disable-ramp-delay = <640>;
-					maxim,ramp-rate-setting = <100000>;
+					maxim,active-fps-power-up-slot = <0>;
+					maxim,active-fps-power-down-slot = <7>;
+					regulator-enable-ramp-delay = <60>;
+					regulator-disable-ramp-delay = <3000>;
+					maxim,ramp-rate-setting = <50000>;
 					regulator-ramp-delay = <50000>;
 				};
 
 				/* Touch Panel, ALS */
 				max77620_ldo6: ldo6 {
-					regulator-name = "vdd-tp-3v1";
+					regulator-name = "vdd-tp-2v9";
 					regulator-min-microvolt = <2900000>;
 					regulator-max-microvolt = <2900000>;
-					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
-					regulator-enable-ramp-delay = <36>;
-					regulator-disable-ramp-delay = <674>;
-					maxim,ramp-rate-setting = <100000>;
-					regulator-ramp-delay = <50000>;
 					regulator-boot-on; /* Decrease por time for Touch Panel. */
+					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
+					maxim,active-fps-power-up-slot = <0>;
+					maxim,active-fps-power-down-slot = <7>;
+					regulator-enable-ramp-delay = <100>;
+					regulator-disable-ramp-delay = <3000>;
+					maxim,ramp-rate-setting = <50000>;
+					regulator-ramp-delay = <50000>;
 				};
 
 				/* XUSB */
@@ -334,24 +357,26 @@
 					regulator-name = "vdd-gen-pll-edp";
 					regulator-min-microvolt = <1050000>;
 					regulator-max-microvolt = <1050000>;
-					regulator-always-on;
-					regulator-boot-on;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_1>;
-					regulator-enable-ramp-delay = <24>;
+					maxim,active-fps-power-up-slot = <3>;
+					maxim,active-fps-power-down-slot = <4>;
+					regulator-enable-ramp-delay = <50>;
 					regulator-disable-ramp-delay = <2768>;
-					maxim,ramp-rate-setting = <100000>;
+					maxim,ramp-rate-setting = <50000>;
 					regulator-ramp-delay = <50000>;
 				};
 
-				/* XUSB, DP */
+				/* Hdmi, DP */
 				max77620_ldo8: ldo8 {
 					regulator-name = "vdd-hdmi-dp";
 					regulator-min-microvolt = <1050000>;
 					regulator-max-microvolt = <1050000>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
-					regulator-enable-ramp-delay = <22>;
-					regulator-disable-ramp-delay = <1160>;
-					maxim,ramp-rate-setting = <100000>;
+					maxim,active-fps-power-up-slot = <0>;
+					maxim,active-fps-power-down-slot = <7>;
+					regulator-enable-ramp-delay = <100>;
+					regulator-disable-ramp-delay = <4000>;
+					maxim,ramp-rate-setting = <50000>;
 					regulator-ramp-delay = <50000>;
 				};
 			};
