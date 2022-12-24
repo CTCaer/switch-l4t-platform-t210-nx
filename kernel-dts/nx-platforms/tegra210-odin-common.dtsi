@@ -431,6 +431,17 @@
 		status = "okay";
 	};
 
+	/* Console port */
+	serial@70006000 {
+		status = "disabled";
+		console-port;
+		sqa-automation-port;
+		enable-rx-poll-timer;
+
+		/delete-property/ resets;
+		/delete-property/ reset-names;
+	};
+
 	/* Right Joycon */
 	serial@70006040 {
 		status = "okay";
