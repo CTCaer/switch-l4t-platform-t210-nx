@@ -560,20 +560,28 @@
 		dev1 {
 			dev_data = "Tdiode_tegra";
 			group = <0>;
-			/* Based on Console profile SoC: 95% (100% at Handheld) */
-			coeffs = <95 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>;
+
+			/* Odin SoC Console */
+			coeffs_mode0 = <6182 112480>;
+
+			/* Odin SoC Handheld */
+			coeffs_mode1 = <5464 174190>;
 		};
 
 		dev2 {
 			dev_data = "Tboard_tegra";
 			group = <1>;
-			/* Based on Console profile SoC: 100% (92% at Handheld) */
-			coeffs = <100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>;
+
+			/* Odin PCB Console */
+			coeffs_mode0 = <6396 119440>;
+
+			/* Odin PCB Handheld */
+			coeffs_mode1 = <5817 129580>;
 		};
 	};
 
 	thermal-fan-est {
-		compatible = "thermal-fan-est";
+		compatible = "thermal-tskin-fan-est";
 		name = "thermal-fan-est";
 		status = "okay";
 
@@ -591,47 +599,28 @@
 			iir_lower_width = <15000>;
 		};
 
-		/*
-		 * HOS Thermal Trips
-		 * Estimated shell:
-		 * Tskin        36000 40000 43000 48000 53000 58000
-		 *
-		 * Console profile actual:
-		 * Tdiode       36000 45701 50554 58642 66730 74818
-		 * Tboard       36000 43084 47774 55592 63409 71227
-		 * Ratio b/d:   1.00  0.94  0.95  0.95  0.95  0.95 : 0.95
-		 * Ratio s/d:   1.00  0.88  0.85  0.82  0.79  0.78
-		 * Ratio s/b:   1.00  0.93  0.90  0.86  0.84  0.81
-		 *
-		 * Handheld profile actual:
-		 * Tdiode       36000 40412 45904 55054 64204 73356
-		 * Tboard       36000 45630 50786 59382 67978 76573
-		 * Ratio d/b:   1.00  0.89  0.90  0.93  0.94  0.96 : 0.92
-		 * Ratio s/d:   1.00  0.99  0.94  0.87  0.83  0.79
-		 * Ratio s/b:   1.00  0.88  0.85  0.81  0.78  0.76
-		 */
-
 		profiles {
 			default = "Console";
 			Console {
 				name = "Console";
 				active_trip_temps = <
-					0 36000 43100 47800 55600 63400 71200
-					80000 90000 100000>; /* Unused */
-				active_hysteresis = <0 0 7000 4600 0 0 0 0 0 0>;
+					0 36000 40000 43000 53000 58000
+					70000 80000 90000 100000>; /* Unused */
+				active_hysteresis = <0 0 3900 2900 0 0 0 0 0 0>;
 			};
 			Handheld {
 				name = "Handheld";
 				active_trip_temps = <
-					0 36000 40400 45900 55100 64200 73400
-					80000 90000 100000>; /* Unused */
-				active_hysteresis = <0 0 4300 5400 0 0 9100 0 0 0>;
+					0 36000 40000 43000 48000 53000 58000 60000
+					90000 100000>; /* Unused */
+				active_hysteresis = <0 0 3900 2900 0 4900 0 0 0 0>;
 			};
+			/* Uses Handheld tskin coeffs and Console fan duties */
 			Cool {
 				name = "Cool";
 				active_trip_temps = <
-					0 30000 36000 40400 45900 55100 64200
-					80000 90000 100000>; /* Unused */
+					0 32000 37000 40000 45000 55000
+					70000 80000 90000 100000>; /* Unused */
 				active_hysteresis = <0 0 0 0 0 0 0 0 0 0>;
 			};
 		};
@@ -670,17 +659,17 @@
 			Console {
 				name = "Console";
 				state_cap = <6>;
-				active_pwm = <0 0 51 51 102 153 255 255 255 255>;
+				active_pwm = <0 0 51 51 153 255 255 255 255 255>;
 			};
 			Handheld {
 				name = "Handheld";
-				state_cap = <6>;
-				active_pwm = <0 0 51 51 102 153 204 204 204 204>;
+				state_cap = <7>;
+				active_pwm = <0 0 51 51 102 153 204 255 255 255>;
 			};
 			Cool {
 				name = "Cool";
 				state_cap = <6>;
-				active_pwm = <0 0 51 51 102 153 255 255 255 255>;
+				active_pwm = <0 0 51 51 153 255 255 255 255 255>;
 			};
 		};
 	};
