@@ -34,7 +34,7 @@
 			status = "okay";
 			pwms = <&tegra_pwm 0 33898>;
 			max-brightness = <255>;
-			default-brightness = <200>;
+			default-brightness = <150>;
 		};
 	};
 

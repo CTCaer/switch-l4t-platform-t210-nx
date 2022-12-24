@@ -33,6 +33,7 @@
 						00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10
 						00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 DD];
 				*/
+				nvidia,dsi-bl-name = "backlight";
 				nvidia,dsi-instance = <DSI_INSTANCE_0>;
 				nvidia,dsi-n-data-lanes = <4>;
 				nvidia,dsi-lp-cmd-mode-freq = <100000>;
