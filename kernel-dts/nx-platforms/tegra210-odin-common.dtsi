@@ -22,7 +22,6 @@
 #include "tegra210-odin-gpio.dtsi"
 #include "tegra210-odin-pinmux.dtsi"
 #include "tegra210-odin-prods.dtsi"
-#include "tegra210-nx-comms.dtsi"
 #include <tegra210-soc/tegra210-sdhci.dtsi>
 #include "tegra210-nx-keys.dtsi"
 #include <tegra210-soc/tegra210-audio.dtsi>
@@ -69,10 +68,6 @@
 				};
 			};
 		};
-	};
-
-	dvfs {
-		compatible = "nvidia,tegra210-dvfs";
 	};
 
 	rtc {
@@ -413,6 +408,16 @@
 		};
 	};
 
+	dvfs {
+		compatible = "nvidia,tegra210-dvfs";
+		/* Retail regulator: Max: 921600, Hard max 921600. */
+		nvidia,gpu-max-freq-khz = <921600>;
+	};
+
+	gpu-dvfs-rework {
+		status = "okay";
+	};
+
 	/* right joycon */
 	serial@70006040 {
 		status = "okay";
@@ -498,10 +503,6 @@
 	xotg {
 		#extcon-cells = <1>;
 		status = "disabled";
-	};
-
-	gpu-dvfs-rework {
-		status = "okay";
 	};
 
 	thermal_fan_est_shared_data: tfesd {
