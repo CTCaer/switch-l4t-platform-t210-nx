@@ -699,6 +699,17 @@
 	i2c@7000c000 {
 		clock-frequency = <100000>;
 
+		temp-sensor@4c {
+			compatible = "ti,tmp451";
+			interrupt-parent = <&gpio>;
+			interrupts = <TEGRA_GPIO(X, 4) IRQ_TYPE_LEVEL_LOW>;
+			loc-shutdown-limit = <120>;
+			ext-shutdown-limit = <96>;
+
+			/delete-node/ loc;
+			/delete-node/ ext;
+		};
+
 		rt5639: rt5639@1c {
 			compatible = "realtek,rt5639";
 			reg = <0x1c>;
