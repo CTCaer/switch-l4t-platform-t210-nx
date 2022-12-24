@@ -1,0 +1,72 @@
+/*
+ * Copyright (c) 2022, CTCaer <ctcaer@gmail.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 2 of the License.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.
+ *
+ */
+
+#include "nx-platforms/tegra210b01-nx-common.dtsi"
+#include "nx-platforms/tegra210b01-modin-gpio.dtsi"
+#include "nx-platforms/tegra210b01-modin-pinmux.dtsi"
+#include "nx-platforms/tegra210-nx-common-disp.dtsi"
+#include "nx-platforms/tegra210b01-modin-power-tree.dtsi"
+#include "nx-platforms/tegra210-nx-sensor.dtsi"
+
+/ {
+	nvidia,dtsfilename = __FILE__;
+	nvidia,dtbbuildtime = __DATE__, __TIME__;
+
+	model = "Nintendo Switch (2019)";
+	compatible = "nvidia,modin", "nvidia,odin", "nintendo,iowa", "nintendo,nx", "nvidia,tegra210b01";
+
+	firmware {
+		android {
+			hardware = "modin";
+		};
+	};
+
+	tlk {
+		status = "disabled"; /* Only enable if TOS/NVDECBL/TSEC/EKS are setup */
+	};
+
+	cpus {
+		idle-states {
+			c7 {
+				status = "disabled"; // FIXME: enabling causes crashes on cpu idle
+			};
+		};
+	};
+
+	r2p {
+		compatible = "tegra-r2p";
+		status = "okay";
+	};
+
+	spi@7000da00 {
+		imu_inv: icm40607@0 {
+			status = "disabled"; /* Disabled for Modin/Vali */
+		};
+	};
+
+	host1x {
+		dsi {
+			prod-settings {
+				#prod-cells = <3>;
+				dsi-padctrl-prod {
+					prod = <
+						0x00000148 0x000fffff 0x00077777	/* PAD_CONTROL_4 */
+						0x0000014c 0x000fffff 0x00077777	/* PAD_CONTROL_5 */
+						0x00000150 0x00003333 0x00001111	/* PAD_CONTROL_6 */
+						>;
+				};
+			};
+		};
+	};
+};
