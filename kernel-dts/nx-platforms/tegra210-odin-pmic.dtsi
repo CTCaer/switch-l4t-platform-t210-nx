@@ -442,7 +442,7 @@
 			interrupts = <TEGRA_GPIO(Y, 0) IRQ_TYPE_NONE>;
 
 			nvidia,pmc-wakeup = <&tegra_pmc
-				PMC_WAKE_TYPE_EVENT 27 PMC_TRIGGER_TYPE_LOW>;
+				PMC_WAKE_TYPE_EVENT 27 PMC_TRIGGER_TYPE_LOW>; /* button_slide_sw_IB */
 
 			#thermal-sensor-cells = <0>;
 			status = "okay";
@@ -450,48 +450,13 @@
 			maxim,volt-alrt-threshold = <0xff00>;
 			maxim,temp-alrt-threshold = <0x7f80>;
 			maxim,soc-alrt-threshold = <0xff00>;
-			maxim,shutdown-timer = <0xe000>;
-			maxim,rem-cap-soc-tte = <0x0000>;
-			maxim,temp-gain = <0xe3e1>;
-			maxim,temp-offset = <0x290e>;
-			maxim,temp-nom = <0x1400>;
-			maxim,temp-lim = <0x2305>;
-			maxim,filter-config = <0x87a4>;
-			maxim,relax-config = <0x203b>;
-			maxim,config = <0x2210>;
-			maxim,misc-config = <0x0870>;
-			maxim,full-capacity = <0x244B>;
-			maxim,full-capacity-nom = <0x244B>;
-			maxim,dqacc = <0x007d>;
-			maxim,dpacc = <0x0c80>;
-			maxim,fctc = <0x05e0>;
 			/* Actual is 5000 but driver does not account for CGAIN */
 			/* And does not take into account Rsense and CGAIN for capacity */
 			maxim,rsns-microohm = <10000>;
-			/* custom parameters */
-			maxim,current-gain = <0x7FFF>;
-			maxim,design-capacity = <0x244B>;
-			maxim,full-soc-thresh = <0x5f00>;
-			maxim,lavg-empty = <0x1d09>;
-			maxim,ichg-termi-current = <0x0666>;
-			maxim,learn-config = <0x2603>;
-			maxim,qresidual00 = <0x6310>;
-			maxim,qresidual10 = <0x4284>;
-			maxim,qresidual20 = <0x3200>;
-			maxim,qresidual30 = <0x2702>;
-			maxim,rcomp0 = <0x00ad>;
-			maxim,tempco = <0x2c39>;
-			maxim,voltage-empty = <0xa05f>;
-			/* custom model */
-			maxim,cell-char-tbl = <0x9610 0xa3c0 0xb220 0xb5a0 0xb920 0xbbd0 0xbc40 0xbc90
-								0xbcc0 0xbd00 0xbea0 0xbf40 0xc140 0xc350 0xc8f0 0xce80
-								0x0040 0x03b0 0x0900 0x0900 0x0700 0x3640 0x3350 0x49e0
-								0x3770 0x0f90 0x11b0 0x0f30 0x0ec0 0x08f0 0x07d0 0x07d0
-								0x0100 0x0100 0x0100 0x0100 0x0100 0x0100 0x0100 0x0100
-								0x0100 0x0100 0x0100 0x0100 0x0100 0x0100 0x0100 0x0100>;
-			maxim,is-battery-present;
+			maxim,over-heat-temp = <600>;
 			maxim,dead-volt = <3000>;
-			maxim,over-volt = <4300>;
+			maxim,over-volt = <4208>; /* Actual: 4258 mV */
+			maxim,is-battery-present;
 		};
 
 		bm92t: bm92t@18 {
