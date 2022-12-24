@@ -404,7 +404,8 @@
 				1989000
 				2091000
 			>;
-			default-max-frequency = <1785000>;
+			max-safe-frequency = <1785000>;
+			preserve-across-suspend;
 		};
 
 		emc-scaling-data {
