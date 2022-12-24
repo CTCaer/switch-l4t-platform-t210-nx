@@ -33,6 +33,7 @@
 		};
 
 		pwm-regulator@1 {
+			/delete-property/ pwms;
 			status = "disabled";
 		};
 	};
@@ -81,7 +82,7 @@
 
 	cpuidle {
 		vdd-cpu-supply = <&cpu_max77621_reg>;
-		cc4-microvolt = <606250>;
+		cc4-microvolt = <618750>;
 	};
 
 	dummy_cool_dev: dummy-cool-dev {
@@ -210,10 +211,6 @@
 		avddio_pll_uerefe-supply = <&max77620_ldo7>;
 	};
 
-	xotg {
-		usb_vbus-supply = <&battery_reg>;
-	};
-
 	xusb_padctl@7009f000 {
 		vddio-hsic-supply = <&max77620_ldo0>;
 		avdd_pll_uerefe-supply = <&max77620_ldo7>;
@@ -225,7 +222,6 @@
 		dvdd_sata_pll-supply = <&max77620_ldo8>;
 		hvddio_sata-supply = <&max77620_sd3>;
 		dvddio_sata-supply = <&max77620_ldo8>;
-
 
 		ports {
 			usb2-0 {
