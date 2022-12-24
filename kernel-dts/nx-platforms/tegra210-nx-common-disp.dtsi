@@ -124,6 +124,13 @@
 			status = "disabled";
 		};
 
+		tsec {
+			assigned-clocks = <&tegra_car TEGRA210_CLK_TSEC>;
+			assigned-clock-parents =
+				<&tegra_car TEGRA210_CLK_PLL_P>;
+			assigned-clock-rates = <408000000>;
+		};
+
 		sor1 {
 			status = "okay";
 			nvidia,active-panel = <&sor1_dp_display>;
@@ -142,6 +149,7 @@
 					nvidia,out-align = <TEGRA_DC_ALIGN_MSB>;
 					nvidia,out-order = <TEGRA_DC_ORDER_RED_BLUE>;
 					nvidia,out-flags = <TEGRA_DC_OUT_CONTINUOUS_MODE>;
+					nvidia,out-hdcp-policy = <TEGRA_DC_HDCP_POLICY_ALWAYS_OFF>; /* Can be enabled via hdcp ioctl */
 					nvidia,out-pins = <TEGRA_DC_OUT_PIN_H_SYNC TEGRA_DC_OUT_PIN_POL_LOW
 							   TEGRA_DC_OUT_PIN_V_SYNC TEGRA_DC_OUT_PIN_POL_LOW
 							   TEGRA_DC_OUT_PIN_PIXEL_CLOCK TEGRA_DC_OUT_PIN_POL_LOW
