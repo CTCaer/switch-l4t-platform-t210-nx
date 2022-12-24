@@ -35,8 +35,7 @@
 
 / {
 	model = "Nintendo Switch (2017)";
-	compatible = "nintendo,icosa", "nvidia,tegra210";
-	nvidia,dtsfilename = __FILE__;
+	compatible = "nvidia,odin", "nintendo,icosa", "nintendo,nx", "nvidia,tegra210";
 
 	nvidia,boardids = "2595:0000:A0";
 	nvidia,proc-boardid = "2595:0000:A0";
@@ -55,7 +54,7 @@
 	firmware {
 		android {
 			compatible = "android,firmware";
-			hardware = "icosa";
+			hardware = "odin";
 			fstab {
 				compatible = "android,fstab";
 				first_stage_delay = "1";
