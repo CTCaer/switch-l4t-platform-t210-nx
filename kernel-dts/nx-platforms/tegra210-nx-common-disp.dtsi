@@ -17,6 +17,10 @@
 #include "../nx-panels/panel-j-720p-6-2.dtsi"
 #include "../nx-panels/panel-a-720p-6-2.dtsi"
 #include "../nx-panels/panel-i-720p-6-2.dtsi"
+#include "../nx-panels/panel-a-720p-5-5.dtsi"
+#include "../nx-panels/panel-i-720p-5-5.dtsi"
+#include "../nx-panels/panel-s-720p-5-5.dtsi"
+#include "../nx-panels/panel-s-720p-7-0.dtsi"
 
 / {
 	backlight {
@@ -24,7 +28,7 @@
 		status = "okay";
 		label = "backlight";
 		power-supply = <&max77620_sd3>;
-		
+
 		panel-o-720p-6-0-bl {
 			compatible = "o,720-1280-6-0-bl";
 			status = "okay";
@@ -39,10 +43,10 @@
 		dc@54200000 {
 			status = "okay";
 			nvidia,dc-flags = <TEGRA_DC_FLAG_ENABLED>;
-			nvidia,emc-clk-rate = <300000000>;
+			nvidia,emc-clk-rate = <204000000>;
 			nvidia,fb-bpp = <32>; /* bits per pixel */
 			nvidia,fb-flags = <TEGRA_FB_FLIP_ON_PROBE>;
-			nvidia,fbmem-size = <4194304>; /* 4MB: No-panning 720x1280 */
+			nvidia,fbmem-size = <0x400000>; /* 4MB: No-panning 720x1280 */
 			nvidia,dc-or-node = "/host1x/dsi";
 			nvidia,dc-connector = <&dsi>;
 			win-mask = <0x7>; /* Limit to Window A/B/C. (Window D disabled) */
@@ -70,26 +74,41 @@
 
 			panel-o-720p-6-0 {
 				compatible = "o,720-1280-6-0";
-				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(V, 0) 0>; /* PV0 */
 				/* nvidia,panel-bl-en-gpio = <&gpio TEGRA_GPIO(V, 1) 0>; */ /* PV1. - Handled by vdd_lcd_bl_en-supply */
+				nvidia,panel-bl-pwm-gpio = <&gpio TEGRA_GPIO(V, 0) 0>; /* PV0 */
 				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
 			};
 
 			panel-j-720p-6-2 {
-				status = "okay";
 				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
 			};
 			panel-a-720p-6-2 {
-				status = "okay";
 				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
 			};
 			panel-i-720p-6-2 {
-				status = "okay";
 				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
 			};
 			panel-o-720p-6-2 {
-				status = "okay";
 				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
+			};
+
+			panel-a-720p-5-5 {
+				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
+			};
+			panel-i-720p-5-5 {
+				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
+			};
+			panel-s-720p-5-5 {
+				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
+			};
+
+			panel-s-720p-7-0 {
+				nvidia,dsi-dpd-pads = <DSIC_DPD_EN DSID_DPD_EN>;
+				nvidia,panel-rst-gpio = <&gpio TEGRA_GPIO(V, 2) 0>; /* PV2 */
+				nvidia,panel-irq-gpio = <&gpio TEGRA_GPIO(H, 0) 0>; /* WIFI_EN_PH0 */
+				disp-default-out {
+					nvidia,out-rotation = <270>;
+				};
 			};
 		};
 
@@ -116,8 +135,9 @@
 				nvidia,is_ext_dp_panel = <1>;
 				nvidia,lanes = <2>;
 				nvidia,fast-lt-disable;
+
 				disp-default-out {
-					/* nvidia,out-max-pixclk = <3333>; */ /* KHZ2PICOS(300000) */
+					/* nvidia,out-max-pixclk = <3333>; */ /* Odin: KHZ2PICOS(300000) */
 					nvidia,out-type = <TEGRA_DC_OUT_DP>;
 					nvidia,out-align = <TEGRA_DC_ALIGN_MSB>;
 					nvidia,out-order = <TEGRA_DC_ORDER_RED_BLUE>;
@@ -128,6 +148,7 @@
 							   TEGRA_DC_OUT_PIN_DATA_ENABLE TEGRA_DC_OUT_PIN_POL_HIGH>;
 					nvidia,out-parent-clk = "pll_d2_out0";
 				};
+
 				dp-lt-settings {
 					lt-setting@0 {
 						nvidia,drive-current = <DRIVE_CURRENT_L0 DRIVE_CURRENT_L0 DRIVE_CURRENT_L0 DRIVE_CURRENT_L0>;
@@ -152,6 +173,7 @@
 					};
 				};
 			};
+
 			hdmi-display {
 				status = "disabled";
 			};

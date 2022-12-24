@@ -21,7 +21,7 @@
 	host1x {
 		dsi {
 			panel_j_720p_6_2: panel-j-720p-6-2 {
-				status = "disabled";
+				status = "okay";
 				compatible = "o,720-1280-6-0-01"; /* Compatible id must not change! */
 				/*
 				nvidia,edid = [
@@ -139,9 +139,6 @@
 						nvidia,h-ref-to-sync = <0>;
 						nvidia,v-ref-to-sync = <1>;
 					};
-				};
-				smartdimmer {
-					status = "disabled";
 				};
 			};
 		};
