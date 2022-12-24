@@ -65,6 +65,20 @@
 		};
 	};
 
+	regulators {
+		max77620_gpio7: regulator@2 {
+			status = "okay"; /* Only enabled on Icosa */
+		};
+
+		v_vdd5v3: regulator@0xb {
+			status = "disabled"; /* Only enabled on Modin/Vali/Frig */
+		};
+
+		vdd3v3_gc: regulator@0xc {
+			status = "okay"; /* Only on Icosa */
+		};
+	};
+
 	cpuidle {
 		vdd-cpu-supply = <&cpu_max77621_reg>;
 		cc4-microvolt = <606250>;

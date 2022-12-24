@@ -47,6 +47,7 @@
 		max77620_gpio7: regulator@2 {
 			compatible = "regulator-fixed-sync";
 			reg = <2>;
+			status = "disabled"; /* Only enabled on Odin */
 			regulator-name = "max77620-gpio7";
 			regulator-min-microvolt = <1200000>;
 			regulator-max-microvolt = <1200000>;
@@ -61,6 +62,7 @@
 		lcd_bl_en: regulator@3 {
 			compatible = "regulator-fixed-sync";
 			reg = <3>;
+			status = "okay"; /* Only enabled on Odin/Modin/Vali */
 			regulator-name = "lcd-bl-en";
 			regulator-min-microvolt = <1800000>;
 			regulator-max-microvolt = <1800000>;
@@ -82,25 +84,26 @@
 			vin-supply = <&vdd_3v3>;
 		};
 
-		vdd_hdmi: regulator@6 {
+		vdd_hdmi: regulator@5 {
 			compatible = "regulator-fixed";
-			reg = <6>;
+			reg = <5>;
 			regulator-name = "vdd-hdmi";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
 		};
 
-		en_vdd_cpu_fixed: regulator@7 {
+		en_vdd_cpu_fixed: regulator@6 {
 			compatible = "regulator-fixed";
-			reg = <7>;
+			reg = <6>;
 			regulator-name = "vdd-cpu-fixed";
 			regulator-min-microvolt = <1000000>;
 			regulator-max-microvolt = <1000000>;
 		};
 
-		v_pavdd_5v0: regulator@9 {
+		v_pavdd_5v0: regulator@7 {
 			compatible = "regulator-fixed-sync";
-			reg = <9>;
+			reg = <7>;
+			status = "okay"; /* Only enabled on Odin/Modin/Vali */
 			regulator-name = "v_pavdd_5v0";
 			regulator-min-microvolt = <1800000>;
 			regulator-max-microvolt = <1800000>;
@@ -110,9 +113,10 @@
 			regulator-enable-ramp-delay = <232>;
 		};
 
-		v_navdd_5v0: regulator@10 {
+		v_navdd_5v0: regulator@8 {
 			compatible = "regulator-fixed-sync";
-			reg = <10>;
+			reg = <8>;
+			status = "okay"; /* Only enabled on Odin/Modin/Vali*/
 			regulator-name = "v_navdd_5v0";
 			regulator-min-microvolt = <1800000>;
 			regulator-max-microvolt = <1800000>;
@@ -122,9 +126,10 @@
 			regulator-enable-ramp-delay = <232>;
 		};
 
-		v_vdd50_a: regulator@11 {
+		/* Joycon/Fan power (battery) */
+		v_vdd50_a: regulator@9 {
 			compatible = "regulator-fixed-sync";
-			reg = <11>;
+			reg = <9>;
 			regulator-name = "v_vdd50_a";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
@@ -132,9 +137,11 @@
 			enable-active-high;
 		};
 
-		v_vdd50_b: regulator@12 {
+		/* Joycon/Fan power (usb) */
+		v_vdd50_b: regulator@0xa {
 			compatible = "regulator-fixed-sync";
-			reg = <12>;
+			reg = <10>;
+			status = "okay"; /* Only enabled on Odin/Modin */
 			regulator-name = "v_vdd50_b";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
@@ -142,9 +149,24 @@
 			enable-active-high;
 		};
 
-		vdd3v3_gc: regulator@13 {
+		/* VBUS power */
+		v_vdd5v3: regulator@0xb {
 			compatible = "regulator-fixed-sync";
-			reg = <13>;
+			reg = <11>;
+			status = "okay"; /* Only enabled on Modin/Vali/Frig */
+			regulator-name = "v_vdd5v3";
+			regulator-min-microvolt = <5300000>;
+			regulator-max-microvolt = <5300000>;
+			gpio = <&gpio TEGRA_GPIO(X, 3) 0>;
+			regulator-boot-on;
+			regulator-always-on; /* No OTG pin to manage power and power needed for detection */
+			enable-active-high;
+		};
+
+		vdd3v3_gc: regulator@0xc {
+			compatible = "regulator-fixed-sync";
+			status = "disabled"; /* Only on Odin */
+			reg = <12>;
 			regulator-name = "vdd3v3_gc";
 			regulator-min-microvolt = <3300000>;
 			regulator-max-microvolt = <3300000>;
@@ -156,9 +178,9 @@
 		};
 
 #if 0
-		vdd_wlreg_on: regulator@14 {
+		vdd_wlreg_on: regulator@0xd {
 			compatible = "regulator-fixed";
-			reg = <14>;
+			reg = <13>;
 			regulator-name = "vdd-wlreg_on";
 			regulator-min-microvolt = <1800000>;
 			regulator-max-microvolt = <1800000>;
@@ -169,29 +191,20 @@
 		};
 #endif
 
-		vdd_cdc_1v2_aud: regulator@15 {
-			compatible = "regulator-fixed-sync";
-			reg = <15>;
-			status = "disabled";
-			regulator-name = "vdd_cdc_1v2_aud";
-			regulator-min-microvolt = <1200000>;
-			regulator-max-microvolt = <1200000>;
-			enable-active-high;
-			startup-delay-us = <250000>;
-		};
-
-		en_vdd_jcl_chgr: regulator@16 {
+		en_vdd_jcl_chgr: regulator@0xe {
 			compatible = "regulator-fixed";
-			reg = <16>;
+			reg = <14>;
+			status = "okay";
 			regulator-name = "left-joycon-charger";
 			gpio = <&gpio TEGRA_GPIO(CC, 3) GPIO_ACTIVE_HIGH>;
 			enable-active-high;
 			vin-supply = <&v_vdd50_a>;
 		};
 
-		en_vdd_jcr_chgr: regulator@17 {
+		en_vdd_jcr_chgr: regulator@0xf {
 			compatible = "regulator-fixed";
-			reg = <17>;
+			reg = <15>;
+			status = "okay";
 			regulator-name = "right-joycon-charger";
 			gpio = <&gpio TEGRA_GPIO(K, 3) GPIO_ACTIVE_HIGH>;
 			enable-active-high;
