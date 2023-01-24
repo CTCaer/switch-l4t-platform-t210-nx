@@ -473,7 +473,6 @@
 			};
 		};
 
-		// Likely wrong, check HOS
 		battery-gauge@36 {
 			compatible = "maxim,max17050";
 			reg = <0x36>;

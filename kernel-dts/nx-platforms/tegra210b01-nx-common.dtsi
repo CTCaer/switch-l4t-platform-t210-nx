@@ -89,61 +89,20 @@
 		pinctrl-0 = <&pinctrl_iopad_default>;
 		pinctrl_iopad_default:iopad-defaults {
 
-		// should be///////////////////
-		/* SDMMC3 */
-        /* AUDIO_HV */
-        /* GPIO */
-        /* SPI_HV */
-/*
-			audio-pads {
-				pins = "audio";
-				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
-			};
-*/
 			audio-hv-pads {
 				pins = "audio-hv";
 				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
 			};
-/*
-			cam-pads {
-				pins = "cam";
-				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
-			};
-			dbg-pads {
-				pins = "dbg";
-				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
-			};
-			dmic-pads {
-				pins = "dmic";
-				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
-			};
-			pex-ctrl-pads {
-				pins = "pex-ctrl";
-				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
-			};
-			spi-pads {
-				pins = "spi";
-				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
-			};
-			uart-pads {
-				pins = "uart";
-				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
-			};
-*/
+
 			spi-hv-pads {
 				pins = "spi-hv";
 				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
 			};
+
 			gpio-pads {
 				pins = "gpio";
 				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
 			};
-/*
-			sys-pads {
-				pins ="sys";
-				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
-			};
-*/
 
 			sdmmc-io-pads {
 				pins = "sdmmc1";
@@ -559,19 +518,6 @@
 		status = "okay";
 	};
 
-	/*
-	emcb01_dvb_dvfs_override {
-		compatible = "nvidia,t210b01-emc-dvb-dvfs";
-		nvidia,freq-x-bin-min-volt = <
-			204000 		750 750 750
-			408000		750 750 750
-			800000 		750 750 750
-			1065600 	800 800 800
-			1331200		800 800 800
-			1600000		800 800 800>;
-	};
-	*/
-
 	/* Console port */
 	serial@70006000 {
 		status = "disabled";
@@ -971,12 +917,6 @@
 			num-channel = <1>;
 			name-prefix = "y";
 		};
-	};
-
-	modem {
-		status = "disabled";
-		/* using XHCI UTMI */
-		nvidia,phy-type = <2>;
 	};
 
 	wifi-antenna-tuning {
