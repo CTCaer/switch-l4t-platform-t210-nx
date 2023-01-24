@@ -424,6 +424,11 @@
 			regulator-boot-on;
 			regulator-always-on;
 			maxim,dvs-high-microvolt = <3400000>;
+
+			regulator-state-mem {
+				regulator-on-in-suspend;
+				regulator-mode = <REGULATOR_MODE_NORMAL>;
+			};
 		};
 	};
 
