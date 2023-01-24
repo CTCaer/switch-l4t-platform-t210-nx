@@ -571,12 +571,11 @@
 
 			clocks = <&tegra_car TEGRA210_CLK_CLK_OUT_2>,
 				 <&tegra_car TEGRA210_CLK_CLK_OUT_2_MUX>,
-				 <&tegra_car TEGRA210_CLK_EXTERN2>;
-			clock-names = "sio_clk", "sio_pclk_mux", "sio_pclk";
-
-			assigned-clocks = <&tegra_car TEGRA210_CLK_EXTERN2>;
-			assigned-clock-parents = <&tegra_car TEGRA210_CLK_PLL_P>;
-			assigned-clock-rates = <4000000>;
+				 <&tegra_car TEGRA210_CLK_EXTERN2>,
+				 <&tegra_car TEGRA210_CLK_PLL_P>;
+			clock-names = "sio_clk", "sio_pclk_mux", "sio_pclk",
+				      "sio_pclk_pll";
+			sio-clock-rate = <4000000>;
 		};
 	};
 
