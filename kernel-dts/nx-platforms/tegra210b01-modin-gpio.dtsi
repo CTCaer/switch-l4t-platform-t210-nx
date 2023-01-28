@@ -59,7 +59,6 @@
 			gpio-hog;
 			output-high;
 			gpios = <
-				TEGRA_GPIO(K, 5) 0  /* USB-PD (BM92T36) VCONN Power Enable */
 				TEGRA_GPIO(H, 1) 0  /* Wi-Fi Reset. Powered on by default. */
 				TEGRA_GPIO(CC, 3) 0 /* Joycon (L) Charge Enable */
 				TEGRA_GPIO(K, 3) 0  /* Joycon (R) Charge Enable */

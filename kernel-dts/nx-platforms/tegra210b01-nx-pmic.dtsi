@@ -58,6 +58,7 @@
 				};
 
 				ram_max_reg: m3vout {
+					status = "okay";
 					regulator-name = "vddio-ddr";
 					regulator-min-microvolt = <550000>; /* Set min lpddr4x normally allowed */
 					regulator-max-microvolt = <650000>; /* Set max lpddr4x normally allowed */
@@ -94,6 +95,7 @@
 			regulator-max-microvolt = <1143750>;
 			regulator-always-on;
 			regulator-boot-on;
+			/* regulator-init-microvolt = <600000>; */ /* Controlled by bootloader */
 			regulator-initial-mode = <REGULATOR_MODE_FAST>;
 			fcs,suspend-voltage-selector = <1>;
 		};
@@ -310,7 +312,6 @@
 					regulator-name = "vddio-sdmmc1";
 					regulator-min-microvolt = <1800000>;
 					regulator-max-microvolt = <3300000>;
-					/* regulator-max-microamp = <150000>; */
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
 					maxim,active-fps-power-up-slot = <0>;
 					maxim,active-fps-power-down-slot = <0>;
@@ -511,6 +512,8 @@
 			#extcon-cells = <1>;
 			pd_bat_chg-supply = <&battery_charger>;
 			vbus-supply = <&usb0_vbus>;
+			vbus-source-supply = <&v_vdd5v3>;
+			rohm,vconn-en-gpio = <&gpio TEGRA_GPIO(K, 5) GPIO_ACTIVE_HIGH>;
 
 			nvidia,pmc-wakeup = <&tegra_pmc
 				PMC_WAKE_TYPE_EVENT 14 PMC_TRIGGER_TYPE_LOW>; /* gpio_pk4_IB */
