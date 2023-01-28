@@ -94,6 +94,26 @@
 				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
 			};
 
+			audio-pads {
+				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
+				pins = "audio";
+			};
+
+			cam-pads {
+				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
+				pins = "cam";
+			};
+
+			dbg-pads {
+				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
+				pins = "dbg";
+			};
+
+			dmic-pads {
+				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
+				pins = "dmic";
+			};
+
 			spi-hv-pads {
 				pins = "spi-hv";
 				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
@@ -104,13 +124,36 @@
 				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
 			};
 
-			sdmmc-io-pads {
+			pex-ctrl-pads {
+				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
+				pins = "pex-ctrl";
+			};
+
+			sdmmc1-pads {
 				pins = "sdmmc1";
 				nvidia,enable-voltage-switching;
 			};
-			sdmmc-dpd-enable {
+
+			emmc2-pads {
 				pins = "emmc2";
 				low-power-enable;
+			};
+
+			sdmmc3-pads {
+				low-power-enable;
+				nvidia,enable-voltage-switching;
+				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
+				pins = "sdmmc3";
+			};
+
+			spi-pads {
+				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
+				pins = "spi";
+			};
+
+			uart-pads {
+				nvidia,power-source-voltage = <TEGRA_IO_PAD_VOLTAGE_1800000UV>;
+				pins = "uart";
 			};
 		};
 
