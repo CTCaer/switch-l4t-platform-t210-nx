@@ -158,9 +158,8 @@
 			regulator-min-microvolt = <5300000>;
 			regulator-max-microvolt = <5300000>;
 			gpio = <&gpio TEGRA_GPIO(X, 3) 0>;
-			regulator-boot-on;
-			regulator-always-on; /* No OTG pin to manage power and power needed for detection */
 			enable-active-high;
+			regulator-enable-ramp-delay = <10000>;
 		};
 
 		vdd3v3_gc: regulator@0xc {
