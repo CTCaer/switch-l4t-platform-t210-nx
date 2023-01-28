@@ -61,8 +61,6 @@
 			output-high;
 			gpios = <
 				TEGRA_GPIO(H, 1) 0  /* Wi-Fi Reset. Powered on by default. */
-				TEGRA_GPIO(CC, 3) 0 /* Joycon (L) Charge Enable */
-				TEGRA_GPIO(K, 3) 0  /* Joycon (R) Charge Enable */
 				>;
 			line-name = "boot-default-output-high";
 		};
