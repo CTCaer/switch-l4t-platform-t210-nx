@@ -135,6 +135,7 @@
 					function = "32k-out1";
 				};
 
+				/* 5: cpu_max77621_reg, 6: gpu_max77621_reg, 7: dsi panel */
 				pin_gpio5_6_7 {
 					pins = "gpio5", "gpio6", "gpio7";
 					function = "gpio";

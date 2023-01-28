@@ -133,6 +133,7 @@
 					function = "gpio";
 				};
 
+				/* max77812 watchdog reset */
 				pin_gpio1 {
 					pins = "gpio1";
 					function = "fps-out";
@@ -142,6 +143,7 @@
 					maxim,active-fps-power-down-slot = <0>;
 				};
 
+				/* max77812 m3vout force enable */
 				pin_gpio2 {
 					pins = "gpio2";
 					function = "fps-out";
