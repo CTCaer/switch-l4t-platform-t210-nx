@@ -169,7 +169,7 @@
 				pin_gpio5_6_7 {
 					pins = "gpio5", "gpio6", "gpio7";
 					function = "gpio";
-					drive-push-pull = <1>;
+					drive-open-drain = <1>;
 				};
 			};
 

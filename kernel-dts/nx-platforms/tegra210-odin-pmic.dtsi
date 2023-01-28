@@ -108,11 +108,7 @@
 
 				pin_gpio1 {
 					pins = "gpio1";
-					function = "fps-out";
-					drive-push-pull = <1>;
-					maxim,active-fps-source = <MAX77620_FPS_SRC_0>;
-					maxim,active-fps-power-up-slot = <7>;
-					maxim,active-fps-power-down-slot = <0>;
+					function = "gpio";
 				};
 
 				pin_gpio2 {
@@ -120,6 +116,8 @@
 					function = "fps-out";
 					drive-open-drain = <1>;
 					maxim,active-fps-source = <MAX77620_FPS_SRC_0>;
+					maxim,active-fps-power-up-slot = <0>;
+					maxim,active-fps-power-down-slot = <7>;
 				};
 
 				/* vdd_3v3 */
