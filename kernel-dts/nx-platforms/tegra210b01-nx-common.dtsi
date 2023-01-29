@@ -342,7 +342,7 @@
 		compatible = "nvidia,tegra210b01-pcie";
 		nvidia,wake-gpio = <&gpio TEGRA_GPIO(A, 2) 0>; /* BCM4356 WIFI PME */
 
-		avdd-pll-uerefe-supply = <&max77620_ldo1>;
+		avdd-pll-uerefe-supply = <&max77620_sd3>;
 		hvddio-pex-supply = <&max77620_sd3>;
 		dvddio-pex-supply = <&max77620_ldo1>;
 		dvdd-pex-pll-supply = <&max77620_ldo1>;
@@ -353,9 +353,9 @@
 		nvidia,check-lane-timeout = <20>;
 
 		pci@1,0 {
-			phys =	<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-2}>,
-				<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-3}>; /* Referred to plat config */
-			phy-names = "pcie-0";
+			phys =	<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-3}>, /* Referred to plat config */
+				<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-2}>;
+			phy-names = "pcie-0", "pcie-1";
 			nvidia,num-lanes = <2>;
 			status = "disabled";
 		};
