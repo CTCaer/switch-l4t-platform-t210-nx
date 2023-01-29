@@ -361,8 +361,8 @@
 					maxim,active-fps-source = <MAX77620_FPS_SRC_NONE>;
 					maxim,active-fps-power-up-slot = <0>;
 					maxim,active-fps-power-down-slot = <0>;
-					regulator-enable-ramp-delay = <62>;
-					regulator-disable-ramp-delay = <640>;
+					regulator-enable-ramp-delay = <70>;
+					regulator-disable-ramp-delay = <3000>;
 					maxim,ramp-rate-setting = <50000>;
 					regulator-ramp-delay = <50000>;
 				};
