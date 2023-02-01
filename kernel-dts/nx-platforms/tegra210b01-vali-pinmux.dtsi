@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, CTCaer <ctcaer@gmail.com>
+ * Copyright (c) 2022-2023, CTCaer <ctcaer@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -596,7 +596,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				nvidia,open-drain = <TEGRA_PIN_DISABLE>;
 			};
 
 			/* Joycon (L) Charge Enable */
@@ -606,7 +605,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				nvidia,open-drain = <TEGRA_PIN_DISABLE>;
 			};
 
 			pl1 { /* 3278 */
@@ -623,7 +621,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			spi1_miso_pc1 { /* 3054 */
@@ -632,7 +629,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			spi1_sck_pc2 { /* 3058 */
@@ -641,7 +637,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			spi1_cs0_pc3 { /* 305c */
@@ -650,7 +645,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			spi1_cs1_pc4 { /* 3060 */
@@ -659,7 +653,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_DOWN>;
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			/* For Sio only access */
@@ -669,7 +662,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			spi4_miso_pd0 { /* 307c */
@@ -678,7 +670,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			spi4_sck_pc5 { /* 3080 */
@@ -687,7 +678,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			spi4_cs0_pc6 { /* 0x3084 */
@@ -696,7 +686,6 @@
 				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
 				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 			/* End of Sio only access */
 
@@ -946,8 +935,8 @@
 			};
 
 			/* 5V Regulator - Battery */
-			sata_led_active_pa5 { /* 304c */
-				nvidia,pins = "sata_led_active_pa5";
+			pa5 { /* 304c */
+				nvidia,pins = "pa5";
 				nvidia,function = "rsvd1";
 				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
 				nvidia,tristate = <TEGRA_PIN_DISABLE>;
@@ -1364,7 +1353,6 @@
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 				nvidia,schmitt = <TEGRA_PIN_ENABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			qspi_io1_pee3 { /* 3094 */
@@ -1374,7 +1362,6 @@
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 				nvidia,schmitt = <TEGRA_PIN_ENABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			qspi_sck_pee0 { /* 3088 */
@@ -1384,7 +1371,6 @@
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 				nvidia,schmitt = <TEGRA_PIN_ENABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			qspi_cs_n_pee1 { /* 308c */
@@ -1394,7 +1380,6 @@
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 				nvidia,schmitt = <TEGRA_PIN_ENABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			qspi_io2_pee4 { /* 3098 */
@@ -1404,7 +1389,6 @@
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 				nvidia,schmitt = <TEGRA_PIN_ENABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			qspi_io3_pee5 { /* 309c */
@@ -1414,7 +1398,6 @@
 				nvidia,tristate = <TEGRA_PIN_ENABLE>;
 				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 				nvidia,schmitt = <TEGRA_PIN_ENABLE>;
-				nvidia,preemp = <TEGRA_PIN_ENABLE>;
 			};
 
 			spdif_out_pcc2 { /* 31a0 */
