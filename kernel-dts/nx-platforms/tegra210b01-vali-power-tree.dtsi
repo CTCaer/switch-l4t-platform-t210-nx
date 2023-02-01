@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, CTCaer <ctcaer@gmail.com>
+ * Copyright (c) 2022-2023, CTCaer <ctcaer@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -70,7 +70,6 @@
 		/* Joycon/Fan power (usb) */
 		v_vdd50_b: regulator@0xa {
 			status = "disabled"; /* Only enabled on Odin/Modin */
-			regulator-name = "v_vdd50_b";
 		};
 
 		en_vdd_jcl_chgr: regulator@0xe {

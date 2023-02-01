@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, CTCaer <ctcaer@gmail.com>
+ * Copyright (c) 2022-2023, CTCaer <ctcaer@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,7 +54,7 @@
 			output-low;
 			gpios = <
 				TEGRA_GPIO(BB, 3) 0 /* Gamecard Reset */
-				TEGRA_GPIO(V, 5) 0  /* USB-PD (BM92T36) Reset */
+				TEGRA_GPIO(V, 5) 0  /* USB-PD (BM92T36) Reset. Use it to reset bm92t? */
 				TEGRA_GPIO(J, 5) 0  /* Charger IC (BQ24193) Charge Select 1 */
 				TEGRA_GPIO(L, 0) 0  /* Charger IC (BQ24193) Charge Select 2 */
 				TEGRA_GPIO(H, 0) 0  /* Wi-Fi RF Disable */

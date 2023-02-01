@@ -47,9 +47,9 @@
 		};
 
 		/* Joycon/Fan power (usb) */
-		//v_vdd50_b: regulator@0xa {
-		//	status = "disabled"; /* Only enabled on Odin/Modin */
-		//};
+		v_vdd50_b: regulator@0xa {
+			status = "disabled"; /* Only enabled on Odin/Modin */
+		};
 	};
 
 	dummy_cool_dev: dummy-cool-dev {
