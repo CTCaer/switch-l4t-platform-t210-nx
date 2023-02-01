@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2019-2020, Billy Laws <blaws05@gmail.com>
- * Copyright (c) 2018-2022, CTCaer <ctcaer@gmail.com>
+ * Copyright (c) 2018-2023, CTCaer <ctcaer@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -90,14 +90,6 @@
 			regulator-name = "vdd-hdmi";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
-		};
-
-		en_vdd_cpu_fixed: regulator@6 {
-			compatible = "regulator-fixed";
-			reg = <6>;
-			regulator-name = "vdd-cpu-fixed";
-			regulator-min-microvolt = <1000000>;
-			regulator-max-microvolt = <1000000>;
 		};
 
 		v_pavdd_5v0: regulator@7 {
@@ -195,6 +187,8 @@
 			reg = <14>;
 			status = "okay";
 			regulator-name = "left-joycon-charger";
+			regulator-min-microvolt = <5000000>;
+			regulator-max-microvolt = <5000000>;
 			gpio = <&gpio TEGRA_GPIO(CC, 3) GPIO_ACTIVE_HIGH>;
 			enable-active-high;
 			vin-supply = <&v_vdd50_a>;
@@ -205,6 +199,8 @@
 			reg = <15>;
 			status = "okay";
 			regulator-name = "right-joycon-charger";
+			regulator-min-microvolt = <5000000>;
+			regulator-max-microvolt = <5000000>;
 			gpio = <&gpio TEGRA_GPIO(K, 3) GPIO_ACTIVE_HIGH>;
 			enable-active-high;
 			vin-supply = <&v_vdd50_a>;
