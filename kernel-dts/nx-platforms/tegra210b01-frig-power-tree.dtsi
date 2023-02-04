@@ -158,7 +158,7 @@
 
 		ports {
 			usb2-0 {
-				vbus-supply = <&v_vdd5v3>;
+				vbus-supply = <&battery_reg>; /* Actual v_vdd5v3 */
 			};
 		};
 	};
