@@ -554,7 +554,22 @@
 		 * 1075200 is too close to pmic limit with best binning (1721).
 		 * 998400  is exactly at   pmic limit with bad  binning (1509).
 		 */
-		nvidia,gpu-max-freq-khz = <998400>;
+		/* nvidia,gpu-max-freq-khz = <998400>; */ /* Still set for Vali */
+
+		/*
+		 * Voltage method of capping based on Speedo and Power draw.
+		 * 800mV means the following:
+		 * Normal:
+		 *  Best binning (1721): 1075200 (9.7A)
+		 *  Bad  binning (1509):  998400 (9.9A)
+		 * B-Side:
+		 *  Best binning (1721): 1152000 (10.8A)
+		 *  Bad  binning (1509):  998400 ( 9.6A)
+		 *
+		 * Desired limits always too close to 10A,
+		 * so pmic current limit is not triggered.
+		 */
+		nvidia,gpu-max-volt-mv = <800>;
 	};
 
 	gpu-dvfs-rework {
