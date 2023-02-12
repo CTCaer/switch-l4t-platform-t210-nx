@@ -820,18 +820,36 @@
 
 	soctherm@0x700E2000 {
 		throttle-cfgs {
-			throttle_oc3: oc3 {
-				nvidia,priority = <40>;
+			/* PG/ACOK/USB OC pin. CLK_32K_OUT. */
+			/*
+			throttle_oc1: oc1 { // Sticky mode but not supported.
+				nvidia,priority = <16>;
 				nvidia,polarity-active-low = <1>;
-				nvidia,count-threshold = <15>;
-				nvidia,alarm-filter = <5100000>;
-				nvidia,alarm-period = <0>;
+				nvidia,count-threshold = <0>;
+				nvidia,throttle-period = <2500000>;
+				nvidia,alarm-filter = <0xFFFFFFFF>;
 				nvidia,cpu-throt-percent = <75>;
-				nvidia,gpu-throt-level =
-					<TEGRA_SOCTHERM_THROT_LEVEL_MED>;
+				nvidia,gpu-throt-level = <TEGRA_SOCTHERM_THROT_LEVEL_MED>;
 			};
+			*/
+
+			/* Battery OC pin. GPIO_PL1. Traced but missing resistor. */
+			/*
+			throttle_oc2: oc2 {
+				nvidia,priority = <24>;
+				nvidia,polarity-active-low = <1>;
+				nvidia,count-threshold = <0>;
+				nvidia,throttle-period = <100>;
+				nvidia,alarm-filter = <0xFFFFFFFF>;
+				nvidia,cpu-throt-percent = <75>;
+				nvidia,gpu-throt-level = <TEGRA_SOCTHERM_THROT_LEVEL_MED>;
+			};
+			*/
+
+			/* throttle_oc3: oc3: GPIO_PZ5. Floating. */
 		};
 	};
+
 	thermal-zones {
 		CPU-therm {
 			status = "okay";
