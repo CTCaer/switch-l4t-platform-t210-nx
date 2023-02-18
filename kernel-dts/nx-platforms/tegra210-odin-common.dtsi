@@ -267,16 +267,15 @@
 		vddio-pex-ctl-supply = <&max77620_sd3>;
 		status = "okay";
 
-		nvidia,check-lane-timeout = <20>;
-
 		pci@1,0 {
-			phys =	<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-1}>,
-				<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-2}>,
+			phys =	<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-4}>, /* Referred to plat config */
 				<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-3}>,
-				<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-4}>; /* Referred to plat config */
+				<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-2}>,
+				<&{/xusb_padctl@7009f000/pads/pcie/lanes/pcie-1}>;
 			phy-names = "pcie-0", "pcie-1", "pcie-2", "pcie-3";
 			nvidia,num-lanes = <4>;
-			status = "okay";
+			nvidia,sw-link-disable; /* Nothing is connected, so skip detection */
+			status = "okay"; /* Driver hangs on T210 if disabled */
 		};
 
 		pci@2,0 {
