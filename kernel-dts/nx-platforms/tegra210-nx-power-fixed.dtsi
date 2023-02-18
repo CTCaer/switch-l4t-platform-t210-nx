@@ -117,8 +117,8 @@
 			compatible = "regulator-fixed-sync";
 			reg = <9>;
 			regulator-name = "v_vdd50_a";
-			regulator-min-microvolt = <5000000>;
-			regulator-max-microvolt = <5000000>;
+			regulator-min-microvolt = <5300000>;
+			regulator-max-microvolt = <5300000>;
 			gpio = <&gpio TEGRA_GPIO(A, 5) 0>;
 			enable-active-high;
 		};
@@ -164,7 +164,7 @@
 
 #if 0
 		vdd_wlreg_on: regulator@0xd {
-			compatible = "regulator-fixed";
+			compatible = "regulator-fixed-sync";
 			reg = <13>;
 			regulator-name = "vdd-wlreg_on";
 			regulator-min-microvolt = <1800000>;
@@ -178,12 +178,12 @@
 
 		/* TI TCR2EE48 4.8V */
 		en_vdd_jcl_chgr: regulator@0xe {
-			compatible = "regulator-fixed";
+			compatible = "regulator-fixed-sync";
 			reg = <14>;
 			status = "okay";
-			regulator-name = "left-joycon-charger";
-			regulator-min-microvolt = <5000000>;
-			regulator-max-microvolt = <5000000>;
+			regulator-name = "left-jc-reg";
+			regulator-min-microvolt = <4800000>;
+			regulator-max-microvolt = <4800000>;
 			gpio = <&gpio TEGRA_GPIO(CC, 3) GPIO_ACTIVE_HIGH>;
 			enable-active-high;
 			vin-supply = <&v_vdd50_a>;
@@ -191,12 +191,12 @@
 
 		/* TI TCR2EE48 4.8V */
 		en_vdd_jcr_chgr: regulator@0xf {
-			compatible = "regulator-fixed";
+			compatible = "regulator-fixed-sync";
 			reg = <15>;
 			status = "okay";
-			regulator-name = "right-joycon-charger";
-			regulator-min-microvolt = <5000000>;
-			regulator-max-microvolt = <5000000>;
+			regulator-name = "right-jc-reg";
+			regulator-min-microvolt = <4800000>;
+			regulator-max-microvolt = <4800000>;
 			gpio = <&gpio TEGRA_GPIO(K, 3) GPIO_ACTIVE_HIGH>;
 			enable-active-high;
 			vin-supply = <&v_vdd50_a>;
