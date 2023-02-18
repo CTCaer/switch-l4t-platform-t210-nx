@@ -32,7 +32,7 @@
 			regulator-name = "vdd-cpu";
 			regulator-min-microvolt = <618750>;
 			regulator-max-microvolt = <1400000>;
-			regulator-max-microamp = <15000000>;
+			regulator-max-microamp = <9000000>;
 			regulator-init-microvolt = <1000000>;
 			regulator-n-voltages = <126>;
 			regulator-ramp-delay = <12000>;
