@@ -30,8 +30,11 @@
 	i2c@7000d000 {
 		max77620: max77620@3c {
 			regulators {
+				/* Vali: Powers LDO 2V8 for Sio VDD
+				 * Powers LDO 1V8 for I2C1 VDDQ and ALC5639.
+				 */
 				max77620_ldo8: ldo8 {
-					regulator-name = "vdd-sio-mcu";
+					regulator-name = "vdd-i2c1";
 					regulator-max-microvolt = <2800000>;
 					regulator-always-on;
 					regulator-boot-on;

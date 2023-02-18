@@ -389,7 +389,10 @@
 					regulator-ramp-delay = <50000>;
 				};
 
-				/* DP, Sio */
+				/* Odin/Modin/Frig: DP. */
+				/* Vali: Powers LDO 2V8 for Sio VDD
+				 * Powers LDO 1V8 for I2C1 VDDQ and ALC5639.
+				 */
 				max77620_ldo8: ldo8 {
 					regulator-name = "vdd-hdmi-dp";
 					regulator-min-microvolt = <1000000>;
