@@ -343,7 +343,6 @@
 					regulator-ramp-delay = <50000>;
 				};
 
-				/* XUSB */
 				max77620_ldo7: ldo7 {
 					regulator-name = "vdd-gen-pll-edp";
 					regulator-min-microvolt = <1050000>;
@@ -357,7 +356,7 @@
 					regulator-ramp-delay = <50000>;
 				};
 
-				/* Hdmi, DP */
+				/* DP */
 				max77620_ldo8: ldo8 {
 					regulator-name = "vdd-hdmi-dp";
 					regulator-min-microvolt = <1050000>;

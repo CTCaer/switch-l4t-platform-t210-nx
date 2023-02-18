@@ -314,11 +314,12 @@
 				status = "okay";
 
 				lanes {
-					/* bcm4356A3-wifi */
+					/* BCM4356A3-WiFi */
 					pcie-0 {
 						nvidia,function = "pcie-x1";
 						status = "okay";
 					};
+
 					/* Unused ports */
 					pcie-1 {
 						nvidia,function = "pcie-x4";
@@ -340,6 +341,7 @@
 						nvidia,function = "xusb";
 						status = "okay";
 					};
+
 					/* USB3 port */
 					pcie-6 {
 						nvidia,function = "xusb";

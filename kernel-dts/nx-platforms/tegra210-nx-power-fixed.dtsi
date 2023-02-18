@@ -84,6 +84,7 @@
 			vin-supply = <&vdd_3v3>;
 		};
 
+		/* LCD Power Enable +5V. Rohm BD8316GWL. */
 		v_pavdd_5v0: regulator@7 {
 			compatible = "regulator-fixed-sync";
 			reg = <7>;
@@ -97,6 +98,7 @@
 			regulator-enable-ramp-delay = <232>;
 		};
 
+		/* LCD Power Enable -5V. Rohm BD8316GWL. */
 		v_navdd_5v0: regulator@8 {
 			compatible = "regulator-fixed-sync";
 			reg = <8>;
@@ -110,7 +112,7 @@
 			regulator-enable-ramp-delay = <232>;
 		};
 
-		/* Joycon/Fan power (battery) */
+		/* Joycon/Fan power (battery). Maxim MAX8969EWL53+. */
 		v_vdd50_a: regulator@9 {
 			compatible = "regulator-fixed-sync";
 			reg = <9>;
@@ -121,7 +123,7 @@
 			enable-active-high;
 		};
 
-		/* Joycon/Fan power (usb) */
+		/* Joycon/Fan power (usb). DC0 on Odin. Maxim MAX8969EWL53+ on Modin. */
 		v_vdd50_b: regulator@0xa {
 			compatible = "regulator-fixed-sync";
 			reg = <10>;
@@ -174,6 +176,7 @@
 		};
 #endif
 
+		/* TI TCR2EE48 4.8V */
 		en_vdd_jcl_chgr: regulator@0xe {
 			compatible = "regulator-fixed";
 			reg = <14>;
@@ -186,6 +189,7 @@
 			vin-supply = <&v_vdd50_a>;
 		};
 
+		/* TI TCR2EE48 4.8V */
 		en_vdd_jcr_chgr: regulator@0xf {
 			compatible = "regulator-fixed";
 			reg = <15>;

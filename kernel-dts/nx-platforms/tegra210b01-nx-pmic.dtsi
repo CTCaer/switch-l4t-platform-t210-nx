@@ -360,7 +360,7 @@
 					regulator-ramp-delay = <50000>;
 				};
 
-				/* Touch Panel, ALS */
+				/* Touch Panel, ALS. Powers LDO 1V8. */
 				max77620_ldo6: ldo6 {
 					regulator-name = "vdd-tp-2v9";
 					regulator-min-microvolt = <2900000>;
@@ -389,7 +389,7 @@
 					regulator-ramp-delay = <50000>;
 				};
 
-				/* Hdmi, DP, Sio */
+				/* DP, Sio */
 				max77620_ldo8: ldo8 {
 					regulator-name = "vdd-hdmi-dp";
 					regulator-min-microvolt = <1000000>;

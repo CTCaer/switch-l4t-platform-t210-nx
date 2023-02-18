@@ -283,6 +283,9 @@
 		clock-names = "sdmmc", "pll_p", "pll_c4_out2", "sdmmc_legacy_tm";
 		nvidia,cd-wakeup-capable;
 		status = "okay";
+
+		nvidia,pmc-wakeup = <&tegra_pmc
+			PMC_WAKE_TYPE_EVENT 35 (PMC_TRIGGER_TYPE_RISING | PMC_TRIGGER_TYPE_FALLING)>; /* gpio_pz1_IB */
 	};
 
 	bpmp {
@@ -395,11 +398,12 @@
 				status = "okay";
 
 				lanes {
-					/* bcm4356A3-wifi */
+					/* BCM4356A3-WiFi */
 					pcie-0 {
 						nvidia,function = "pcie-x1";
 						status = "okay";
 					};
+
 					/* Unused ports */
 					pcie-1 {
 						nvidia,function = "xusb";
@@ -417,6 +421,7 @@
 						nvidia,function = "xusb";
 						status = "okay";
 					};
+
 					/* USB3 port */
 					pcie-5 {
 						nvidia,function = "xusb";
@@ -1377,7 +1382,6 @@
 		act-dev = <&tegra_clk_dfll>;
 		cdev-type = "DFLL-cap";
 		#cooling-cells = <2>; /* min followed by max */
-		/* status = "disabled"; */
 	};
 
 	dfll_floor: dfll-cdev-floor {
