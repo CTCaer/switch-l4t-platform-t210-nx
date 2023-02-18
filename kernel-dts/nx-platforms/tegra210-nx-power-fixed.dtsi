@@ -84,14 +84,6 @@
 			vin-supply = <&vdd_3v3>;
 		};
 
-		vdd_hdmi: regulator@5 {
-			compatible = "regulator-fixed";
-			reg = <5>;
-			regulator-name = "vdd-hdmi";
-			regulator-min-microvolt = <5000000>;
-			regulator-max-microvolt = <5000000>;
-		};
-
 		v_pavdd_5v0: regulator@7 {
 			compatible = "regulator-fixed-sync";
 			reg = <7>;
