@@ -151,7 +151,7 @@
 		hvdd_usb-supply = <&vdd_3v3>;
 		avdd_pll_utmip-supply = <&max77620_sd3>;
 		avddio_usb-supply = <&max77620_ldo1>;
-		avddio_pll_uerefe-supply = <&max77620_sd3>;
+		avddio_pll_uerefe-supply = <&max77620_ldo1>;
 	};
 
 	xudc@700d0000 {
@@ -161,7 +161,7 @@
 	};
 
 	xusb_padctl@7009f000 {
-		avdd_pll_uerefe-supply = <&max77620_sd3>;
+		avdd_pll_uerefe-supply = <&max77620_ldo1>;
 		hvdd_pex_pll_e-supply = <&max77620_sd3>;
 		dvdd_pex_pll-supply = <&max77620_ldo1>;
 		hvddio_pex-supply = <&max77620_sd3>;
