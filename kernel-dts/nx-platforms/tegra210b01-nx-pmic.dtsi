@@ -40,6 +40,8 @@
 					regulator-name = "vdd-gpu";
 					regulator-min-microvolt = <250000>;
 					regulator-max-microvolt = <1525000>;
+					/* regulator-max-microamp = <10000000>; */ /* 0x33 cfg */
+					/* regulator-max-microamp = <15000000>; */ /* 0x31 cfg */
 					regulator-init-microvolt = <800000>;
 					regulator-ramp-delay = <5000>;
 					regulator-enable-ramp-delay = <5000>;
@@ -62,6 +64,7 @@
 					regulator-name = "vddio-ddr";
 					regulator-min-microvolt = <550000>; /* Set min lpddr4x normally allowed */
 					regulator-max-microvolt = <650000>; /* Set max lpddr4x normally allowed */
+					/* regulator-max-microamp = <5000000>; */
 					regulator-always-on;
 					regulator-boot-on;
 					/* regulator-init-microvolt = <600000>; */ /* Controlled by bootloader */
@@ -75,6 +78,7 @@
 					regulator-name = "vdd-cpu";
 					regulator-min-microvolt = <250000>;
 					regulator-max-microvolt = <1525000>;
+					/* regulator-max-microamp = <5000000>; */
 					regulator-always-on;
 					regulator-boot-on;
 					regulator-init-microvolt = <1000000>;
