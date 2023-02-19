@@ -25,12 +25,6 @@
 	model = "Nintendo Switch Lite";
 	compatible = "nvidia,vali", "nintendo,hoag", "nintendo,nx", "nvidia,tegra210b01";
 
-	firmware {
-		android {
-			hardware = "vali";
-		};
-	};
-
 	tlk {
 		status = "disabled"; /* Only enable if TOS/NVDECBL/TSEC/EKS are setup */
 	};

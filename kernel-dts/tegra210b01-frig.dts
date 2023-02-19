@@ -26,12 +26,6 @@
 	model = "Nintendo Switch (OLED model)";
 	compatible = "nvidia,frig", "nintendo,aula", "nintendo,nx", "nvidia,tegra210b01";
 
-	firmware {
-		android {
-			hardware = "frig";
-		};
-	};
-
 	tlk {
 		status = "disabled"; /* Only enable if TOS/NVDECBL/TSEC/EKS are setup */
 	};

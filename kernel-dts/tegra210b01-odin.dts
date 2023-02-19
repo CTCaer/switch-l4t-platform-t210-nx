@@ -26,12 +26,6 @@
 	model = "Nintendo Switch (2019)";
 	compatible = "nvidia,modin", "nvidia,odin", "nintendo,iowa", "nintendo,nx", "nvidia,tegra210b01";
 
-	firmware {
-		android {
-			hardware = "modin";
-		};
-	};
-
 	tlk {
 		status = "disabled"; /* Only enable if TOS/NVDECBL/TSEC/EKS are setup */
 	};

@@ -42,24 +42,6 @@
 		nvidia,wifi-mac = "11:22:33:44:55:77";
 	};
 
-	firmware {
-		android {
-			compatible = "android,firmware";
-			hardware = "nx-t210b01";
-			fstab {
-				compatible = "android,fstab";
-				first_stage_delay = "1";
-				vendor {
-					compatible = "android,vendor";
-					dev = "/dev/block/platform/sdhci-tegra.0/by-name/vendor";
-					type = "ext4";
-					mnt_flags = "ro,noatime";
-					fsmgr_flags = "wait";
-				};
-			};
-		};
-	};
-
 	se_elp@70420000 {
 		status = "okay";
 	};
