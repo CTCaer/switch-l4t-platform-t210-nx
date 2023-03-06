@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2019-2020, Billy Laws <blaws05@gmail.com>
- * Copyright (c) 2019-2022, CTCaer <ctcaer@gmail.com>
+ * Copyright (c) 2019-2023, CTCaer <ctcaer@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,5 +37,56 @@
 					      10 50000
 					       0  1000>;
 		};
+	};
+
+	spi@7000da00 {
+		status = "okay"; /* Disabled for Vali */
+
+		/*
+		 * Model WHOAMI:
+		 * LSM6DS3H 0x69, LSM6DSE 0x6A, LSM6DSO 0x6C, ICM40607 0x38.
+		 */
+		imu@0 {
+			status = "okay";
+			compatible = "imu,multi-driver",
+				     "st,lsm6ds3h", "st,lsm6dse", "st,lsm6dso",
+				     "invensense,icm40607";
+			reg = <0>;
+			spi-max-frequency = <8000000>;
+
+			/* SPI Mode-3 */
+			spi-cpha;
+			spi-cpol;
+
+			interrupt-parent = <&gpio>;
+			interrupts = <TEGRA_GPIO(X, 2) IRQ_TYPE_LEVEL_HIGH>;
+
+			vdd-supply = <&battery_reg>;
+			vddio-supply = <&battery_reg>;
+
+			st,drdy-int-pin = <2>;
+			irq-int2;
+
+			#address-cells = <0x1>;
+			#size-cells = <0x0>;
+			nvidia,enable-hw-based-cs;
+			nvidia,cs-setup-clk-count = <0x1e>;
+			nvidia,cs-hold-clk-count = <0x1e>;
+			nvidia,rx-clk-tap-delay = <0x1f>;
+			nvidia,tx-clk-tap-delay = <0x0>;
+
+			st,mount-matrix =
+				"0", "1",  "0", /* X:  y */
+				"1", "0",  "0", /* Y:  x */
+				"0", "0", "-1"; /* Z: -z */
+			invensense,mount-matrix =
+				"0", "-1",  "0", /* X: -y */
+				"1",  "0",  "0", /* Y:  x */
+				"0",  "0", "-1"; /* Z: -z */
+		};
+
+		/delete-node/ spi-touch19x12@0;
+		/delete-node/ spi-touch25x16@0;
+		/delete-node/ spi-touch14x8@0;
 	};
 };

@@ -346,33 +346,6 @@
 		};
 	};
 
-	spi@7000da00 {
-		status = "okay";
-		imu_stm: lsm6ds3h@0 {
-			compatible = "st,lsm6ds3h";
-			reg = <0>;
-			spi-max-frequency = <8000000>;
-			interrupt-parent = <&gpio>;
-			interrupts = <TEGRA_GPIO(X, 2) IRQ_TYPE_LEVEL_HIGH>;
-			st,drdy-int-pin = <2>;
-			status = "okay";
-			#address-cells = <0x1>;
-			#size-cells = <0x0>;
-			nvidia,enable-hw-based-cs;
-			nvidia,cs-setup-clk-count = <0x1e>;
-			nvidia,cs-hold-clk-count = <0x1e>;
-			nvidia,rx-clk-tap-delay = <0x1f>;
-			nvidia,tx-clk-tap-delay = <0x0>;
-			mount-matrix =
-				"0", "1",  "0", /* X:  y */
-				"1", "0",  "0", /* Y:  x */
-				"0", "0", "-1"; /* Z: -z */
-		};
-		/delete-node/ spi-touch19x12@0;
-		/delete-node/ spi-touch25x16@0;
-		/delete-node/ spi-touch14x8@0;
-	};
-
 	cpufreq {
 		cpu-scaling-data {
 			freq-table = <

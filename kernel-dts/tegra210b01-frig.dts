@@ -121,12 +121,6 @@
 		};
 	};
 
-	spi@7000da00 {
-		imu_stm: lsm6dsl@0 {
-			status = "disabled"; /* Disabled for Vali/Frig */
-		};
-	};
-
 	thermal_fan_est_shared_data: tfesd {
 		dev1 {
 			/* Frig SoC Console */
