@@ -26,6 +26,7 @@
 			label = "Power";
 			gpios = <&gpio TEGRA_GPIO(X, 5) GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_POWER>;
+			debounce-interval = <16>;
 			gpio-key,wakeup;
 			nvidia,pmc-wakeup = <&tegra_pmc
 				PMC_WAKE_TYPE_GPIO 24 PMC_TRIGGER_TYPE_NONE>;
@@ -37,12 +38,14 @@
 			label = "Volume Down";
 			gpios = <&gpio TEGRA_GPIO(X, 7) GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_VOLUMEDOWN>;
+			debounce-interval = <16>;
 		};
 
 		volume_up {
 			label = "Volume Up";
 			gpios = <&gpio TEGRA_GPIO(X, 6) GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_VOLUMEUP>;
+			debounce-interval = <16>;
 		};
 	};
 };
