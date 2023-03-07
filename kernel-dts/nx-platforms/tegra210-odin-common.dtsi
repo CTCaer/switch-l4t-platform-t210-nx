@@ -108,6 +108,7 @@
 
 	sdhci@700b0600 { /* SDMMC4 for EMMC */
 		cd-gpios = <&gpio TEGRA_GPIO(Z, 1) 0>;
+		cd-debounce = <128>;
 		bus-width = <8>;
 		uhs-mask = <0x0>;       /* hs400 */
 		tap-delay = <0>;
