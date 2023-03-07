@@ -239,7 +239,7 @@
 	};
 
 	pcie@1003000 {
-		nvidia,wake-gpio = <&gpio TEGRA_GPIO(A, 2) 0>; /* BCM4356 WIFI PME */
+		/* nvidia,wake-gpio = <&gpio TEGRA_GPIO(A, 2) 0>; */ /* BCM4356 WIFI PME */
 
 		avdd-pll-uerefe-supply = <&max77620_ldo7>;
 		hvddio-pex-supply = <&max77620_sd3>;
