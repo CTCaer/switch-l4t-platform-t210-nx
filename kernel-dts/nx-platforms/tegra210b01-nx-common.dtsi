@@ -1282,7 +1282,6 @@
 			 <&tegra_car TEGRA210_CLK_CAP_VCORE_CBUS>,
 			 <&tegra_car TEGRA210_CLK_CAP_VCORE_APE>;
 		clock-names = "c2bus_cap", "c3bus_cap", "cbus_cap", "ape_cap";
-		status = "disabled";
 	};
 
 	reserved-memory {
