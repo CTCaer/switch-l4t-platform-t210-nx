@@ -42,7 +42,7 @@
 			output-low;
 			gpios = <
 				TEGRA_GPIO(BB, 3) 0 /* Gamecard Reset */
-				TEGRA_GPIO(V, 5) 0  /* USB-PD (BM92T36) Reset. Use it to reset bm92t? */
+				TEGRA_GPIO(V, 5) 0  /* USB-PD (BM92T36) Reset. Use it to reset bm92t (128 ms debounce)? */
 				TEGRA_GPIO(J, 5) 0  /* Charger IC (BQ24193) Charge Select 1 */
 				TEGRA_GPIO(L, 0) 0  /* Charger IC (BQ24193) Charge Select 2 */
 				TEGRA_GPIO(H, 7) 0  /* TODO: What's this? Bluetooth Gpio5 */
