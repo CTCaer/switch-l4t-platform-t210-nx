@@ -106,17 +106,19 @@
 		reg = < 0x0 0x80000000 0x0 0x80000000 >;
 	};
 
-	sdhci@700b0600 { /* SDMMC4 for EMMC */
+	/* SDMMC4 for EMMC */
+	sdhci@700b0600 {
 		cd-gpios = <&gpio TEGRA_GPIO(Z, 1) 0>;
 		cd-debounce = <128>;
 		bus-width = <8>;
-		uhs-mask = <0x0>;       /* hs400 */
+		uhs-mask = <0x0>; /* All modes */
 		tap-delay = <0>;
 		trim-delay = <8>;
 		only-1-8-v;
 		no-sdio;
 		no-sd;
 		max-clk-limit = <200000000>;
+		disable-dynamic-host-clk-gating;
 		pll_source = "pll_p", "pll_c4_out2";
 		clocks = <&tegra_car TEGRA210_CLK_SDMMC4>,
 			   <&tegra_car TEGRA210_CLK_PLL_P>,
@@ -126,12 +128,14 @@
 		status = "disabled";
 	};
 
-	sdhci@700b0400 { /* SDMMC3 Not Used */
+	/* SDMMC3 Unused */
+	sdhci@700b0400 {
 		status = "disabled";
 	};
 
-	sdhci@700b0200 { /* SDMMC2 for Gamecard */
-		uhs-mask = <0x0>;	/* hs400 */
+	/* SDMMC2 for Gamecard */
+	sdhci@700b0200 {
+		uhs-mask = <0x0>; /* All modes */
 		tap-delay = <0>;
 		trim-delay = <8>;
 		nvidia,is-ddr-tap-delay;
@@ -166,24 +170,33 @@
 		status = "disabled";
 	};
 
-	sdhci@700b0000 { /* SDMMC1 for uSD card */
-		uhs-mask = <0x0c>;
+	/* SDMMC1 for uSD card */
+	sdhci@700b0000 {
+		uhs-mask = <0x0c>; /* Disable SDR50/DDR50 */
 		tap-delay = <4>;
 		trim-delay = <2>;
 		power-off-rail;
-		default-drv-type = <0x01>;
 		nvidia,update-pinctrl-settings;
 		nvidia,sd-device;
 		no-sdio;
 		no-mmc;
-		max-clk-limit = <200000000>;
+		max-current-800ma;
+		max-clk-limit = <208000000>;
+		sdr50-clk-limit = <100000000>;
+		sdr104-hs200-clk-limit = <200000000>;
+		ddr-clk-limit = <208000000>;    /* 416 MHz for host */
+		ddr50-clk-limit = <48000000>;   /* 86  MHz for host */
+		ddr200-clk-limit = <200000000>; /* 400 MHz for host */
+		enable-ddr200;
+		disable-dynamic-host-clk-gating;
 		default-drv-type = <1>;
-		pll_source = "pll_p", "pll_c4_out2";
+		pll_source = "pll_p", "pll_c4_out2", "pll_c4_out0";
 		clocks = <&tegra_car TEGRA210_CLK_SDMMC1>,
 			   <&tegra_car TEGRA210_CLK_PLL_P>,
 			   <&tegra_car TEGRA210_CLK_PLL_C4_OUT2>,
+			   <&tegra_car TEGRA210_CLK_PLL_C4_OUT0>,
 			   <&tegra_car TEGRA210_CLK_SDMMC_LEGACY>;
-		clock-names = "sdmmc", "pll_p", "pll_c4_out2", "sdmmc_legacy_tm";
+		clock-names = "sdmmc", "pll_p", "pll_c4_out2", "pll_c4_out0", "sdmmc_legacy_tm";
 		nvidia,cd-wakeup-capable;
 		status = "okay";
 
