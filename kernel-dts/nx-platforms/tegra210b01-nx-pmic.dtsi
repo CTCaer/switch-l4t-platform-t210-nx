@@ -393,7 +393,7 @@
 					regulator-ramp-delay = <50000>;
 				};
 
-				/* Odin/Modin/Frig: DP. */
+				/* Odin/Modin/Fric: DP. */
 				/* Vali: Powers LDO 2V8 for Sio VDD
 				 * Powers LDO 1V8 for I2C1 VDDQ and ALC5639.
 				 */
@@ -462,8 +462,8 @@
 				ti,thermal-regulation-threshold-degc = <120>;
 				ti,pre-charge-current-limit-milliamp = <128>;
 				ti,charge-term-current-limit-milliamp = <128>;
-				ti,charge-voltage-limit-millivolt = <4208>;     /* 4000 up to 23% for Frig. */
-				ti,fast-charge-current-limit-milliamp = <2048>; /* 3072 up to 23% for Frig. */
+				ti,charge-voltage-limit-millivolt = <4208>;     /* 4000 up to 23% for Fric. */
+				ti,fast-charge-current-limit-milliamp = <2048>; /* 3072 up to 23% for Fric. */
 				ti,temp-range = <3 16 50 59>;
 				ti,charge-thermal-voltage-limit = <4208 4208 4208 3952>;
 				ti,charge-current-limit = <512 768 2048 2048>;

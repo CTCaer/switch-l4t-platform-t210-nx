@@ -76,11 +76,11 @@
 		};
 
 		en_vdd_jcl_chgr: regulator@0xe {
-			status = "disabled"; /* Only enabled on Odin/Modin/Frig */
+			status = "disabled"; /* Only enabled on Odin/Modin/Fric */
 		};
 
 		en_vdd_jcr_chgr: regulator@0xf {
-			status = "disabled"; /* Only enabled on Odin/Modin/Frig */
+			status = "disabled"; /* Only enabled on Odin/Modin/Fric */
 		};
 	};
 

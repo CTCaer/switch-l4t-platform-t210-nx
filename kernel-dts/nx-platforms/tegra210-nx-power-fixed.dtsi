@@ -139,7 +139,7 @@
 		v_vdd5v3: regulator@0xb {
 			compatible = "regulator-fixed-sync";
 			reg = <11>;
-			status = "okay"; /* Only enabled on Modin/Vali/Frig */
+			status = "okay"; /* Only enabled on Modin/Vali/Fric */
 			regulator-name = "v_vdd5v3";
 			regulator-min-microvolt = <5300000>;
 			regulator-max-microvolt = <5300000>;

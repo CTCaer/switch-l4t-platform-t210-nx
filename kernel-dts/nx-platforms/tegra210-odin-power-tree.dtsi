@@ -72,7 +72,7 @@
 		};
 
 		v_vdd5v3: regulator@0xb {
-			status = "disabled"; /* Only enabled on Modin/Vali/Frig */
+			status = "disabled"; /* Only enabled on Modin/Vali/Fric */
 		};
 
 		vdd3v3_gc: regulator@0xc {

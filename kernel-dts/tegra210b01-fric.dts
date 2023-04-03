@@ -13,10 +13,10 @@
  */
 
 #include "nx-platforms/tegra210b01-nx-common.dtsi"
-#include "nx-platforms/tegra210b01-frig-gpio.dtsi"
-#include "nx-platforms/tegra210b01-frig-pinmux.dtsi"
+#include "nx-platforms/tegra210b01-fric-gpio.dtsi"
+#include "nx-platforms/tegra210b01-fric-pinmux.dtsi"
 #include "nx-platforms/tegra210-nx-common-disp.dtsi"
-#include "nx-platforms/tegra210b01-frig-power-tree.dtsi"
+#include "nx-platforms/tegra210b01-fric-power-tree.dtsi"
 #include "nx-platforms/tegra210-nx-sensor.dtsi"
 
 / {
@@ -24,7 +24,7 @@
 	nvidia,dtbbuildtime = __DATE__, __TIME__;
 
 	model = "Nintendo Switch (OLED model)";
-	compatible = "nvidia,frig", "nintendo,aula", "nintendo,nx", "nvidia,tegra210b01";
+	compatible = "nvidia,fric", "nintendo,aula", "nintendo,nx", "nvidia,tegra210b01";
 
 	tlk {
 		status = "disabled"; /* Only enable if TOS/NVDECBL/TSEC/EKS are setup */
@@ -123,18 +123,18 @@
 
 	thermal_fan_est_shared_data: tfesd {
 		dev1 {
-			/* Frig SoC Console */
+			/* Fric SoC Console */
 			coeffs_mode0 = <7831 57590>;
 
-			/* Frig SoC Handheld */
+			/* Fric SoC Handheld */
 			coeffs_mode1 = <9029 4274>;
 		};
 
 		dev2 {
-			/* Frig PCB Console */
+			/* Fric PCB Console */
 			coeffs_mode0 = <8051 0xFFFF4F63>;
 
-			/* Frig PCB Handheld */
+			/* Fric PCB Handheld */
 			coeffs_mode1 = <7176 0xFFFF7B5E>;
 		};
 	};
