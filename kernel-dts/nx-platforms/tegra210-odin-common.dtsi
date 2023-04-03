@@ -51,6 +51,15 @@
 		nvidia,wifi-mac = "11:22:33:44:55:77";
 	};
 
+	reserved-memory {
+		/delete-node/ vpr-carveout;
+		/delete-node/ iram-carveout;
+	};
+
+	tegra-carveouts {
+		/delete-property/ memory-region;
+	};
+
 	rtc {
 		nvidia,pmc-wakeup = <&tegra_pmc PMC_WAKE_TYPE_EVENT 16
 			PMC_TRIGGER_TYPE_HIGH>; /* rtc_irq */
@@ -1113,15 +1122,6 @@
 
 	memory-controller@70019000 {
 		status = "okay";
-	};
-
-	reserved-memory {
-		iram-carveout {
-			status = "disabled";
-		};
-		vpr-carveout {
-			status = "disabled";
-		};
 	};
 
 	nvpmodel {
