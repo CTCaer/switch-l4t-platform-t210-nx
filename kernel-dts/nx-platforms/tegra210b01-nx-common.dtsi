@@ -38,7 +38,7 @@
 	serial-number = "1234";
 
 	chosen {
-		bootargs = "root=/dev/mmcblk0p1 rw rootwait fbcon=rotate:3 printk.synchronous=1 loglevel=8 console=fb0 console=ttyGS0";
+		bootargs = "root=/dev/mmcblk0p2 rw rootwait fbcon=map:0 loglevel=8 pmc_r2p.enabled=1 pmc_r2p.action=bootloader nvdec_enabled=0 tegra_fbmem=0x400000@0xf5a00000";
 		nvidia,bluetooth-mac = "11:22:33:44:55:66";
 		nvidia,wifi-mac = "11:22:33:44:55:77";
 	};
