@@ -209,6 +209,7 @@
 		no-sd;
 		max-clk-limit = <200000000>;
 		disable-dynamic-host-clk-gating;
+		adma-xfer-size = <8388608>; /* 8MiB */
 		pll_source = "pll_p", "pll_c4_out2";
 		clocks = <&tegra_car TEGRA210_CLK_SDMMC4>,
 			   <&tegra_car TEGRA210_CLK_PLL_P>,
@@ -277,8 +278,8 @@
 		ddr-clk-limit = <208000000>;    /* 416 MHz for host */
 		ddr50-clk-limit = <48000000>;   /* 86  MHz for host */
 		ddr200-clk-limit = <200000000>; /* 400 MHz for host */
-		enable-ddr200;
 		disable-dynamic-host-clk-gating;
+		adma-xfer-size = <8388608>; /* 8MiB */
 		default-drv-type = <1>;
 		pll_source = "pll_p", "pll_c4_out2", "pll_c4_out0";
 		clocks = <&tegra_car TEGRA210_CLK_SDMMC1>,
