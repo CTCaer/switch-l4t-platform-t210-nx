@@ -26,23 +26,6 @@
 	model = "Nintendo Switch (2019)";
 	compatible = "nvidia,modin", "nvidia,odin", "nintendo,iowa", "nintendo,nx", "nvidia,tegra210b01";
 
-	tlk {
-		status = "disabled"; /* Only enable if TOS/NVDECBL/TSEC/EKS are setup */
-	};
-
-	cpus {
-		idle-states {
-			c7 {
-				status = "disabled"; // FIXME: enabling causes crashes on cpu idle
-			};
-		};
-	};
-
-	r2p {
-		compatible = "tegra-r2p";
-		status = "okay";
-	};
-
 	host1x {
 		dsi {
 			prod-settings {

@@ -25,23 +25,6 @@
 	model = "Nintendo Switch Lite";
 	compatible = "nvidia,vali", "nintendo,hoag", "nintendo,nx", "nvidia,tegra210b01";
 
-	tlk {
-		status = "disabled"; /* Only enable if TOS/NVDECBL/TSEC/EKS are setup */
-	};
-
-	cpus {
-		idle-states {
-			c7 {
-				status = "disabled"; // FIXME: enabling causes crashes on cpu idle
-			};
-		};
-	};
-
-	r2p {
-		compatible = "tegra-r2p";
-		status = "okay";
-	};
-
 	spi@7000da00 {
 		status = "disabled"; /* Disabled for Vali since Sio uses it */
 	};
@@ -144,5 +127,5 @@
 
 	notification_led: pwmleds {
 		status = "okay";
-	};	
+	};
 };

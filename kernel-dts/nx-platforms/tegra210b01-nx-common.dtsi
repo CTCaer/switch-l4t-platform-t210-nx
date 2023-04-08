@@ -52,6 +52,15 @@
 		/delete-property/ memory-region;
 	};
 
+	tlk {
+		status = "disabled"; /* Only enable if TOS/NVDECBL/TSEC/EKS are setup */
+	};
+
+	r2p {
+		compatible = "tegra-r2p";
+		status = "okay";
+	};
+
 	se_elp@70420000 {
 		status = "okay";
 	};

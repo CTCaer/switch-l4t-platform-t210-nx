@@ -23,23 +23,6 @@
 	nvidia,dtsfilename = __FILE__;
 	nvidia,dtbbuildtime = __DATE__, __TIME__;
 
-	tlk {
-		status = "disabled"; /* Only enable if TOS/NVDECBL/TSEC/EKS are setup */
-	};
-
-	cpus {
-		idle-states {
-			c7 {
-				status = "disabled"; // FIXME: enabling causes crashes on cpu idle
-			};
-		};
-	};
-
-	r2p {
-		compatible = "tegra-r2p";
-		status = "okay";
-	};
-
 	host1x {
 		/* tegradc.0: DSI */
 		dc@54200000 {

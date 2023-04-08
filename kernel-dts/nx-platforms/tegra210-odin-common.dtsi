@@ -60,6 +60,15 @@
 		/delete-property/ memory-region;
 	};
 
+	tlk {
+		status = "disabled"; /* Only enable if TOS/NVDECBL/TSEC/EKS are setup */
+	};
+
+	r2p {
+		compatible = "tegra-r2p";
+		status = "okay";
+	};
+
 	rtc {
 		nvidia,pmc-wakeup = <&tegra_pmc PMC_WAKE_TYPE_EVENT 16
 			PMC_TRIGGER_TYPE_HIGH>; /* rtc_irq */
@@ -1118,6 +1127,12 @@
 
 		cpu@3 {
 			compatible = "arm,cortex-a57", "arm,armv8";
+		};
+
+		idle-states {
+			c7 {
+				status = "disabled";
+			};
 		};
 	};
 
