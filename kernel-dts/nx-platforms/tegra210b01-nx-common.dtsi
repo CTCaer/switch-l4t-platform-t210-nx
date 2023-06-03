@@ -74,6 +74,10 @@
 		status = "disabled";
 	};
 
+	external-memory-controller@7001b000 {
+		reg = <0x0 0x7001b000 0x0 0x1000>;
+	};
+
 	pmc@7000e400 {
 		/delete-property/ nvidia,secure-pmc;
 		nvidia,invert-interrupt;
