@@ -231,8 +231,8 @@
 
 				max77620_sd1: sd1 {
 					regulator-name = "vdd-ddr";
-					/* regulator-min-microvolt = <1100000>; */
-					/* regulator-max-microvolt = <1100000>; */
+					regulator-min-microvolt = <1050000>;
+					regulator-max-microvolt = <1175000>;
 					regulator-always-on;
 					regulator-boot-on;
 					/* regulator-init-microvolt = <1100000>; */ /* Controlled by bootloader */
