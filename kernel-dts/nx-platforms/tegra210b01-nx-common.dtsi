@@ -596,6 +596,9 @@
 			nintendo,sio-por-gpio = <&gpio TEGRA_GPIO(CC, 5) 0>;
 			nintendo,sio-rst-gpio = <&gpio TEGRA_GPIO(T, 1) 0>;
 
+			sio-stick-cnt-off-l = <0 0xFFFFFF00>;
+			sio-stick-cnt-off-r = <0xFFFFFF00 0>;
+
 			clocks = <&tegra_car TEGRA210_CLK_CLK_OUT_2>,
 				 <&tegra_car TEGRA210_CLK_CLK_OUT_2_MUX>,
 				 <&tegra_car TEGRA210_CLK_EXTERN2>,
