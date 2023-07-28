@@ -462,6 +462,8 @@
 
 			rohm,dp-lanes = <2>;
 			rohm,dp-signal-toggle-on-resume;
+
+			/* Absolute max is 2.4A, constrained by BQ24193 ILIM */
 			rohm,pd-5v-current-limit-ma = <2000>;
 			rohm,pd-9v-current-limit-ma = <2000>;
 			rohm,pd-12v-current-limit-ma = <1500>;

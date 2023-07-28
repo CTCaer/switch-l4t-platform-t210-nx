@@ -401,6 +401,8 @@
 	xusb_padctl@7009f000 {
 		status = "okay";
 
+		/* interrupts = <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH>; */ /* IRQ_XUSB_PADCTL */
+
 		pads {
 			usb2 {
 				status = "okay";
@@ -536,6 +538,9 @@
 		 * B-Side:
 		 *  Best binning (1721): 1152000 (10.8A)
 		 *  Bad  binning (1509):  998400 ( 9.6A)
+		 * C-Side:
+		 *  Best binning (1721): 1228800 (11.3A)
+		 *  Bad  binning (1509): 1152000 (??.?A)
 		 *
 		 * Desired limits always too close to 10A,
 		 * so pmic current limit is not triggered.

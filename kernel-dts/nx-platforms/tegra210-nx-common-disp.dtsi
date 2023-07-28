@@ -123,7 +123,11 @@
 		vi {
 			status = "disabled";
 		};
-
+/* For updated driver.
+		vic {
+			interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>;
+		};
+*/
 		tsec {
 			assigned-clocks = <&tegra_car TEGRA210_CLK_TSEC>;
 			assigned-clock-parents =
